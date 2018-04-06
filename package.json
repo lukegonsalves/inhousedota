@@ -11,7 +11,6 @@
     },
     "devDependencies": {
         "axios": "^0.18",
-        "popper.js": "^1.12",
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^2.0",
@@ -19,6 +18,8 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "buefy": "^0.6.5"
+        "buefy": "^0.6.5",
+        "mysql": "^2.15.0",
+        "pdo": "^1.1.0"
     }
 }
