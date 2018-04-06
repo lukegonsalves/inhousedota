@@ -20,7 +20,8 @@
                     @else
                     @endif
                     You are logged in!
-                    
+                    {{ getRank() }}
+                    {{ toUserID( Auth::user()->steamid) }}
                 </div> 
             </div>
         </div>

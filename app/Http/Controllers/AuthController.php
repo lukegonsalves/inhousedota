@@ -77,8 +77,7 @@ class AuthController extends Controller
             return $user;
         }
         */
-    
-
+        
         return User::create([
             'username' => $info['personaname'],
             'avatar' => $info['avatarfull'],
