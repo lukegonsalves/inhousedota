@@ -1,9 +1,8 @@
 <?php
  function getRank()
     {
-        $steamidtag = Auth::user()->steamid; //get the steam id from Auth
-        $idtag = toUserID($steamidtag); //convert the steam64 id to steam3 id
-        $rank_url_lookup = "https://api.opendota.com/api/players/".$idtag; // append the steam3id to the opendota api call
+
+        $rank_url_lookup = "https://api.opendota.com/api/players/113209044"; // append the steam3id to the opendota api call
         $string = file_get_contents($rank_url_lookup); // get the contents of the api call
         $rankslice = str_after($string, 'rank_tier":'); // string slicing to get rank
         $rank = str_before($rankslice, ',"leaderboard_rank'); // 2nd string slice to get rank
