@@ -22,3 +22,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('auth/steam', 'AuthController@redirectToSteam')->name('auth.steam');
 Route::get('auth/steam/handle', 'AuthController@handle')->name('auth.steam.handle');
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+

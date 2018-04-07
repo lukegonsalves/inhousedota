@@ -14,6 +14,7 @@
                         </div>
                     @endif
                     @if (Auth::check())
+                    <a href="{{ route('logout') }}">Logout</a>
                     <img src = "{{Auth::user()->avatar}}">
                     <p>Welcome back, {{ Auth::user()->username}}.</p>
                     <p>{{ Auth::user()->steamid}}</p>
@@ -22,6 +23,8 @@
                     You are logged in!
                     {{ getRank() }}
                     {{ toUserID( Auth::user()->steamid) }}
+                    {{ parseRank() }}
+                    {{ getBracket() }}
                 </div> 
             </div>
         </div>
