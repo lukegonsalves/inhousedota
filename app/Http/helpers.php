@@ -66,7 +66,7 @@
         $rankmajor = str_before($rank, "-");
         if($rankmajor < "5")
         {
-            return "Shitter m8";
+            return "Shitter";
         }
         else{
             return "Gooder"; 

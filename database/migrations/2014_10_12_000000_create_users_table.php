@@ -17,7 +17,8 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('username');
             $table->string('steamid');
-            $table->string('avatar');
+            $table->string('avatarsmall');
+            $table->string('avatarfull');
             $table->rememberToken();
             $table->timestamps();
         });

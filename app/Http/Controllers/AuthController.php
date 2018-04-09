@@ -76,10 +76,12 @@ class AuthController extends Controller
         if (!is_null($user)) {
             return $user;
         }
-
+        //$userid = $info->steamID64;
+        //get
         return User::create([
             'username' => $info['personaname'],
-            'avatar' => $info['avatarfull'],
+            'avatarfull' => $info['avatarfull'],
+            'avatarsmall' => $info['avatar'],
             'steamid' => $info['steamID64']
         ]);
     }

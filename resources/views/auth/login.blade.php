@@ -60,6 +60,13 @@
                                 </a>
                             </div>
                         </div>
+                        <div class="form-group">
+                                <center><br>or
+                                <a href = "auth/steam">
+                                    <br><br><img src="http://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_large_noborder.png" width="109px" height="66px" border="0"></center>
+                                </a>
+                            
+                        </div>
                     </form>
                 </div>
             </div>
