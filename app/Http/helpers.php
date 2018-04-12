@@ -11,11 +11,11 @@
         }
     }
 
-    function getRank()
+    function getRank($userid)
     {
-        $userid = toUserID(Auth::user()->steamid);
+        $steam = toUserID($userid);
 
-        $rank_url_lookup = "https://api.opendota.com/api/players/" . $userid; // append the steam3id to the opendota api call
+        $rank_url_lookup = "https://api.opendota.com/api/players/" . $steam; // append the steam3id to the opendota api call
         $string = file_get_contents($rank_url_lookup); // get the contents of the api call
         $rankslice = str_after($string, 'rank_tier":'); // string slicing to get rank
         $rank = str_before($rankslice, ',"leaderboard_rank'); // 2nd string slice to get rank
@@ -24,9 +24,9 @@
 
     }
 
-    function parseRank()
+    function parseRank($userid)
     {
-        $rank = getRank();
+        $rank = getRank($userid);
         $rankmajor = str_before($rank, "-");
         $rankminor = str_after($rank, "-");
 
@@ -60,9 +60,9 @@
         return $rankmajorname . $rankminorname;
     }
     
-    function getBracket()
+    function getBracket($userid)
     {
-        $rank = getRank();
+        $rank = getRank($userid);
         $rankmajor = str_before($rank, "-");
         if($rankmajor < "5")
         {

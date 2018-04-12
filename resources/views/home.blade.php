@@ -39,8 +39,8 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{{ parseRank() }} <small>[{{ getRank() }}]</small></td>
-                                        <td>{{ getBracket() }}</td>
+                                        <td>{{ Auth::user()->rankname }} <small>[{{ Auth::user()->rank }}]</small></td>
+                                        <td>{{ Auth::user()->bracket }}</td>
                                     </tr>
                                 </tbody>
                             </table>

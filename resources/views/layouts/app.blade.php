@@ -25,7 +25,7 @@
 <body>
     <div id="app">
         
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+        <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
             <div class="navbar-brand" href="{{ url('/') }}">
                 <a class = "navbar-item">
                 {{ config('app.name', 'Laravel') }}
@@ -33,7 +33,14 @@
             </div>
     
             <div class="navbar-menu">
-                <div class="navbar-start"></div>
+                <div class="navbar-start">
+                    <a class="navbar-item" href="{{ route('home') }}">
+                        Home
+                    </a>
+                    <a class="navbar-item" href="{{ route('players') }}">
+                        Players
+                    </a>
+                </div>
                 <div class="navbar-end">
                     @if (!Auth::check())
                     @else                  
@@ -43,11 +50,11 @@
                         </a>
                     
                         <div class="navbar-dropdown">
-                          <a class="navbar-item">
-                            Home
-                          </a>
-                          <a class="navbar-item">
+                          <a class="navbar-item" href = "{{ route('home') }}">
                             Profile
+                          </a>
+                          <a class="navbar-item" href = "{{ route('players') }}">
+                            Players
                           </a>
                           <a class="navbar-item">
                             Settings
