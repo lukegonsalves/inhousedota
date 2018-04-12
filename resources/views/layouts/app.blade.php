@@ -15,21 +15,11 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="//cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css">
 
-    <script>
-        export default {
-            data() {
-                return {
-                    navigation: 'home'
-                }
-            }
-        }
-    </script>
+
 
 </head>
 <body>
@@ -47,25 +37,27 @@
                 <div class="navbar-end">
                     @if (!Auth::check())
                     @else                  
-                    <b-dropdown v-model="navigation" position="is-bottom-left">
-                        <a class="navbar-item" slot="trigger">
-                        <span><img src = "{{Auth::user()->avatarsmall}}"> {{Auth::user()->username}}</span>
-                            <b-icon icon="menu-down"></b-icon>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            <img src = "{{Auth::user()->avatarsmall}}">&nbsp;{{Auth::user()->username}}
                         </a>
-                        <b-dropdown-item value="home">
-                            <b-icon icon="home"></b-icon>
+                    
+                        <div class="navbar-dropdown">
+                          <a class="navbar-item">
                             Home
-                        </b-dropdown-item>  
-                        <hr class="dropdown-divider">
-                        <a href="{{ route('logout') }}">
-
-                        <b-dropdown-item value="logout">
-                            <b-icon icon="logout"></b-icon>
-                            Logout
-                        </b-dropdown-item>
-                        </a>
-
-                    </b-dropdown>
+                          </a>
+                          <a class="navbar-item">
+                            Profile
+                          </a>
+                          <a class="navbar-item">
+                            Settings
+                          </a>
+                          <hr class="navbar-divider">
+                          <div class="navbar-item">
+                            <a href = "{{ route('logout') }}">Logout</a>
+                          </div>
+                        </div>
+                      </div>
                     @endif
 
                 </div>
@@ -74,15 +66,16 @@
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
-    <footer class="footer is-primary">
-        <div class="container">
-            <div class="content has-text-centered">
-                <p>
-                <strong>{{ config('app.name', 'Laravel') }}</strong> by <a href="#">darkluke21</a>.
-                </p>
+        <footer class="footer is-primary">
+            <div class="container">
+                <div class="content has-text-centered">
+                    <p>
+                    <strong>{{ config('app.name', 'Laravel') }}</strong> by <a href="#">darkluke21</a>.
+                    </p>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
+
 </body>
 </html>
