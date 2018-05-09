@@ -26,17 +26,18 @@
                                     <th>Username</th>
                                     <th>Rank</th>
                                     <th>Bracket</th>
+                                    <th>Team</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($users as $user)
                                     <tr>
                                         <td>
-                                            <figure class="image is-pulled-left is-32x32">
-                                                <img alt = "{{$user->username}}" src = "{{$user->avatarfull}}">
-                                            </figure>
-                                            {{ $user->username }}</td>
+                                            <img alt = "{{$user->username}}" src = "{{$user->avatarsmall}}">
+                                            {{ $user->username }} <i class="fas fa-check-circle"></i>
+                                        </td>
                                         <td>{{ $user->rankname }} <small>[{{ $user->rank }}]</small></td>
                                         <td>{{ $user->bracket }}</td>
+                                        <td>Undrafted </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

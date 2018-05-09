@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
 
 
 
@@ -40,6 +42,12 @@
                     <a class="navbar-item" href="{{ route('players') }}">
                         Players
                     </a>
+                    <a class="navbar-item" href="{{ route('teams') }}">
+                        Teams
+                    </a>
+                    <a class="navbar-item" href="{{ route('profile') }}">
+                        Profile
+                    </a>
                 </div>
                 <div class="navbar-end">
                     @if (!Auth::check())
@@ -50,7 +58,7 @@
                         </a>
                     
                         <div class="navbar-dropdown">
-                          <a class="navbar-item" href = "{{ route('home') }}">
+                          <a class="navbar-item" href = "{{ route('profile') }}">
                             Profile
                           </a>
                           <a class="navbar-item" href = "{{ route('players') }}">
@@ -70,6 +78,26 @@
                 </div>
             </div>
         </nav>
+
+        <nav class="level">
+                <p class="level-item has-text-centered">
+                  <a class="link is-info">Home</a>
+                </p>
+                <p class="level-item has-text-centered">
+                  <a class="link is-info">Menu</a>
+                </p>
+                <p class="level-item has-text-centered">
+                    <a class ="link is-info">Inhouse </a>
+                 <!-- <img src="https://bulma.io/images/bulma-type.png" alt="" style="height: 30px;"> -->
+                </p>
+                <p class="level-item has-text-centered">
+                  <a class="link is-info">Reservations</a>
+                </p>
+                <p class="level-item has-text-centered">
+                  <a class="link is-info">Contact</a>
+                </p>
+        </nav>
+
         <main class="py-4">
             @yield('content')
         </main>
