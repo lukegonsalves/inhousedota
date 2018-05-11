@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Invisnik\LaravelSteamAuth\SteamAuth;
 use App\User;
-use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Invisnik\LaravelSteamAuth\SteamAuth;
 
 class ProfileController extends Controller
 {
     //  
-    public function index()
+    public function show(User $user = null)
     {
-        return view('profile');
+        $user = $user ?? Auth::user();
+        // dd($user->heroes);
+        // dd(heroesData());
+        return view('profile')->withUser($user);
     }
 }
