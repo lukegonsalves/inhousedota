@@ -20,7 +20,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectURL = '/';
+    protected $redirectURL = '/home';
 
     /**
      * AuthController constructor.
@@ -57,7 +57,7 @@ class AuthController extends Controller
 
                 Auth::login($user, true);
 
-                return redirect($this->redirectURL); // redirect to site
+                return redirect($this->redirectURL);
             }
         }
         return $this->redirectToSteam();
@@ -71,23 +71,12 @@ class AuthController extends Controller
      */
     protected function findOrNewUser($info)
     {
-        $user = User::where('steamid', $info->steamID64)->first();
+        $user = User::find($info['steamID64']);
 
         if (!is_null($user)) {
             return $user;
+        }else{
+            return User::createFromSteamUser($info);
         }
-        $userid = $info->steamID64;
-        $rank = getRank($userid);
-        $rankname = parseRank($userid);
-        $bracket = getBracket($userid);
-        return User::create([
-            'username' => $info['personaname'],
-            'avatarfull' => $info['avatarfull'],
-            'avatarsmall' => $info['avatar'],
-            'rank' => $rank,
-            'rankname' => $rankname,
-            'bracket' => $bracket,
-            'steamid' => $info['steamID64']
-        ]);
     }
 }

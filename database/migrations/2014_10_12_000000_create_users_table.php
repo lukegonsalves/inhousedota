@@ -15,13 +15,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->bigInteger('id64');
             $table->string('username');
-            $table->string('steamid');
-            $table->string('rank');
-            $table->string('bracket');
-            $table->string('rankname');
-            $table->string('avatarsmall');
-            $table->string('avatarfull');
+            $table->json('steam')->nullable();
+            $table->json('open_dota')->nullable();
+            $table->json('heroes')->nullable();
+            $table->dateTime('last_login')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

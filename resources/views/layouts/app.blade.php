@@ -20,9 +20,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 
-
-
-
 </head>
 <body>
     <div id="app">
@@ -42,44 +39,41 @@
                     <a class="navbar-item" href="{{ route('players') }}">
                         Players
                     </a>
-                    <a class="navbar-item" href="{{ route('teams') }}">
+                    {{--  <a class="navbar-item" href="{{ route('teams') }}">
                         Teams
-                    </a>
-                    <a class="navbar-item" href="{{ route('profile') }}">
+                    </a>  --}}
+                    <a class="navbar-item" href="{{ route('profile.self') }}">
                         Profile
                     </a>
                 </div>
                 <div class="navbar-end">
-                    @if (!Auth::check())
-                    @else                  
+                    @if (Auth::check())                
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
                             <img src = "{{Auth::user()->avatarsmall}}">&nbsp;{{Auth::user()->username}}
                         </a>
-                    
                         <div class="navbar-dropdown">
-                          <a class="navbar-item" href = "{{ route('profile') }}">
+                          <a class="navbar-item" href = "{{ route('profile.self') }}">
                             Profile
                           </a>
                           <a class="navbar-item" href = "{{ route('players') }}">
                             Players
                           </a>
-                          <a class="navbar-item">
+                          {{--  <a class="navbar-item">
                             Settings
-                          </a>
+                          </a>  --}}
                           <hr class="navbar-divider">
                           <div class="navbar-item">
                             <a href = "{{ route('logout') }}">Logout</a>
                           </div>
                         </div>
-                      </div>
+                    </div>
                     @endif
-
                 </div>
             </div>
         </nav>
 
-        <nav class="level">
+        {{--  <nav class="level">
                 <p class="level-item has-text-centered">
                   <a class="link is-info">Home</a>
                 </p>
@@ -96,7 +90,7 @@
                 <p class="level-item has-text-centered">
                   <a class="link is-info">Contact</a>
                 </p>
-        </nav>
+        </nav>  --}}
 
         <main class="py-4">
             @yield('content')
