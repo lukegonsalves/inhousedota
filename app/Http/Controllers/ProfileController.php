@@ -15,6 +15,7 @@ class ProfileController extends Controller
         $user = $user ?? Auth::user();
         // dd($user->heroes);
         // dd(heroesData());
+        // dd($user, $user->id32);
         return view('profile')->withUser($user);
     }
 }

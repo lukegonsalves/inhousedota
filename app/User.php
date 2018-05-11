@@ -35,7 +35,9 @@ class User extends Authenticatable
     }
 
     public function getId32Attribute(){
-        return $this->id64 - 76561197960265728;
+        $result = substr($this->id64, 3) - 61197960265728;
+        return (string) $result;
+        //return bcsub(,'76561198073474772' );
     }
 
     public function getHasOpenDotaDataAttribute(){

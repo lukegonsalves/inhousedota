@@ -15,9 +15,9 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('id64');
+            $table->bigInteger('id64');	
             $table->string('username');
-            // $table->json('steam')->nullable();
+            // $table->json('steam')->nullable();   
             // $table->json('open_dota')->nullable();
             // $table->json('heroes')->nullable();
             $table->mediumText('steam')->nullable();
