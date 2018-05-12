@@ -22,7 +22,7 @@
 
                     <div class="media-content">
                         <div class="content"> 
-                            {{--Searchbar- remove inline js--}}
+                            {{--Searchbar- remove inline js AND get persistent bracket or add brackets to the searchable blacklist--}}
                                     <script>
                                     function searchByUsername() {
                                       // Declare variables 
@@ -51,7 +51,7 @@
                                           <i class="fas fa-search" aria-hidden="true"></i>
                                         </span>
                                 </p>
-                            <table class="table is-narrow is-striped" id="playerTable">
+                            <table class="table is-narrow is-striped" id="playerTable">{{--Add MMR column AND W-L for inhouse dota games (this can be done in future)--}}
                                 <thead>
                                     <th></th>
                                     <th>Username</th>
@@ -86,7 +86,7 @@
                 </article>
             </div>
         </div>
-        {{--Match Creator -implement draggable and workout combined mmr total for each team--}}
+        {{--Match Creator -implement draggable and workout combined mmr total for each team JS is probably the way to go again?--}}
         <div class="column is-one-third">
             <div class ="box is-centered">
                 <div class="content">
@@ -102,9 +102,10 @@
                                 <tr><td>Position 3</td></tr>
                                 <tr><td>Position 4</td></tr>
                                 <tr><td>Position 5</td></tr>
+                                <tr><th>Combined MMR: xxxx</th></tr> {{--Maybe 'cool' graphic or mmr difference here or something, alas david might need to do this cos i have rekindled my hate for JS--}}
                             </tbody>
                             </table>
-                    </div>
+                    </div> {{-- Maybe having a % chance of this team to win against the other, think of algorithm for calculating this. Progress bar graphic might be good here as well --}}
                     <div class="column is-half">
                         <table class="table is-striped is-fullwidth">
                             <thead><th>Team 2</th></thead>
@@ -114,6 +115,7 @@
                                 <tr><td>Position 3</td></tr>
                                 <tr><td>Position 4</td></tr>
                                 <tr><td>Position 5</td></tr>
+                                <tr><th>Combined MMR: xxxx</th></tr>
                             </tbody>
                         </table>
                     </div>
