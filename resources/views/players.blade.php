@@ -11,7 +11,7 @@
 </section>
 <section class = "section">
     <div class = "columns is-centered">
-        <div class="column is-two-thirds">
+        <div class="column is-half">
             <div class ="box">
                 <article class = "media">
                     @if (session('status'))
@@ -21,8 +21,37 @@
                     @endif
 
                     <div class="media-content">
-                        <div class="content">
-                            <table class="table is-narrow is-striped">
+                        <div class="content"> 
+                            {{--Searchbar- remove inline js--}}
+                                    <script>
+                                    function searchByUsername() {
+                                      // Declare variables 
+                                      var input, filter, table, tr, td, i;
+                                      input = document.getElementById("inputSearch");
+                                      filter = input.value.toUpperCase();
+                                      table = document.getElementById("playerTable");
+                                      tr = table.getElementsByTagName("tr");
+                                    
+                                      // Loop through all table rows, and hide those who don't match the search query
+                                      for (i = 0; i < tr.length; i++) {
+                                        td = tr[i].getElementsByTagName("td")[0];
+                                        if (td) {
+                                          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                            tr[i].style.display = "";
+                                          } else {
+                                            tr[i].style.display = "none";
+                                          }
+                                        } 
+                                      }
+                                    }
+                                    </script>                            
+                                <p class="control has-icons-left">
+                                        <input class="input is-small" type="text" placeholder="Search for tards by Username" id="inputSearch" onkeyup="searchByUsername()">
+                                        <span class="icon is-small is-left">
+                                          <i class="fas fa-search" aria-hidden="true"></i>
+                                        </span>
+                                </p>
+                            <table class="table is-narrow is-striped" id="playerTable">
                                 <thead>
                                     <th></th>
                                     <th>Username</th>
@@ -56,7 +85,42 @@
                     </div>
                 </article>
             </div>
-        </div> 
+        </div>
+        {{--Match Creator -implement draggable and workout combined mmr total for each team--}}
+        <div class="column is-one-third">
+            <div class ="box is-centered">
+                <div class="content">
+                <h3 class="title">Match Creator</h3>
+                <h6 class="subtitle">Drag and drop players into each team</h6>
+                <div class = "columns is-centered">
+                    <div class="column is-half">
+                        <table class="table is-striped is-fullwidth">
+                            <thead><th>Team 1</th></thead>
+                            <tbody>
+                                <tr><td>Position 1</td></tr>
+                                <tr><td>Position 2</td></tr>
+                                <tr><td>Position 3</td></tr>
+                                <tr><td>Position 4</td></tr>
+                                <tr><td>Position 5</td></tr>
+                            </tbody>
+                            </table>
+                    </div>
+                    <div class="column is-half">
+                        <table class="table is-striped is-fullwidth">
+                            <thead><th>Team 2</th></thead>
+                            <tbody>
+                                <tr><td>Position 1</td></tr>
+                                <tr><td>Position 2</td></tr>
+                                <tr><td>Position 3</td></tr>
+                                <tr><td>Position 4</td></tr>
+                                <tr><td>Position 5</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 @endsection
