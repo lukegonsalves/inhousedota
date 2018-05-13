@@ -63,7 +63,7 @@
                                 <tbody>
                                     {{--  group by rank  --}}
                                     @foreach ($ranks as $key => $rank)
-                                        <tr><td><strong>Bracket {{$key}}</strong></td></tr>
+                                        {{--       <tr><td><strong>Bracket {{$key}}</strong></td></tr>     --}}
                                         @foreach ($rank as $user)
                                         <tr>
                                             <td>
@@ -77,6 +77,7 @@
                                             <td>{{ $user->rankTier }}</td>
                                             {{--  <td>{{ $user->bracket }}</td>   --}}
                                             {{--  <td>Undrafted </td>  --}}
+                                            {{--    <td>Inhouse W/L Record</td>     --}}
                                             <td>{{ $user->mmr }}</td>
                                         </tr>
                                         @endforeach
