@@ -51,11 +51,12 @@
                                           <i class="fas fa-search" aria-hidden="true"></i>
                                         </span>
                                 </p>
-                            <table class="table is-narrow is-striped" id="playerTable">{{--Add MMR column AND W-L for inhouse dota games (this can be done in future)--}}
+                            <table class="table is-striped" id="playerTable">{{--Add MMR column AND W-L for inhouse dota games (this can be done in future)--}}
                                 <thead>
                                     <th></th>
                                     <th>Username</th>
                                     <th>Rank</th>
+                                    <th>MMR estimate</th>
                                     {{--  <th>Bracket <small>(0-5)</small></th>  --}}
                                     {{--  <th>Team</th>  --}}
                                 </thead>
@@ -76,6 +77,7 @@
                                             <td>{{ $user->rankTier }}</td>
                                             {{--  <td>{{ $user->bracket }}</td>   --}}
                                             {{--  <td>Undrafted </td>  --}}
+                                            <td>{{ $user->mmr }}</td>
                                         </tr>
                                         @endforeach
                                     @endforeach
@@ -92,16 +94,16 @@
                 <div class="content">
                 <h3 class="title">Match Creator</h3>
                 <h6 class="subtitle">Drag and drop players into each team</h6>
-                <div class = "columns is-centered">
+                <div class = "columns is-centered is-multiline">
                     <div class="column is-half">
                         <table class="table is-striped is-fullwidth">
                             <thead><th>Team 1</th></thead>
                             <tbody>
-                                <tr><td>Position 1</td></tr>
-                                <tr><td>Position 2</td></tr>
-                                <tr><td>Position 3</td></tr>
-                                <tr><td>Position 4</td></tr>
-                                <tr><td>Position 5</td></tr>
+                                <tr><td>Position 1 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
+                                <tr><td>Position 2 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
+                                <tr><td>Position 3 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
+                                <tr><td>Position 4 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
+                                <tr><td>Position 5 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
                                 <tr><th>Combined MMR: xxxx</th></tr> {{--Maybe 'cool' graphic or mmr difference here or something, alas david might need to do this cos i have rekindled my hate for JS--}}
                             </tbody>
                             </table>
@@ -110,17 +112,22 @@
                         <table class="table is-striped is-fullwidth">
                             <thead><th>Team 2</th></thead>
                             <tbody>
-                                <tr><td>Position 1</td></tr>
-                                <tr><td>Position 2</td></tr>
-                                <tr><td>Position 3</td></tr>
-                                <tr><td>Position 4</td></tr>
-                                <tr><td>Position 5</td></tr>
+                                <tr><td>Position 1 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
+                                <tr><td>Position 2 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
+                                <tr><td>Position 3 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
+                                <tr><td>Position 4 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
+                                <tr><td>Position 5 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
                                 <tr><th>Combined MMR: xxxx</th></tr>
                             </tbody>
                         </table>
                     </div>
+                    <div class="column">
+                        Balance of Power
+                        <progress class="progress is-danger" value="50" max="100"></progress>
+                    </div>
                 </div>
                 </div>
+                
             </div>
         </div>
     </div>

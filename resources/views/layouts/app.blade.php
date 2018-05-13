@@ -99,7 +99,7 @@
             <div class="container">
                 <div class="content has-text-centered">
                     <p>
-                    <strong>{{ config('app.name', 'Laravel') }}</strong> by <a href="#">darkluke21</a>.
+                    <strong>{{ config('app.name', 'Laravel') }}</strong> by <a href="#">darkluke21</a> and <a href="#">davidpiesse</a>.
                     </p>
                 </div>
             </div>
