@@ -22,6 +22,7 @@
 
                     <div class="media-content">
                         <div class="content"> 
+                                <h3 class="title">Player Search</h3>
                             {{--Searchbar- remove inline js AND get persistent bracket or add brackets to the searchable blacklist--}}
                                     <script>
                                     function searchByUsername() {
@@ -123,8 +124,26 @@
                         </table>
                     </div>
                     <div class="column">
-                        Balance of Power
-                        <progress class="progress is-danger" value="50" max="100"></progress>
+                        <div class="card">
+                            <header class ="card-header">
+                                <p class="card-header-title">Tools (BETA)</p>
+                            </header>
+                            <div class = "card-content">
+                                <a class="button is-success">Balance these teams</a>
+                                <a class="button is-danger">Fill randomly</a>
+                            </div>
+                        </div>
+
+                        {{--    <br>Balance of Power
+                        <progress class="progress is-danger" value="50" max="100"></progress>   --}}
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            Generate random lobby password
+                        </label>
+                        <a class="button is-primary">Create Game</a>
+                    </div>
+
                     </div>
                 </div>
                 </div>
