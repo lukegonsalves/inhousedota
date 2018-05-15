@@ -158,9 +158,6 @@
                         </label>
                         <button class="button is-primary" type="submit">Create Game</button>
                         </form>
-
-
-
                         
                     </div>
                     </div>

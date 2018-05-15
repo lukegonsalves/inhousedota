@@ -33,9 +33,9 @@ class MatchController extends Controller
         $match= new Match();
         $match->match_name=$request->get('name');
 
-        $keyName = ['Bleapo','Pyrion','Munt', 'Plague'];
-        $keyVerb = ['Is', 'Loves', 'Hates']; 
-        $keyAdjective = ['Baldness', 'Lich', 'Customers', 'Domes'];
+        $keyName = ['Bleapo','Pyrion', 'Munt', 'Plague'];
+        $keyVerb = ['Loves', 'Hates']; 
+        $keyAdjective = ['Baldness', 'Lich', 'Customers', 'Domes', 'Dota'];
 
         $randomName = array_random($keyName);
         $randomAdjective = array_random($keyAdjective);
