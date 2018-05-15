@@ -16,6 +16,7 @@ class CreateMatchesTable extends Migration
         Schema::create('matches', function (Blueprint $table) {
             $table->increments('id');
             $table->string('match_name');
+            $table->string('lobby_password');
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
 use App\Match;
 
@@ -31,6 +32,22 @@ class MatchController extends Controller
         ]);    
         $match= new Match();
         $match->match_name=$request->get('name');
+
+        $keyName = ['Bleapo','Pyrion','Munt', 'Plague'];
+        $keyVerb = ['Is', 'Loves', 'Hates']; 
+        $keyAdjective = ['Baldness', 'Lich', 'Customers', 'Domes'];
+
+        $randomName = array_random($keyName);
+        $randomAdjective = array_random($keyAdjective);
+        $randomVerb = array_random($keyVerb);
+        
+        //Join keywords
+        $randomName = str_finish($randomName, $randomVerb);
+        $randomName = str_finish($randomName, $randomAdjective);
+
+
+
+        $match->lobby_password=$randomName;
         $match->save();
         
         return redirect('matches')->with('success', 'Information has been added');

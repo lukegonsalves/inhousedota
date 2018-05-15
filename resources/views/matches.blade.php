@@ -18,6 +18,7 @@
                             <th>MatchID</th>
                             <th>Match</th>
                             <th>Date</th>
+                            <th>Lobby Password</th>
                             <th colspan="2">Action</th>
                           </tr>
                         </thead>
@@ -30,8 +31,9 @@
                           <tr>
                             <td>17171{{$match['id']}}</td>
                             <td>{{$match['match_name']}}</td>
-                            <td>{{$match['created_at']}}</td>
-                            
+                            <td>{{$match['created_at']->format('F d, Y')}}</td>
+                            <td>{{$match['lobby_password']}}</td>
+
                             <td>{{--    <a href="{{action('MatchController@edit', $match['id'])}}" class="btn btn-warning">Edit</a>     --}}</td>
                             <td>
                               <form action="{{action('MatchController@destroy', $match['id'])}}" method="post">
