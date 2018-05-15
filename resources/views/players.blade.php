@@ -141,21 +141,25 @@
                             @csrf
                         <div class="field">
                             <label class="label">Match Name</label>
-                            <input class="input is-focused" type="text" placeholder="Match Name" name="name">
-                            @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                    <p class="help is-danger">{{ $error }}</p>
-                                    @endforeach
-                                </ul>
+                            <div class="control has-icons-left">
+                                <input class="input is-focused" type="text" placeholder="Match Name" name="name">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-gamepad"></i>
+                                </span>
                             </div>
-                            @endif
                         </div>
-                        <label class="checkbox" disabled>
-                                <input type="checkbox" disabled>
-                                Generate random lobby password
-                        </label>
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <p class="help is-danger">{{ $error }}</p>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                        <p class="help">
+                            Random Lobby Password will be generated
+                        </p>
                         <button class="button is-primary" type="submit">Create Game</button>
                         </form>
                         
