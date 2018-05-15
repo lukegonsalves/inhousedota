@@ -43,6 +43,9 @@
                     {{--  <a class="navbar-item" href="{{ route('teams') }}">
                         Teams
                     </a>  --}}
+                    <a class="navbar-item" href="{{ route('matches') }}">
+                        Matches
+                    </a>
                     <a class="navbar-item" href="{{ route('profile.self') }}">
                         Profile
                     </a>

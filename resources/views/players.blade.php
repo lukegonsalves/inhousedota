@@ -123,8 +123,8 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="column">
-                        <div class="card">
+                    <div class="column is-two-thirds">
+                        {{--    <div class="card">
                             <header class ="card-header">
                                 <p class="card-header-title">Tools (BETA)</p>
                             </header>
@@ -132,18 +132,37 @@
                                 <a class="button is-success">Balance these teams</a>
                                 <a class="button is-danger">Fill randomly</a>
                             </div>
-                        </div>
+                        </div> --}}
 
                         {{--    <br>Balance of Power
                         <progress class="progress is-danger" value="50" max="100"></progress>   --}}
                     <div class="control">
-                        <label class="checkbox">
-                            <input type="checkbox">
-                            Generate random lobby password
+                        <form method="post" action="{{url('matches')}}" enctype="multipart/form-data">
+                            @csrf
+                        <div class="field">
+                            <label class="label">Match Name</label>
+                            <input class="input is-focused" type="text" placeholder="Match Name" name="name">
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <p class="help is-danger">{{ $error }}</p>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
+                        </div>
+                        <label class="checkbox" disabled>
+                                <input type="checkbox" disabled>
+                                Generate random lobby password
                         </label>
-                        <a class="button is-primary">Create Game</a>
-                    </div>
+                        <button class="button is-primary" type="submit">Create Game</button>
+                        </form>
 
+
+
+                        
+                    </div>
                     </div>
                 </div>
                 </div>

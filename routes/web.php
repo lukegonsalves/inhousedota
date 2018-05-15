@@ -20,9 +20,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/players', 'PlayersController@index')->name('players');
+
 Route::get('/teams', 'TeamsController@index')->name('teams');
 Route::get('/profile', 'ProfileController@show')->name('profile.self');
 Route::get('/profile/{user}', 'ProfileController@show')->name('profile.user');
+
+Route::resource('matches','MatchController');
+
+Route::get('/matches','MatchController@index')->name('matches');
 
 
 Route::get('auth/steam', 'AuthController@redirectToSteam')->name('auth.steam');
