@@ -21,8 +21,6 @@
                         {{ session('status') }}
                     </div>
                     @endif
-
-
                     <div class="media-left">
                         <figure class="image is-128x128">
                             <img alt="{{ $user->username }}" src="{{ $user->avatarUrl }}">
@@ -33,7 +31,7 @@
                             <p class="title is-5">
                                 {{--  <strong>{{ $user->username}}</strong><br>  --}}
                                 <a href="https://www.dotabuff.com/players/{{ $user->id32 }}">
-                                    <small>
+                                <small>
                                     <code>SteamID64: {{ $user->id64}}</code><br><code>DotaID32: {{ $user->id32 }}</code>
                                 </small>
                             </a>
@@ -84,15 +82,6 @@
                         </table>
                 </div>
             </div>
-            {{--  <div class="box">
-                <div class="content">
-                    More Shiz
-                    <blockquote>
-                        <strong>NB:</strong> If your rank is between Herald 0 - Archon 5, you are placed in shitter bracket.
-                        If your rank is Legend 0 or above you are placed in Gooders bracket.
-                    </blockquote>
-                </div>
-            </div>  --}}
         </div> 
     </div>
 </section>
