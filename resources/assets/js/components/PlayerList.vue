@@ -16,17 +16,8 @@
                 <th>MMR estimate</th>
             </thead>
             <tbody>
-                <!-- <player-list-item v-for="player in players" :key="player.id32"></player-list-item> -->
-                <tr v-for="player in filteredPlayers">
-                    <td>
-                        <img :alt="player.username" :src="player.smallAvatarUrl">
-                    </td>
-                    <td>
-                        <a href="player.profile_url">{{ player.username }} </a>
-                    </td>
-                    <td>{{ player.rankTier }}</td>
-                    <td>{{ player.mmr }}</td>
-                </tr>
+                <player-list-item v-for="player in filteredPlayers" :player="player" :key="player.id64">
+                </player-list-item>
             </tbody>
         </table>
     </div>  
