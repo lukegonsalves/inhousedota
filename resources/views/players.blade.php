@@ -47,7 +47,7 @@
                                 <tr><td>Position 3 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
                                 <tr><td>Position 4 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
                                 <tr><td>Position 5 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
-                                <tr><th>Combined MMR: xxxx</th></tr> {{--Maybe 'cool' graphic or mmr difference here or something, alas david might need to do this cos i have rekindled my hate for JS--}}
+                                {{--Maybe 'cool' graphic or mmr difference here or something, alas david might need to do this cos i have rekindled my hate for JS--}}
                             </tbody>
                             </table>
                     </div> {{-- Maybe having a % chance of this team to win against the other, think of algorithm for calculating this. Progress bar graphic might be good here as well --}}
@@ -60,7 +60,6 @@
                                 <tr><td>Position 3 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
                                 <tr><td>Position 4 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
                                 <tr><td>Position 5 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
-                                <tr><th>Combined MMR: xxxx</th></tr>
                             </tbody>
                         </table>
                     </div>
