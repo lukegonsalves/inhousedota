@@ -8,4 +8,5 @@ use Illuminate\Support\Collection;
 class Match extends Model
 {
 
+    protected $guarded = [];
 }
