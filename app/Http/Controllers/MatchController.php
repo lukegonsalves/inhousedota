@@ -27,28 +27,18 @@ class MatchController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required',
         ]);    
-        $match= new Match();
-        $match->match_name=$request->get('name');
 
-        $keyName = ['Bleapo','Pyrion', 'Munt', 'Plague', 'Goosey', 'Cyni'];
-        $keyVerb = ['Loves', 'Hates', 'Clicks']; 
-        $keyAdjective = ['Baldness', 'Lich', 'Customers', 'Domes', 'Dota', 'Items'];
+        $randomName = array_random(config('inhouse.match.names'));
+        $randomAdjective = array_random(config('inhouse.match.adjectives'));
+        $randomVerb = array_random(config('inhouse.match.verbs'));
 
-        $randomName = array_random($keyName);
-        $randomAdjective = array_random($keyAdjective);
-        $randomVerb = array_random($keyVerb);
-        
-        //Join keywords
-        $randomName = str_finish($randomName, $randomVerb);
-        $randomName = str_finish($randomName, $randomAdjective);
-
-
-
-        $match->lobby_password=$randomName;
-        $match->save();
+        $match = Match::create([
+            'match_name' => $request->get('name'),
+            'lobby_password' => "{$randomName}{$randomVerb}{$randomAdjective}"
+        ]);
         
         return redirect('matches')->with('success', 'Information has been added');
     }
