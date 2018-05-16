@@ -14076,7 +14076,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("td", [
-      _c("a", { attrs: { href: "player.profile_url" } }, [
+      _c("a", { attrs: { href: _vm.player.profile_url } }, [
         _vm._v(_vm._s(_vm.player.username) + " ")
       ])
     ]),
