@@ -19,7 +19,7 @@
                             <th>Match</th>
                             <th>Created Date</th>
                             <th>Lobby Password</th>
-                            <th colspan="2">Action</th>
+                            @admin<th colspan="2">Action</th>@endadmin
                           </tr>
                         </thead>
                         <tbody>
@@ -35,13 +35,13 @@
                             <td>{{$match['lobby_password']}}</td>
 
                             <td>{{--    <a href="{{action('MatchController@edit', $match['id'])}}" class="btn btn-warning">Edit</a>     --}}</td>
-                            <td>
+                            @admin<td>
                               <form action="{{action('MatchController@destroy', $match['id'])}}" method="post">
                                 @csrf
                                 <input name="_method" type="hidden" value="DELETE">
                                 <button class="button is-danger" type="submit">Delete</button>
                               </form>
-                            </td>
+                            </td>@endadmin
                           </tr>
                           @endforeach
                         </tbody>
