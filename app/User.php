@@ -21,6 +21,7 @@ class User extends Authenticatable
         'steam' => 'array',
         'open_dota' => 'array',
         'heroes' => 'array',
+        'isAdmin' => 'boolean',
     ];
 
     protected $appends = [
@@ -36,6 +37,10 @@ class User extends Authenticatable
 
     public function getId32Attribute(){
         return (string)(substr($this->id64, 3) - 61197960265728);
+    }
+
+    public function getIsAdminAttribute(){
+        return in_array($this->id32, config('inhouse.admins'));
     }
 
     public function getHasOpenDotaDataAttribute(){

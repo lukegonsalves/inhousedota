@@ -92,6 +92,7 @@
         </div>
         {{--Match Creator -implement draggable and workout combined mmr total for each team JS is probably the way to go again?--}}
         <div class="column is-one-third">
+            @admin
             <div class ="box is-centered">
                 <div class="content">
                 <h3 class="title">Match Creator</h3>
@@ -169,6 +170,7 @@
                 </div>
                 
             </div>
+            @endadmin
         </div>
     </div>
 </section>
