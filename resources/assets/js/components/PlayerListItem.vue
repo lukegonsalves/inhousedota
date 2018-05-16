@@ -13,8 +13,10 @@
 
 <script>
 export default {
-  props:[
-      'player'
-  ]
+  props:{
+      'player': Object
+  },
+  mounted:()=>{
+  }
 }
 </script>
