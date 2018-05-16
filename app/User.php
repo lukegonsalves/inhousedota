@@ -28,7 +28,10 @@ class User extends Authenticatable
         'rank',
         'rankName',
         'rankTier',
-        'bracket'
+        'bracket',
+        'smallAvatarUrl',
+        'mmr',
+        'profile_url'
     ];
 
     public function scopeRanked($query){
@@ -41,6 +44,10 @@ class User extends Authenticatable
 
     public function getIsAdminAttribute(){
         return in_array($this->id32, config('inhouse.admins'));
+    }
+
+    public function getProfileUrlAttribute(){
+        return route('profile.user', $this);
     }
 
     public function getHasOpenDotaDataAttribute(){

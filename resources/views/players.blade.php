@@ -22,69 +22,9 @@
 
                     <div class="media-content">
                         <div class="content"> 
-                                <h3 class="title">Player Search</h3>
-                            {{--Searchbar- remove inline js AND get persistent bracket or add brackets to the searchable blacklist--}}
-                                    <script>
-                                    function searchByUsername() {
-                                      // Declare variables 
-                                      var input, filter, table, tr, td, i;
-                                      input = document.getElementById("inputSearch");
-                                      filter = input.value.toUpperCase();
-                                      table = document.getElementById("playerTable");
-                                      tr = table.getElementsByTagName("tr");
-                                    
-                                      // Loop through all table rows, and hide those who don't match the search query
-                                      for (i = 0; i < tr.length; i++) {
-                                        td = tr[i].getElementsByTagName("td")[0];
-                                        if (td) {
-                                          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                                            tr[i].style.display = "";
-                                          } else {
-                                            tr[i].style.display = "none";
-                                          }
-                                        } 
-                                      }
-                                    }
-                                    </script>                            
-                                <p class="control has-icons-left">
-                                        <input class="input is-small" type="text" placeholder="Search for tards by Username" id="inputSearch" onkeyup="searchByUsername()">
-                                        <span class="icon is-small is-left">
-                                          <i class="fas fa-search" aria-hidden="true"></i>
-                                        </span>
-                                </p>
-                            <table class="table is-striped" id="playerTable">{{--Add MMR column AND W-L for inhouse dota games (this can be done in future)--}}
-                                <thead>
-                                    <th></th>
-                                    <th>Username</th>
-                                    <th>Rank</th>
-                                    <th>MMR estimate</th>
-                                    {{--  <th>Bracket <small>(0-5)</small></th>  --}}
-                                    {{--  <th>Team</th>  --}}
-                                </thead>
-                                <tbody>
-                                    {{--  group by rank  --}}
-                                    @foreach ($ranks as $key => $rank)
-                                        {{--       <tr><td><strong>Bracket {{$key}}</strong></td></tr>     --}}
-                                        @foreach ($rank as $user)
-                                        <tr>
-                                            <td>
-                                                <img alt="{{ $user->username }}" src="{{$user->smallAvatarUrl}}">
-                                            </td>
-                                            <td>
-                                                <a href="{{route('profile.user',$user)}}">{{ $user->username }} </a>
-                                                {{--  TODO Use Icon for if online - dynamicly added  --}}
-                                                {{--  <i class="fas fa-check-circle"></i>  --}}
-                                            </td>
-                                            <td>{{ $user->rankTier }}</td>
-                                            {{--  <td>{{ $user->bracket }}</td>   --}}
-                                            {{--  <td>Undrafted </td>  --}}
-                                            {{--    <td>Inhouse W/L Record</td>     --}}
-                                            <td>{{ $user->mmr }}</td>
-                                        </tr>
-                                        @endforeach
-                                    @endforeach
-                                </tbody>
-                            </table>
+                            <h3 class="title">Player Search</h3>
+                            <player-list :players="{{json_encode($players)}}">
+                            </player-list>
                         </div>
                     </div>
                 </article>

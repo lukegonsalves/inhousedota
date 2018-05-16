@@ -24,7 +24,6 @@
 </head>
 <body>
     <div id="app">
-        
         <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
             <div class="navbar-brand" href="{{ url('/') }}">
                 <a class = "navbar-item">

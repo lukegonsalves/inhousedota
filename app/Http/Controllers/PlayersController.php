@@ -11,8 +11,9 @@ class PlayersController extends Controller
 {
     public function index()
     {
-        $brackets = User::all()->sortByDesc('rank')->groupBy('bracket');
+        // $brackets = User::all()->sortByDesc('rank')->groupBy('bracket');
 
-        return view('players')->withRanks($brackets);
+        // return view('players')->withRanks($brackets);
+        return view('players')->withPlayers(User::all());
     }
 }
