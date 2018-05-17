@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
 use App\Match;
+use Auth;
 
 class MatchController extends Controller
 {
@@ -37,11 +38,12 @@ class MatchController extends Controller
         $hour = $request->get('hours');
         $minutes = $request->get('minutes');
         $time = $hour.':'.$minutes;
-
+        $user = Auth::user('username');
         $match = Match::create([
             'match_name' => $request->get('name'),
             'lobby_password' => "{$randomName}{$randomVerb}{$randomAdjective}",
-            'start_time' => $time
+            'start_time' => $time,
+            'creator' => $user->username
         ]);
         
         return redirect('matches')->with('success', 'Information has been added');

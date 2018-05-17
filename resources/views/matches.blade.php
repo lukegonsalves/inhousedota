@@ -26,9 +26,15 @@
 
 <section class = "section">
     <div class="columns is-centered">
-        <div class="column is-half">
+        <div class="column is-two-thirds">
           <div class="box">
             <div class="content">
+              @foreach($matches as $match)
+              @if ($matches->first() == $match)
+              {{$match['match_name']}}
+              @else
+              @endif
+              @endforeach
               <h3 class="title">Upcoming Matches</h3>
                 <table class="table table-striped">
                         <thead>
@@ -50,6 +56,12 @@
                                 <i class="fas fa-clock"></i>
                               </span>
                             Start Time (BST)
+                            </th>
+                            <th>
+                                <span class="icon is-small is-left">
+                                  <i class="fas fa-user-secret"></i>
+                                </span>
+                              Creator
                             </th>
                             @admin<th>
                                 <span class="icon is-small is-left">
@@ -76,6 +88,7 @@
                             <td>17171{{$match['id']}}</td>
                             <td>{{$match['match_name']}}</td>
                             <td>{{$match['start_time']}}</td>
+                            <td>{{$match['creator']}}</td>
                             @admin<td>{{$match['created_at']->format('H:i F d, Y')}}</td>@endadmin
                             <td>{{$match['lobby_password']}}</td>
 
@@ -84,7 +97,10 @@
                               <form action="{{action('MatchController@destroy', $match['id'])}}" method="post">
                                 @csrf
                                 <input name="_method" type="hidden" value="DELETE">
-                                <button class="delete" type="submit">Delete</button>
+                                <span class="tag is-danger">
+                                  Click X to delete match
+                                  <button class="delete" type="submit"></button>
+                                </span>
                               </form>
                             </td>@endadmin
                           </tr>

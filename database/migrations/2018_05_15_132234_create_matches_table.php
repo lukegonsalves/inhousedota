@@ -18,6 +18,7 @@ class CreateMatchesTable extends Migration
             $table->string('match_name');
             $table->string('start_time');
             $table->string('lobby_password');
+            $table->string('creator');
             $table->timestamps();
         });
     }
