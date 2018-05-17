@@ -9,16 +9,60 @@
         </h2>
     </div>
 </section>
+
+{{--  Featured Match 
 <section class = "section">
     <div class="columns is-centered">
-        <div class="column is-four-fifths">
+        <div class="column is-half">
+          <div class="box">
+            <div class="content">
+                <h3 class="title">Featured Match</h3>
+            </div>
+          </div>
+        </div>
+    </div>
+</section>
+ --}}
+
+<section class = "section">
+    <div class="columns is-centered">
+        <div class="column is-half">
+          <div class="box">
+            <div class="content">
+              <h3 class="title">Upcoming Matches</h3>
                 <table class="table table-striped">
                         <thead>
                           <tr>
-                            <th>MatchID</th>
-                            <th>Match</th>
-                            <th>Created Date</th>
-                            <th>Lobby Password</th>
+                            <th>
+                              <span class="icon is-small is-left">
+                                <i class="fas fa-hashtag"></i>
+                              </span>
+                            MatchID
+                            </th>
+                            <th>
+                              <span class="icon is-small is-left">
+                                <i class="fas fa-gamepad"></i>
+                              </span>
+                            Match
+                            </th>
+                            <th>
+                              <span class="icon is-small is-left">
+                                <i class="fas fa-clock"></i>
+                              </span>
+                            Start Time (BST)
+                            </th>
+                            @admin<th>
+                                <span class="icon is-small is-left">
+                                  <i class="far fa-calendar-alt"></i>
+                                </span>
+                              Date Created
+                              </th>@endadmin
+                            <th>
+                              <span class="icon is-small is-left">
+                                <i class="fas fa-key"></i>
+                              </span>
+                            Lobby Password
+                            </th>
                             @admin<th colspan="2">Action</th>@endadmin
                           </tr>
                         </thead>
@@ -31,7 +75,8 @@
                           <tr>
                             <td>17171{{$match['id']}}</td>
                             <td>{{$match['match_name']}}</td>
-                            <td>{{$match['created_at']->format('H:i F d, Y')}}</td>
+                            <td>{{$match['start_time']}}</td>
+                            @admin<td>{{$match['created_at']->format('H:i F d, Y')}}</td>@endadmin
                             <td>{{$match['lobby_password']}}</td>
 
                             <td>{{--    <a href="{{action('MatchController@edit', $match['id'])}}" class="btn btn-warning">Edit</a>     --}}</td>
@@ -39,13 +84,15 @@
                               <form action="{{action('MatchController@destroy', $match['id'])}}" method="post">
                                 @csrf
                                 <input name="_method" type="hidden" value="DELETE">
-                                <button class="button is-danger" type="submit">Delete</button>
+                                <button class="delete" type="submit">Delete</button>
                               </form>
                             </td>@endadmin
                           </tr>
                           @endforeach
                         </tbody>
                 </table>
+              </div>
+            </div>
         </div>
     </div>
 </section>

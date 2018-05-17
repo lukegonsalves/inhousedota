@@ -34,10 +34,14 @@ class MatchController extends Controller
         $randomName = array_random(config('inhouse.match.names'));
         $randomAdjective = array_random(config('inhouse.match.adjectives'));
         $randomVerb = array_random(config('inhouse.match.verbs'));
+        $hour = $request->get('hours');
+        $minutes = $request->get('minutes');
+        $time = $hour.':'.$minutes;
 
         $match = Match::create([
             'match_name' => $request->get('name'),
-            'lobby_password' => "{$randomName}{$randomVerb}{$randomAdjective}"
+            'lobby_password' => "{$randomName}{$randomVerb}{$randomAdjective}",
+            'start_time' => $time
         ]);
         
         return redirect('matches')->with('success', 'Information has been added');

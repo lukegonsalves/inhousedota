@@ -3,7 +3,7 @@
 return [
     'admins' =>[
         9332911, //Pyrion
-        113209044, //luke_
+        //113209044, //luke_
         127291941, //Pancake
     ],
 
