@@ -37,37 +37,6 @@
                 <div class="content">
                 <h3 class="title">Match Creator</h3>
                 <h6 class="subtitle">Drag and drop players into each team</h6>
-                
-
-                <div class="columns">
-                    <div class="column is-half">
-                        <div class="control">
-                        <form method="post" action="{{url('matches')}}" enctype="multipart/form-data">
-                            @csrf
-                        <div class="field">
-                            <label class="label">Match Name</label>
-                            <div class="control has-icons-left">
-                                <input class="input is-focused" type="text" placeholder="Match Name" name="name">
-                                <span class="icon is-small is-left">
-                                    <i class="fas fa-gamepad"></i>
-                                </span>
-                            </div>
-                        </div>
-                        @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                <p class="help is-danger">{{ $error }}</p>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
-                        </div>
-                    </div>
-                </div>
-
-
-
                 <div class = "columns is-centered is-multiline">
                     <div class="column is-half">
                         <table class="table is-striped is-fullwidth">
@@ -107,8 +76,27 @@
 
                         {{--    <br>Balance of Power
                         <progress class="progress is-danger" value="50" max="100"></progress>   --}}
-
                     <div class="control">
+                        <form method="post" action="{{url('matches')}}" enctype="multipart/form-data">
+                            @csrf
+                        <div class="field">
+                            <label class="label">Match Name</label>
+                            <div class="control has-icons-left">
+                                <input class="input is-focused" type="text" placeholder="Match Name" name="name">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-gamepad"></i>
+                                </span>
+                            </div>
+                        </div>
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <p class="help is-danger">{{ $error }}</p>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                         <p class="help">
                             Random Lobby Password will be generated
                         </p>
