@@ -5,36 +5,70 @@
     <div class="container">
         <h1 class="title">Matches</h1>
         <h2 class="subtitle">
-        Match list from the inHouse
+        100% Munt-verified SHITSHOWS
         </h2>
     </div>
 </section>
 
-{{--  Featured Match 
+{{--  Featured Match --}}
 <section class = "section">
     <div class="columns is-centered">
-        <div class="column is-half">
+        <div class="column is-one-third">
           <div class="box">
             <div class="content">
-                <h3 class="title">Featured Match</h3>
+                @foreach($matches as $match)
+                @if ($matches->first() == $match)
+                <p class="title has-text-centered">{{$match['match_name']}}</p>
+                <p class="subtitle has-text-centered">{{$match['start_time']}} BST
+                
+                </p>
+                @else
+                @endif
+                @endforeach
+              <div class="columns is-centered">
+                  <div class="column is-5">
+                      <table class="table">
+                          <thead><th>Team 1</th></thead>
+                          <tbody>
+                              <tr><td>Position 1</td></tr>
+                              <tr><td>Position 2</td></tr>
+                              <tr><td>Position 3</td></tr>
+                              <tr><td>Position 4</td></tr>
+                              <tr><td>Position 5</td></tr>
+                              {{--Maybe 'cool' graphic or mmr difference here or something, alas david might need to do this cos i have rekindled my hate for JS--}}
+                          </tbody>
+                          </table>
+                  </div> {{-- Maybe having a % chance of this team to win against the other, think of algorithm for calculating this. Progress bar graphic might be good here as well --}}
+                  <div class="column is-2 has-text-centered"><br><br><br><br><br>VS</div>
+                  <div class="column is-5">
+                      <table class="table">
+                          <thead><th>Team 2</th></thead>
+                          <tbody>
+                              <tr><td>Position 1</td></tr>
+                              <tr><td>Position 2</td></tr>
+                              <tr><td>Position 3</td></tr>
+                              <tr><td>Position 4</td></tr>
+                              <tr><td>Position 5</td></tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  
+              </div>
+              <div class="has-text-centered">
+                <a href="https://www.twitch.tv/pyrionflax" target="_blank"><span class="tag is-primary has-text-weight-semibold"><i class="fab fa-twitch"></i>&nbspWatch live on twitch.tv&nbsp<i class="fas fa-external-link-alt"></i></span></a>
+              </div>
+
             </div>
           </div>
         </div>
     </div>
 </section>
- --}}
-
+ 
 <section class = "section">
     <div class="columns is-centered">
         <div class="column is-two-thirds">
           <div class="box">
             <div class="content">
-              @foreach($matches as $match)
-              @if ($matches->first() == $match)
-              {{$match['match_name']}}
-              @else
-              @endif
-              @endforeach
               <h3 class="title">Upcoming Matches</h3>
                 <table class="table table-striped">
                         <thead>
