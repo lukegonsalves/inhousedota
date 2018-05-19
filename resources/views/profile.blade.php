@@ -13,6 +13,11 @@
 </section>
 <section class = "section">
     <div class = "columns is-centered">
+
+            <figure class="image">
+                    <img src="https://i.ytimg.com/vi/QBt6WJ4Ca_s/maxresdefault.jpg">
+            </figure>
+
         <div class="column is-two-thirds">
             <div class ="box">
                 <article class = "media">
@@ -82,7 +87,10 @@
                         </table>
                 </div>
             </div>
-        </div> 
+        </div>
+        <figure class="image">
+                <img src="https://i.ytimg.com/vi/i20V5EUjyKE/maxresdefault.jpg">
+        </figure> 
     </div>
 </section>
 @endsection

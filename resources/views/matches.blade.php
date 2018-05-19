@@ -13,6 +13,9 @@
 {{--  Featured Match --}}
 <section class = "section">
     <div class="columns is-centered">
+      <figure class="image">
+      <img src="https://i.ytimg.com/vi/IVXrhjD9OIQ/maxresdefault.jpg">
+      </figure>
         <div class="column is-one-third">
           <div class="box">
             <div class="content">
@@ -39,7 +42,11 @@
                           </tbody>
                           </table>
                   </div> {{-- Maybe having a % chance of this team to win against the other, think of algorithm for calculating this. Progress bar graphic might be good here as well --}}
-                  <div class="column is-2 has-text-centered"><br><br><br><br><br>VS</div>
+                  <div class="column is-2 has-text-centered">
+                    <br><br><br><br>
+                    <img src="{{ URL::asset('/images/versus.png') }}">
+
+                  </div>
                   <div class="column is-5">
                       <table class="table">
                           <thead><th>Team 2</th></thead>
@@ -61,6 +68,11 @@
             </div>
           </div>
         </div>
+
+        <figure class="image">
+          <img src="https://i.ytimg.com/vi/FIhyPMusUWg/maxresdefault.jpg">
+        </figure>
+
     </div>
 </section>
  

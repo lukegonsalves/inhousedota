@@ -11,6 +11,9 @@
 </section>
 <section class = "section">
     <div class = "columns is-centered">
+            <figure class="image">
+                    <img src="https://i.ytimg.com/vi/aiLwA7BkftI/maxresdefault.jpg">
+            </figure> 
         <div class="column is-half">
             <div class ="box">
                 <article class = "media">
@@ -138,6 +141,9 @@
                 
             </div>
         </div>            @endadmin
+        <figure class="image">
+                <img src="https://i.ytimg.com/vi/iW4Q7dfoGUE/maxresdefault.jpg">
+        </figure> 
     </div>
 </section>
 @endsection

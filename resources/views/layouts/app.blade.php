@@ -24,10 +24,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <nav class="navbar is-success" role="navigation" aria-label="main navigation">
             <div class="navbar-brand" href="{{ url('/') }}">
                 <a class = "navbar-item">
-                {{ config('app.name', 'Laravel') }}
+                        <img src="{{ URL::asset('/images/inhouse-logo-white.png') }}">
                 </a>
             </div>
     
@@ -48,6 +48,12 @@
                     <a class="navbar-item" href="{{ route('profile.self') }}">
                         Profile
                     </a>
+                    <p class="navbar-item subtitle is-7">
+                        @if (Auth::check())
+                        tard count: {{Auth::user()->count()}}
+                        @endif
+                    </p>
+                    
                 </div>
                 <div class="navbar-end">
                     @if (Auth::check())                
@@ -75,7 +81,6 @@
                 </div>
             </div>
         </nav>
-
         {{--  <nav class="level">
                 <p class="level-item has-text-centered">
                   <a class="link is-info">Home</a>
@@ -102,7 +107,13 @@
             <div class="container">
                 <div class="content has-text-centered">
                     <p>
-                    <strong>{{ config('app.name', 'Laravel') }}</strong> by <a href="#">darkluke21</a> and <a href="#">davidpiesse</a>.
+                        <p class="level-item has-text-centered">
+                            <img src="{{ URL::asset('/images/inhouse-logo-grey.png') }}" style="height: 30px;">
+                        </p>
+                        by <a href="#">darkluke21</a> and <a href="#">davidpiesse</a>. Art taken from <a href="https://www.youtube.com/channel/UCaGWSIZnljlgNTSMzYnxTEg" target ="_blank">Pyrionflax</a>
+                    </p>
+                    <p class="has-text-grey has-text-bold">
+                            <a href="../">View our privacy policy</a>
                     </p>
                 </div>
             </div>
