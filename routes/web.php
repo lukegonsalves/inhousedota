@@ -21,6 +21,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/players', 'PlayersController@index')->name('players');
 
+Route::get('/privacy', 'HomeController@privacy')->name('privacy');
+
 Route::get('/teams', 'TeamsController@index')->name('teams');
 Route::get('/profile', 'ProfileController@show')->name('profile.self');
 Route::get('/profile/{user}', 'ProfileController@show')->name('profile.user');

@@ -113,7 +113,7 @@
                         by <a href="#">darkluke21</a> and <a href="#">davidpiesse</a>. Art taken from <a href="https://www.youtube.com/channel/UCaGWSIZnljlgNTSMzYnxTEg" target ="_blank">Pyrionflax</a>
                     </p>
                     <p class="has-text-grey has-text-bold">
-                            <a href="../">View our privacy policy</a>
+                            <a href="{{    route('privacy')   }}">View our privacy policy</a>
                     </p>
                 </div>
             </div>
