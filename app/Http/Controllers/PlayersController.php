@@ -9,6 +9,10 @@ use Auth;
 
 class PlayersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         // $brackets = User::all()->sortByDesc('rank')->groupBy('bracket');
