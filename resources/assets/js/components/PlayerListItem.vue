@@ -8,6 +8,7 @@
         </td>
         <td>{{ player.rankTier }}</td>
         <td>{{ player.mmr }}</td>
+        <!-- <td><button class="button" @click="addToDire">Dire</button></td> -->
     </tr>
 </template>
 
@@ -17,6 +18,12 @@ export default {
       'player': Object
   },
   mounted:()=>{
+  },
+  methods:{
+      addToDire(){
+          //send to match creator
+          this.$bus.$emit('add-dire', this.player)
+      }
   }
 }
 </script>

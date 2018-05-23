@@ -12072,13 +12072,15 @@ window.Vue = __webpack_require__(9);
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_buefy___default.a);
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$bus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({}); // Global event bus
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('player-list', __webpack_require__(41));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('player-page', __webpack_require__(55));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app'
@@ -13035,15 +13037,18 @@ module.exports = function spread(callback) {
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var apply = Function.prototype.apply;
+/* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
+            (typeof self !== "undefined" && self) ||
+            window;
+var apply = Function.prototype.apply;
 
 // DOM APIs, for completeness
 
 exports.setTimeout = function() {
-  return new Timeout(apply.call(setTimeout, window, arguments), clearTimeout);
+  return new Timeout(apply.call(setTimeout, scope, arguments), clearTimeout);
 };
 exports.setInterval = function() {
-  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
+  return new Timeout(apply.call(setInterval, scope, arguments), clearInterval);
 };
 exports.clearTimeout =
 exports.clearInterval = function(timeout) {
@@ -13058,7 +13063,7 @@ function Timeout(id, clearFn) {
 }
 Timeout.prototype.unref = Timeout.prototype.ref = function() {};
 Timeout.prototype.close = function() {
-  this._clearFn.call(window, this._id);
+  this._clearFn.call(scope, this._id);
 };
 
 // Does not start the time, just sets up the members needed.
@@ -13086,7 +13091,7 @@ exports._unrefActive = exports.active = function(item) {
 
 // setimmediate attaches itself to the global object
 __webpack_require__(34);
-// On some exotic environments, it's not clear which object `setimmeidate` was
+// On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
 exports.setImmediate = (typeof self !== "undefined" && self.setImmediate) ||
@@ -13905,7 +13910,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\PlayerList.vue"
+Component.options.__file = "resources/assets/js/components/PlayerList.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -13914,9 +13919,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-22546a56", Component.options)
+    hotAPI.createRecord("data-v-51670d16", Component.options)
   } else {
-    hotAPI.reload("data-v-22546a56", Component.options)
+    hotAPI.reload("data-v-51670d16", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -13934,6 +13939,18 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_PlayerListItem_vue__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_PlayerListItem_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_PlayerListItem_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -14009,7 +14026,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\PlayerListItem.vue"
+Component.options.__file = "resources/assets/js/components/PlayerListItem.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -14018,9 +14035,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-22f87909", Component.options)
+    hotAPI.createRecord("data-v-6e7bbbc9", Component.options)
   } else {
-    hotAPI.reload("data-v-22f87909", Component.options)
+    hotAPI.reload("data-v-6e7bbbc9", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -14049,12 +14066,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    'player': Object
-  },
-  mounted: function mounted() {}
+    props: {
+        'player': Object
+    },
+    mounted: function mounted() {},
+    methods: {
+        addToDire: function addToDire() {
+            //send to match creator
+            this.$bus.$emit('add-dire', this.player);
+        }
+    }
 });
 
 /***/ }),
@@ -14089,7 +14113,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-22f87909", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6e7bbbc9", module.exports)
   }
 }
 
@@ -14102,53 +14126,63 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("p", { staticClass: "control has-icons-left" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.search_term,
-            expression: "search_term"
-          }
-        ],
-        staticClass: "input is-small",
-        attrs: {
-          type: "text",
-          placeholder: "Search for tards by Username",
-          id: "inputSearch"
-        },
-        domProps: { value: _vm.search_term },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.search_term = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _vm._m(0)
-    ]),
-    _vm._v(" "),
-    _c(
-      "table",
-      { staticClass: "table is-striped", attrs: { id: "playerTable" } },
-      [
-        _vm._m(1),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.filteredPlayers, function(player) {
-            return _c("player-list-item", {
-              key: player.id64,
-              attrs: { player: player }
-            })
-          })
-        )
-      ]
-    )
+    _c("div", { staticClass: "box" }, [
+      _c("article", { staticClass: "media" }, [
+        _c("div", { staticClass: "media-content" }, [
+          _c("div", { staticClass: "content" }, [
+            _c("h3", { staticClass: "title" }, [_vm._v("Player Search")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "control has-icons-left" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.search_term,
+                    expression: "search_term"
+                  }
+                ],
+                staticClass: "input is-small",
+                attrs: {
+                  type: "text",
+                  placeholder: "Search for tards by Username",
+                  id: "inputSearch"
+                },
+                domProps: { value: _vm.search_term },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.search_term = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(0)
+            ]),
+            _vm._v(" "),
+            _c(
+              "table",
+              { staticClass: "table is-striped", attrs: { id: "playerTable" } },
+              [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.filteredPlayers, function(player) {
+                    return _c("player-list-item", {
+                      key: player.id64,
+                      attrs: { player: player }
+                    })
+                  })
+                )
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -14183,7 +14217,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-22546a56", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-51670d16", module.exports)
   }
 }
 
@@ -14192,6 +14226,513 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(10)
+/* script */
+var __vue_script__ = __webpack_require__(56)
+/* template */
+var __vue_template__ = __webpack_require__(57)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/PlayerPage.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-346c5e87", Component.options)
+  } else {
+    hotAPI.reload("data-v-346c5e87", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 56 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_PlayerList_vue__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_PlayerList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_PlayerList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_MatchCreator_vue__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_MatchCreator_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_MatchCreator_vue__);
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "player-page",
+    props: ['players', 'user'],
+    components: {
+        PlayerList: __WEBPACK_IMPORTED_MODULE_0__components_PlayerList_vue___default.a,
+        MatchCreator: __WEBPACK_IMPORTED_MODULE_1__components_MatchCreator_vue___default.a
+    }
+});
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _vm.user.is_admin ? _c("match-creator") : _vm._e(),
+      _vm._v(" "),
+      _c("player-list", { attrs: { players: _vm.players } })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-346c5e87", module.exports)
+  }
+}
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(10)
+/* script */
+var __vue_script__ = __webpack_require__(59)
+/* template */
+var __vue_template__ = __webpack_require__(60)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/MatchCreator.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2a930cde", Component.options)
+  } else {
+    hotAPI.reload("data-v-2a930cde", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'match-creator',
+    data: function data() {
+        return {
+            dire: [],
+            radiant: []
+        };
+    },
+    created: function created() {
+        var self = this;
+        this.$bus.$on('add-dire', function (player) {
+            self.addDirePlayer(player);
+        });
+    },
+
+    methods: {
+        addDirePlayer: function addDirePlayer(player) {
+            if (this.dire.length <= 4) {
+                this.dire.push(player);
+            }
+        },
+        removeDirePlayer: function removeDirePlayer(player) {
+            //remove dire player
+        }
+    }
+});
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "box is-centered" }, [
+      _c("div", { staticClass: "content" }, [
+        _c("h3", { staticClass: "title" }, [_vm._v("Match Creator")]),
+        _vm._v(" "),
+        _c("h6", { staticClass: "subtitle" }, [
+          _vm._v("Drag and drop players into each team")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns is-centered is-multiline" }, [
+          _c("div", { staticClass: "column is-half" }, [
+            _c("table", { staticClass: "table is-striped is-fullwidth" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.dire, function(player) {
+                  return _c("tr", { key: player.id }, [
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(player.username) +
+                          " - " +
+                          _vm._s(player.rankTier)
+                      )
+                    ])
+                  ])
+                })
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2)
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [_c("th", [_vm._v("Team 1")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column is-half" }, [
+      _c("table", { staticClass: "table is-striped is-fullwidth" }, [
+        _c("thead", [_c("th", [_vm._v("Team 2")])]),
+        _vm._v(" "),
+        _c("tbody", [
+          _c("tr", [
+            _c("td", [
+              _vm._v("Position 1 "),
+              _c("i", {
+                staticClass: "far fa-plus-square",
+                attrs: { "aria-hidden": "true" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [
+              _vm._v("Position 2 "),
+              _c("i", {
+                staticClass: "far fa-plus-square",
+                attrs: { "aria-hidden": "true" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [
+              _vm._v("Position 3 "),
+              _c("i", {
+                staticClass: "far fa-plus-square",
+                attrs: { "aria-hidden": "true" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [
+              _vm._v("Position 4 "),
+              _c("i", {
+                staticClass: "far fa-plus-square",
+                attrs: { "aria-hidden": "true" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [
+              _vm._v("Position 5 "),
+              _c("i", {
+                staticClass: "far fa-plus-square",
+                attrs: { "aria-hidden": "true" }
+              })
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column is-two-thirds" }, [
+      _c("div", { staticClass: "control" }, [
+        _c(
+          "form",
+          {
+            attrs: {
+              method: "post",
+              action: "",
+              enctype: "multipart/form-data"
+            }
+          },
+          [
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label" }, [_vm._v("Match Name")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("input", {
+                  staticClass: "input is-hovered",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Match Name",
+                    name: "name"
+                  }
+                }),
+                _vm._v(" "),
+                _c("span", { staticClass: "icon is-small is-left" }, [
+                  _c("i", { staticClass: "fas fa-gamepad" })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "field" }, [
+              _c("label", { staticClass: "label" }, [
+                _vm._v("Scheduled Start Time (BST)")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "control has-icons-left" }, [
+                _c("div", { staticClass: "select is-primary is-small" }, [
+                  _c(
+                    "select",
+                    { staticClass: "is-hovered", attrs: { name: "hours" } },
+                    [
+                      _c("option", { attrs: { value: "17" } }, [_vm._v("17")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "18" } }, [_vm._v("18")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "19" } }, [_vm._v("19")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "20" } }, [_vm._v("20")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "21" } }, [_vm._v("21")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "22" } }, [_vm._v("22")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "23" } }, [_vm._v("23")])
+                    ]
+                  )
+                ]),
+                _vm._v(
+                  "\n                                        :\n                                        "
+                ),
+                _c("div", { staticClass: "select is-primary is-small" }, [
+                  _c(
+                    "select",
+                    { staticClass: "is-hovered", attrs: { name: "minutes" } },
+                    [
+                      _c("option", { attrs: { value: "00" } }, [_vm._v("00")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "15" } }, [_vm._v("15")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "45" } }, [_vm._v("45")])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "icon is-small is-left" }, [
+                  _c("i", { staticClass: "fas fa-clock" })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "help" }, [
+              _vm._v(
+                "\n                            Random Lobby Password will be generated\n                        "
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "button is-primary", attrs: { type: "submit" } },
+              [_vm._v("Create Game")]
+            )
+          ]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2a930cde", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

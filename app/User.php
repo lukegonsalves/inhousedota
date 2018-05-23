@@ -31,7 +31,8 @@ class User extends Authenticatable
         'bracket',
         'smallAvatarUrl',
         'mmr',
-        'profile_url'
+        'profile_url',
+        'is_admin'
     ];
 
     public function scopeRanked($query){
