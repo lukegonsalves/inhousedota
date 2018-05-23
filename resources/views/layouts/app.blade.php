@@ -114,6 +114,7 @@
                     </p>
                     <p class="has-text-grey has-text-bold">
                             <a href="{{    route('privacy')   }}">View our privacy policy</a>
+                            <modal content="Hello"></modal>
                     </p>
                 </div>
             </div>

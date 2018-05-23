@@ -20,6 +20,8 @@ Vue.use(Buefy);
  */
 
 Vue.component('player-list', require('./components/PlayerList.vue'));
+Vue.component('modal', require('./components/Modal.vue'));
+
 
 const app = new Vue({
     el: '#app'
