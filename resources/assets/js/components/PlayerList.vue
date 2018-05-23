@@ -22,7 +22,7 @@
                 <th>Username</th>
                 <th>Rank</th>
                 <th>MMR estimate</th>
-                <!-- <th>Add</th> -->
+                <th>Actions</th>
             </thead>
             <tbody>
                 <player-list-item v-for="player in filteredPlayers" :player="player" :key="player.id64">

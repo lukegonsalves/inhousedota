@@ -21,13 +21,9 @@ Vue.prototype.$bus = new Vue({}); // Global event bus
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-<<<<<<< HEAD
-Vue.component('player-list', require('./components/PlayerList.vue'));
+Vue.component('player-page', require('./components/PlayerPage.vue'));
 Vue.component('modal', require('./components/Modal.vue'));
 
-=======
-Vue.component('player-page', require('./components/PlayerPage.vue'));
->>>>>>> 3c5730ccacb3a35a02af4ba7758be8c7aaf7fce9
 
 const app = new Vue({
     el: '#app'

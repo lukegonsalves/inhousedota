@@ -8,7 +8,7 @@
         </td>
         <td>{{ player.rankTier }}</td>
         <td>{{ player.mmr }}</td>
-        <!-- <td><button class="button" @click="addToDire">Dire</button></td> -->
+        <td><button class="button" @click="addToDire">Dire</button><button class="button" @click="addToRadiant">Radiant</button></td>
     </tr>
 </template>
 
@@ -23,6 +23,10 @@ export default {
       addToDire(){
           //send to match creator
           this.$bus.$emit('add-dire', this.player)
+      },
+      addToRadiant(){
+          //send to match creator
+          this.$bus.$emit('add-radiant', this.player)
       }
   }
 }
