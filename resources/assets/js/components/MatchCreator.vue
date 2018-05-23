@@ -1,38 +1,6 @@
-@extends('layouts.app')
-
-@section('content')
-<section class="section">
-    <div class="container">
-        <h1 class="title">Players</h1>
-        <h2 class="subtitle">
-        All of the <strong>tards</strong>, some<strong> gooder </strong>than others...
-        </h2>
-    </div>
-</section>
-<section class = "section">
-    <div class = "columns is-centered">
-            <figure class="image">
-                    <img src="https://i.ytimg.com/vi/aiLwA7BkftI/maxresdefault.jpg">
-            </figure> 
-        <div class="column is-half">
-                @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
-
-            
-        
-            <player-page :players="{{json_encode($players)}}" :user="{{json_encode(Auth::user())}}">
-
-            </player-page>
-
-
-        </div>
-        {{--Match Creator -implement draggable and workout combined mmr total for each team JS is probably the way to go again?--}}
-        @admin
-        <div class="column is-one-third">
-            <div class ="box is-centered">
+<template>
+<div>
+    <div class ="box is-centered">
                 <div class="content">
                 <h3 class="title">Match Creator</h3>
                 <h6 class="subtitle">Drag and drop players into each team</h6>
@@ -41,15 +9,12 @@
                         <table class="table is-striped is-fullwidth">
                             <thead><th>Team 1</th></thead>
                             <tbody>
-                                <tr><td>Position 1 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
-                                <tr><td>Position 2 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
-                                <tr><td>Position 3 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
-                                <tr><td>Position 4 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
-                                <tr><td>Position 5 <i class="far fa-plus-square" aria-hidden="true"></i></td></tr>
-                                {{--Maybe 'cool' graphic or mmr difference here or something, alas david might need to do this cos i have rekindled my hate for JS--}}
+                                <tr v-for="player in dire" v-bind:key="player.id">
+                                    <td>{{player.username}} - {{player.rankTier}}</td>
+                                </tr>
                             </tbody>
                             </table>
-                    </div> {{-- Maybe having a % chance of this team to win against the other, think of algorithm for calculating this. Progress bar graphic might be good here as well --}}
+                    </div>
                     <div class="column is-half">
                         <table class="table is-striped is-fullwidth">
                             <thead><th>Team 2</th></thead>
@@ -63,21 +28,9 @@
                         </table>
                     </div>
                     <div class="column is-two-thirds">
-                        {{--    <div class="card">
-                            <header class ="card-header">
-                                <p class="card-header-title">Tools (BETA)</p>
-                            </header>
-                            <div class = "card-content">
-                                <a class="button is-success">Balance these teams</a>
-                                <a class="button is-danger">Fill randomly</a>
-                            </div>
-                        </div> --}}
-
-                        {{--    <br>Balance of Power
-                        <progress class="progress is-danger" value="50" max="100"></progress>   --}}
                     <div class="control">
-                        <form method="post" action="{{url('matches')}}" enctype="multipart/form-data">
-                            @csrf
+                        <form method="post" action="" enctype="multipart/form-data">
+                            
                         <div class="field">
                             <label class="label">Match Name</label>
                             <div class="control has-icons-left">
@@ -115,15 +68,7 @@
                                     </span>
                                 </div>
                             </div>
-                        @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                <p class="help is-danger">{{ $error }}</p>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
+    
                         <p class="help">
                             Random Lobby Password will be generated
                         </p>
@@ -136,10 +81,33 @@
                 </div>
                 
             </div>
-        </div>            @endadmin
-        <figure class="image">
-                <img src="https://i.ytimg.com/vi/iW4Q7dfoGUE/maxresdefault.jpg">
-        </figure> 
-    </div>
-</section>
-@endsection
+            </div>
+</template>
+
+<script>
+export default {
+    name: 'match-creator',
+    data:() => {
+        return {
+            dire:[],
+            radiant:[]
+        }
+    },
+    created(){
+        let self = this;
+        this.$bus.$on('add-dire', function (player) {
+            self.addDirePlayer(player)
+        })
+    },
+    methods:{
+        addDirePlayer(player){
+            if(this.dire.length <=4){
+                  this.dire.push(player)
+            }
+        },
+        removeDirePlayer(player){
+            //remove dire player
+        }
+    }
+}
+</script>

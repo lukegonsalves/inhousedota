@@ -1,6 +1,14 @@
 <template>
   <!-- show a search box and list of players -->
+
+
     <div>
+ <div class ="box">
+                <article class = "media">
+          <div class="media-content">
+                        <div class="content"> 
+                            <h3 class="title">Player Search</h3>
+      
         <p class="control has-icons-left">
             <input class="input is-small" type="text" placeholder="Search for tards by Username" id="inputSearch" v-model="search_term">
             <span class="icon is-small is-left">
@@ -14,12 +22,16 @@
                 <th>Username</th>
                 <th>Rank</th>
                 <th>MMR estimate</th>
+                <!-- <th>Add</th> -->
             </thead>
             <tbody>
                 <player-list-item v-for="player in filteredPlayers" :player="player" :key="player.id64">
                 </player-list-item>
             </tbody>
         </table>
+                                </div>
+                    </div>
+                </article></div>
     </div>  
 </template>
 
