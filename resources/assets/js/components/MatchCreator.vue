@@ -10,7 +10,7 @@
                             <thead><th>Team 1</th></thead>
                             <tbody>
                                 <tr v-for="player in dire" v-bind:key="player.id">
-                                    <td>{{player.username}} - {{player.rankTier}} - {{player.mmr}} <button class="delete" @click="removeDirePlayer()"></button></td>
+                                    <td>{{player.username}} - {{player.mmr}} <button class="delete is-small" @click="removeDirePlayer()"></button></td>
                                 </tr>
                             </tbody>
                             </table>
@@ -21,7 +21,7 @@
                             <thead><th>Team 2</th></thead>
                             <tbody>
                                 <tr v-for="player in radiant" v-bind:key="player.id">
-                                    <td>{{player.username}} - {{player.rankTier}} - {{player.mmr}} <button class="delete" @click="removeRadiantPlayer()"></button></td>
+                                    <td>{{player.username}} - {{player.mmr}} <button class="delete is-small" @click="removeRadiantPlayer()"></button></td>
                                 </tr>
                             </tbody>
                             </table>

@@ -10,11 +10,7 @@
     </div>
 </section>
 <section class = "section">
-    <div class = "columns is-centered">
-            <figure class="image">
-                    <img src="https://i.ytimg.com/vi/aiLwA7BkftI/maxresdefault.jpg">
-            </figure> 
-        <div class="column is-half">
+
                 @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}
@@ -28,7 +24,6 @@
             </player-page>
 
 
-        </div>
         {{--Match Creator -implement draggable and workout combined mmr total for each team JS is probably the way to go again?--}}
         {{-- @admin
         <div class="column is-one-third">
@@ -136,9 +131,6 @@
                 
             </div>
         </div>            @endadmin --}}
-        <figure class="image">
-                <img src="https://i.ytimg.com/vi/iW4Q7dfoGUE/maxresdefault.jpg">
-        </figure> 
-    </div>
+
 </section>
 @endsection

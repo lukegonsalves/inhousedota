@@ -14435,6 +14435,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -14672,13 +14686,11 @@ var render = function() {
                       _vm._v(
                         _vm._s(player.username) +
                           " - " +
-                          _vm._s(player.rankTier) +
-                          " - " +
                           _vm._s(player.mmr) +
                           " "
                       ),
                       _c("button", {
-                        staticClass: "delete",
+                        staticClass: "delete is-small",
                         on: {
                           click: function($event) {
                             _vm.removeDirePlayer()
@@ -14709,13 +14721,11 @@ var render = function() {
                       _vm._v(
                         _vm._s(player.username) +
                           " - " +
-                          _vm._s(player.rankTier) +
-                          " - " +
                           _vm._s(player.mmr) +
                           " "
                       ),
                       _c("button", {
-                        staticClass: "delete",
+                        staticClass: "delete is-small",
                         on: {
                           click: function($event) {
                             _vm.removeRadiantPlayer()
@@ -14950,17 +14960,50 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _vm.user.is_admin ? _c("match-creator") : _vm._e(),
+  return _c("div", [
+    _c("div", { staticClass: "columns is-centered" }, [
+      _vm._m(0),
       _vm._v(" "),
-      _c("player-list", { attrs: { players: _vm.players } })
-    ],
-    1
-  )
+      _c(
+        "div",
+        { staticClass: "column is-half" },
+        [_c("player-list", { attrs: { players: _vm.players } })],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "column is-one-third" },
+        [_vm.user.is_admin ? _c("match-creator") : _vm._e()],
+        1
+      ),
+      _vm._v(" "),
+      _vm._m(1)
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("figure", { staticClass: "image" }, [
+      _c("img", {
+        attrs: { src: "https://i.ytimg.com/vi/aiLwA7BkftI/maxresdefault.jpg" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("figure", { staticClass: "image" }, [
+      _c("img", {
+        attrs: { src: "https://i.ytimg.com/vi/iW4Q7dfoGUE/maxresdefault.jpg" }
+      })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
