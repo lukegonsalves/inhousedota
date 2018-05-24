@@ -7,26 +7,28 @@
                 <div class = "columns is-centered is-multiline">
                     <div class="column is-half">
                         <table class="table is-striped is-fullwidth">
-                            <thead><th>Team 1</th></thead>
+                            <thead><th>Dire</th></thead>
                             <tbody>
-                                <tr v-for="player in dire" v-bind:key="player.id">
+                                <tr v-for="player in dire" v-bind:key="player.id64">
                                     <td>{{player.username}} - {{player.mmr}} <button class="delete is-small" @click="removeDirePlayer()"></button></td>
                                 </tr>
                             </tbody>
                             </table>
-                                Combined MMR: {{totaldire}}
+                                <div class="notification is-primary">Combined MMR: {{totaldire}}</div>
+                                <div class="notification is-success">Average MMR: {{averagedire}}</div>
+
                     </div>
                     <div class="column is-half">
                         <table class="table is-striped is-fullwidth">
-                            <thead><th>Team 2</th></thead>
+                            <thead><th>Radiant</th></thead>
                             <tbody>
-                                <tr v-for="player in radiant" v-bind:key="player.id">
+                                <tr v-for="player in radiant" v-bind:key="player.id64">
                                     <td>{{player.username}} - {{player.mmr}} <button class="delete is-small" @click="removeRadiantPlayer()"></button></td>
                                 </tr>
                             </tbody>
                             </table>
-                                Combined MMR: {{totalradiant}}
-
+                                <div class="notification is-primary">Combined MMR: {{totalradiant}}</div>
+                                <div class="notification is-success">Average MMR: {{averageradiant}}</div>
                     </div>
                     <div class="column is-two-thirds">
                     <div class="control">
@@ -111,7 +113,7 @@ export default {
             self.addDirePlayer(player)
         }),
         this.$bus.$on('add-radiant', function (player) {
-        self.addRadiantPlayer(player)
+            self.addRadiantPlayer(player)
         })
     },
     methods:{
@@ -122,7 +124,7 @@ export default {
         },
         removeDirePlayer(player){
             //remove dire player
-            this.dire.splice(player)
+            this.dire.splice(player, 1)
         },
         addRadiantPlayer(player){
             if(this.radiant.length <=4){
@@ -131,10 +133,12 @@ export default {
         },
         removeRadiantPlayer(player){
             //remove radiant player
-            this.radiant.splice(player)
+            this.radiant.splice(player, 1)
         },
         onSubmit(){
-            axios.post('/matches', this.$data);
+            axios.post('/matches', this.$data).then(function(){
+                window.location = '/matches';
+            });
         }
     },
     computed:{
@@ -149,6 +153,14 @@ export default {
             return this.radiant.reduce(function(totalradiant, item){
                 return totalradiant + item.mmr;
             },0);
+        },
+        averageradiant: function(){
+            console.log(this.totalradiant);
+            return this.totalradiant/5;
+        },
+        averagedire: function(){
+            console.log(this.totaldire);
+            return this.totaldire/5;
         }
     }
 }
