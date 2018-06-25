@@ -26,7 +26,7 @@
                 <th>Status</th>
             </thead>
             <tbody>
-                <player-list-item v-for="player in filteredPlayers" :player="player" :key="player.id64">
+                <player-list-item v-for="player in orderedPlayers" :player="player" :key="player.id64">
                 </player-list-item>
             </tbody>
         </table>
@@ -68,8 +68,8 @@ export default {
               return player.username.toLowerCase().includes(this.search_term.toLowerCase())
           })
       },
-      filteredPlayers:function() {
-      return this.players.sort((a,b) => {
+      orderedPlayers:function() {
+      return this.filteredPlayers.sort((a,b) => {
       let modifier = 1;
       if(this.currentSortDir === 'desc') modifier = -1;
       if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;

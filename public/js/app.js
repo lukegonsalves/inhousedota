@@ -14027,8 +14027,6 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_PlayerListItem_vue__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_PlayerListItem_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_PlayerListItem_vue__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -14091,25 +14089,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             this.currentSort = s;
         }
     },
-    computed: _defineProperty({
+    computed: {
         filteredPlayers: function filteredPlayers() {
             var _this = this;
 
             return this.players.filter(function (player) {
                 return player.username.toLowerCase().includes(_this.search_term.toLowerCase());
             });
-        }
-    }, 'filteredPlayers', function filteredPlayers() {
-        var _this2 = this;
+        },
+        orderedPlayers: function orderedPlayers() {
+            var _this2 = this;
 
-        return this.players.sort(function (a, b) {
-            var modifier = 1;
-            if (_this2.currentSortDir === 'desc') modifier = -1;
-            if (a[_this2.currentSort] < b[_this2.currentSort]) return -1 * modifier;
-            if (a[_this2.currentSort] > b[_this2.currentSort]) return 1 * modifier;
-            return 0;
-        });
-    })
+            return this.filteredPlayers.sort(function (a, b) {
+                var modifier = 1;
+                if (_this2.currentSortDir === 'desc') modifier = -1;
+                if (a[_this2.currentSort] < b[_this2.currentSort]) return -1 * modifier;
+                if (a[_this2.currentSort] > b[_this2.currentSort]) return 1 * modifier;
+                return 0;
+            });
+        }
+    }
 });
 
 /***/ }),
@@ -14340,7 +14339,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "tbody",
-                  _vm._l(_vm.filteredPlayers, function(player) {
+                  _vm._l(_vm.orderedPlayers, function(player) {
                     return _c("player-list-item", {
                       key: player.id64,
                       attrs: { player: player }
