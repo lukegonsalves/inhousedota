@@ -52,7 +52,7 @@ class User extends Authenticatable
     }
 
     public function getHasOpenDotaDataAttribute(){
-        return !is_null($this->open_dota) && !is_null($this->open_dota['rank_tier']);
+        return !is_null($this->open_dota);
     }
 
     public function getSmallAvatarUrlAttribute(){
@@ -70,31 +70,50 @@ class User extends Authenticatable
     }
 
     public function getMmrAttribute(){
-        if($this->hasOpenDotaData){
-            return $this->open_dota['mmr_estimate']['estimate'];
+        if($this->hasOpenDotaData){ 
+            if(!is_null($this->rank)){
+                return 170 * ( ( $this->rankTierNumber * 4) + $this->rankSubTier );
+            }
+            else{
+                if(array_key_exists('estimate',$this->open_dota['mmr_estimate'])){
+                    return $this->open_dota['mmr_estimate']['estimate'];
+                }
+            }
         }
+        
         return 0;
     }
 
+    //gets raw rank number ie. 24
     public function getRankAttribute(){
         if($this->hasOpenDotaData){
             return $this->open_dota['rank_tier'];
         }
+
         return 0;
     }
 
-    public function getRankTierAttribute(){
-        return rankName(floor($this->open_dota['rank_tier']/10)) . ' ' . $this->rankSubTier;
+    //gets the tier number ONLY ie. 2 from 24
+    public function getRankTierNumberAttribute(){
+        return floor( $this->open_dota['rank_tier'] / 10);
     }
 
+    //uses rank tier > converts to name and adds the sub tier ah okay didnt dd this, reckon this is wrong    
+    public function getRankTierAttribute(){
+        return rankName($this->rankTierNumber) . ' ' . $this->rankSubTier;
+    }
+
+    //gets the subtier only    
     public function getRankSubTierAttribute(){
         return  $this->open_dota['rank_tier'] % 10;
     }
 
+    //is this ever used?
     public function getRankNameAttribute(){
         if($this->hasOpenDotaData){
-            return rankName(floor($this->open_dota['rank_tier']/10));
+            return rankName( (string) (int) $this->rankTierNumber);
         }
+
         return rankName(null);
     }
 
@@ -118,6 +137,7 @@ class User extends Authenticatable
         }
     }
 
+    //update a users stats from Open Dota
     public function updateStats(){
         $this->updateOpenDotaPlayerData();
 

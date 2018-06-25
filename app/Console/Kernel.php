@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('opendota_update')->dailyAt('17:00');
+        $schedule->command('opendota:update')->dailyAt('17:00');
     }
 
     /**
