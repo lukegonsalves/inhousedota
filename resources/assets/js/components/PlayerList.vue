@@ -19,10 +19,11 @@
         <table class="table is-striped" id="playerTable">
             <thead>
                 <th></th>
-                <th>Username</th>
-                <th>Rank</th>
-                <th>MMR estimate</th>
+                <th @click="sort('username')">Username</th>
+                <th @click="sort('rank')">Rank</th>
+                <th @click="sort('mmr')">MMR estimate</th>
                 <th>Actions</th>
+                <th>Status</th>
             </thead>
             <tbody>
                 <player-list-item v-for="player in filteredPlayers" :player="player" :key="player.id64">
@@ -44,18 +45,38 @@ export default {
   ],
   data: () => {
       return{
-          search_term: ""
+          search_term: "",
+          currentSort:'mmr',
+          currentSortDir:'desc'
       }
   },
   components:{
       PlayerListItem
+  },
+  methods:{
+    sort:function(s) {
+    //if s == current sort, reverse
+        if(s === this.currentSort) {
+        this.currentSortDir = this.currentSortDir==='asc'?'desc':'asc';
+        }
+        this.currentSort = s;
+        }
   },
   computed:{
       filteredPlayers: function(){
           return this.players.filter((player) => {
               return player.username.toLowerCase().includes(this.search_term.toLowerCase())
           })
-      }
+      },
+      filteredPlayers:function() {
+      return this.players.sort((a,b) => {
+      let modifier = 1;
+      if(this.currentSortDir === 'desc') modifier = -1;
+      if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+      if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
+      return 0;
+    });
+  }
   }
 }
 </script>

@@ -12042,7 +12042,7 @@ module.exports = Vue;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(56);
+module.exports = __webpack_require__(59);
 
 
 /***/ }),
@@ -12081,7 +12081,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$bus = new __WEBPACK_IMPOR
  */
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('player-page', __webpack_require__(41));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modal', __webpack_require__(53));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modal', __webpack_require__(56));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app'
@@ -13891,7 +13891,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(42)
 /* template */
-var __vue_template__ = __webpack_require__(52)
+var __vue_template__ = __webpack_require__(55)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -14027,6 +14027,9 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_PlayerListItem_vue__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_PlayerListItem_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_PlayerListItem_vue__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
 //
 //
 //
@@ -14071,13 +14074,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['players'],
     data: function data() {
         return {
-            search_term: ""
+            search_term: "",
+            currentSort: 'mmr',
+            currentSortDir: 'desc'
         };
     },
     components: {
         PlayerListItem: __WEBPACK_IMPORTED_MODULE_0__components_PlayerListItem_vue___default.a
     },
-    computed: {
+    methods: {
+        sort: function sort(s) {
+            //if s == current sort, reverse
+            if (s === this.currentSort) {
+                this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
+            }
+            this.currentSort = s;
+        }
+    },
+    computed: _defineProperty({
         filteredPlayers: function filteredPlayers() {
             var _this = this;
 
@@ -14085,7 +14099,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return player.username.toLowerCase().includes(_this.search_term.toLowerCase());
             });
         }
-    }
+    }, 'filteredPlayers', function filteredPlayers() {
+        var _this2 = this;
+
+        return this.players.sort(function (a, b) {
+            var modifier = 1;
+            if (_this2.currentSortDir === 'desc') modifier = -1;
+            if (a[_this2.currentSort] < b[_this2.currentSort]) return -1 * modifier;
+            if (a[_this2.currentSort] > b[_this2.currentSort]) return 1 * modifier;
+            return 0;
+        });
+    })
 });
 
 /***/ }),
@@ -14155,6 +14179,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -14205,7 +14230,9 @@ var render = function() {
       _c("button", { staticClass: "button", on: { click: _vm.addToRadiant } }, [
         _vm._v("Radiant")
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c("td", [_vm._v(_vm._s(_vm.player.status))])
   ])
 }
 var staticRenderFns = []
@@ -14267,7 +14294,49 @@ var render = function() {
               "table",
               { staticClass: "table is-striped", attrs: { id: "playerTable" } },
               [
-                _vm._m(1),
+                _c("thead", [
+                  _c("th"),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.sort("username")
+                        }
+                      }
+                    },
+                    [_vm._v("Username")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.sort("rank")
+                        }
+                      }
+                    },
+                    [_vm._v("Rank")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.sort("mmr")
+                        }
+                      }
+                    },
+                    [_vm._v("MMR estimate")]
+                  ),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Actions")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Status")])
+                ]),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -14297,22 +14366,6 @@ var staticRenderFns = [
         attrs: { "aria-hidden": "true" }
       })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("th"),
-      _vm._v(" "),
-      _c("th", [_vm._v("Username")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Rank")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("MMR estimate")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Actions")])
-    ])
   }
 ]
 render._withStripped = true
@@ -14333,7 +14386,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(50)
 /* template */
-var __vue_template__ = __webpack_require__(51)
+var __vue_template__ = __webpack_require__(54)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -14457,8 +14510,52 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        'player': Object
+    },
     name: 'match-creator',
     data: function data() {
         return {
@@ -14488,18 +14585,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.dire.push(player);
             }
         },
-        removeDirePlayer: function removeDirePlayer(player) {
+        removeDirePlayer: function removeDirePlayer(index) {
             //remove dire player
-            this.dire.splice(player, 1);
+            //this.dire.$remove(player)
+
+            //return filteredItems = dire.filter(dire => dire !== player);
+
+            this.dire.splice(index, 1);
         },
         addRadiantPlayer: function addRadiantPlayer(player) {
             if (this.radiant.length <= 4) {
                 this.radiant.push(player);
             }
         },
-        removeRadiantPlayer: function removeRadiantPlayer(player) {
+        removeRadiantPlayer: function removeRadiantPlayer(index) {
             //remove radiant player
-            this.radiant.splice(player, 1);
+            this.radiant.splice(index, 1);
         },
         onSubmit: function onSubmit() {
             axios.post('/matches', this.$data).then(function () {
@@ -14532,7 +14633,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 51 */
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -14555,20 +14659,25 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.dire, function(player) {
+                _vm._l(_vm.dire, function(player, index) {
                   return _c("tr", { key: player.id64 }, [
                     _c("td", [
-                      _vm._v(
-                        _vm._s(player.username) +
-                          " - " +
-                          _vm._s(player.mmr) +
-                          " "
-                      ),
+                      _c("img", {
+                        attrs: {
+                          alt: player.username,
+                          src: player.smallAvatarUrl
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("strong", [_vm._v(_vm._s(player.username))]),
+                      _vm._v(" "),
+                      _c("small", [_vm._v(_vm._s(player.mmr))]),
+                      _vm._v(" "),
                       _c("button", {
-                        staticClass: "delete is-small",
+                        staticClass: "delete is-small is-pulled-right",
                         on: {
                           click: function($event) {
-                            _vm.removeDirePlayer()
+                            _vm.removeDirePlayer(index)
                           }
                         }
                       })
@@ -14576,14 +14685,6 @@ var render = function() {
                   ])
                 })
               )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "notification is-primary" }, [
-              _vm._v("Combined MMR: " + _vm._s(_vm.totaldire))
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "notification is-success" }, [
-              _vm._v("Average MMR: " + _vm._s(_vm.averagedire))
             ])
           ]),
           _vm._v(" "),
@@ -14593,20 +14694,25 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.radiant, function(player) {
+                _vm._l(_vm.radiant, function(player, index) {
                   return _c("tr", { key: player.id64 }, [
                     _c("td", [
-                      _vm._v(
-                        _vm._s(player.username) +
-                          " - " +
-                          _vm._s(player.mmr) +
-                          " "
-                      ),
+                      _c("img", {
+                        attrs: {
+                          alt: player.username,
+                          src: player.smallAvatarUrl
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("strong", [_vm._v(_vm._s(player.username))]),
+                      _vm._v(" "),
+                      _c("small", [_vm._v(_vm._s(player.mmr))]),
+                      _vm._v(" "),
                       _c("button", {
-                        staticClass: "delete is-small",
+                        staticClass: "delete is-small is-pulled-right",
                         on: {
                           click: function($event) {
-                            _vm.removeRadiantPlayer()
+                            _vm.removeRadiantPlayer(index)
                           }
                         }
                       })
@@ -14614,16 +14720,62 @@ var render = function() {
                   ])
                 })
               )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "notification is-primary" }, [
-              _vm._v("Combined MMR: " + _vm._s(_vm.totalradiant))
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "notification is-success" }, [
-              _vm._v("Average MMR: " + _vm._s(_vm.averageradiant))
             ])
           ]),
+          _vm._v(" "),
+          _c("nav", { staticClass: "level" }, [
+            _c("div", { staticClass: "level-item has-text-centered" }, [
+              _c("div", [
+                _c("p", { staticClass: "heading" }, [_vm._v("Total MMR ")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "title is-5" }, [
+                  _vm._v(_vm._s(_vm.totaldire))
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "level-item has-text-centered" }, [
+              _c("div", [
+                _c("p", { staticClass: "heading" }, [_vm._v("Mean MMR ")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "title" }, [
+                  _vm._v(_vm._s(_vm.averagedire))
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "level-item has-text-centered" }, [
+              _c("div", [
+                _c("p", { staticClass: "heading" }, [_vm._v("Mean MMR ")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "title" }, [
+                  _vm._v(_vm._s(_vm.averageradiant))
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "level-item has-text-centered" }, [
+              _c("div", [
+                _c("p", { staticClass: "heading" }, [_vm._v("Total MMR ")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "title is-5" }, [
+                  _vm._v(_vm._s(_vm.totalradiant))
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "progress",
+            {
+              staticClass: "progress is-info",
+              attrs: { max: _vm.totalradiant + _vm.totaldire },
+              domProps: { value: _vm.totaldire }
+            },
+            [_vm._v("Balance of Power")]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "column is-two-thirds" }, [
             _c("div", { staticClass: "control" }, [
@@ -14675,7 +14827,7 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _vm._m(2)
+                      _vm._m(3)
                     ])
                   ]),
                   _vm._v(" "),
@@ -14767,7 +14919,7 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _vm._m(3)
+                      _vm._m(4)
                     ])
                   ]),
                   _vm._v(" "),
@@ -14811,6 +14963,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "level-item has-text-centered" }, [
+      _c("div", [
+        _c("p", { staticClass: "subtitle is-6" }, [
+          _vm._v("spacer needs to go here lol.")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("span", { staticClass: "icon is-small is-left" }, [
       _c("i", { staticClass: "fas fa-gamepad" })
     ])
@@ -14834,7 +14998,7 @@ if (false) {
 }
 
 /***/ }),
-/* 52 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -14895,15 +15059,15 @@ if (false) {
 }
 
 /***/ }),
-/* 53 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(54)
+var __vue_script__ = __webpack_require__(57)
 /* template */
-var __vue_template__ = __webpack_require__(55)
+var __vue_template__ = __webpack_require__(58)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -14942,7 +15106,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 54 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14981,7 +15145,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 55 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -15019,7 +15183,7 @@ if (false) {
 }
 
 /***/ }),
-/* 56 */
+/* 59 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

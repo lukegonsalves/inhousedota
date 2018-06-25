@@ -110,7 +110,7 @@
                         <p class="level-item has-text-centered">
                             <img src="{{ URL::asset('/images/inhouse-logo-grey.png') }}" style="height: 30px;">
                         </p>
-                        by <a href="#">darkluke21</a> and <a href="#">davidpiesse</a>. Art taken from <a href="https://www.youtube.com/channel/UCaGWSIZnljlgNTSMzYnxTEg" target ="_blank">Pyrionflax</a>
+                        {{--    by <a href="#">darkluke21</a> and <a href="#">davidpiesse</a>.   --}}   Art taken from <a href="https://www.youtube.com/channel/UCaGWSIZnljlgNTSMzYnxTEg" target ="_blank">Pyrionflax</a>
                     </p>
                     <p class="has-text-grey has-text-bold">
                             <a href="{{    route('privacy')   }}">View our privacy policy</a>

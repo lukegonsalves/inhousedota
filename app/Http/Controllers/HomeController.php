@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
+use Auth;
+use App\User;
+use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller
 {
@@ -12,6 +17,33 @@ class HomeController extends Controller
      * @return void
      */
 
+    public function updateIn(Request $request)
+    {
+        $user = $user ?? Auth::user();
+        //dd($user);
+        $statusUpdate = User::where('id64', $user->id64)
+        ->update([
+            'status' => 'available'
+        ]);
+        if($statusUpdate){
+            return view('home')->withUser($user); 
+        }
+    }
+
+    public function updateOut(Request $request)
+    {
+        $user = $user ?? Auth::user();
+        //dd($user);
+        $statusUpdate = User::where('id64', $user->id64)
+        ->update([
+            'status' => 'unavailable'
+        ]);
+        if($statusUpdate){
+            return view('home')->withUser($user); 
+        }
+    }
+
+
     /**
      * Show the application dashboard.
      *
@@ -19,6 +51,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = $user ?? Auth::user();
+        return view('home')->withUser($user);
     }
 }

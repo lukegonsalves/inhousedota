@@ -9,6 +9,7 @@
         <td>{{ player.rankTier }}</td>
         <td>{{ player.mmr }}</td>
         <td><button class="button" @click="addToDire">Dire</button><button class="button" @click="addToRadiant">Radiant</button></td>
+        <td>{{ player.status }}</td>
     </tr>
 </template>
 

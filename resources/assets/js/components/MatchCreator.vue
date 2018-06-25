@@ -9,28 +9,69 @@
                         <table class="table is-striped is-fullwidth">
                             <thead><th>Dire</th></thead>
                             <tbody>
-                                <tr v-for="player in dire" v-bind:key="player.id64">
-                                    <td>{{player.username}} - {{player.mmr}} <button class="delete is-small" @click="removeDirePlayer()"></button></td>
-                                </tr>
+
+                                <tr v-for="(player, index) in dire" v-bind:key="player.id64">
+                                    <td>
+                                    <img :alt="player.username" :src="player.smallAvatarUrl">
+                                    <strong>{{player.username}}</strong> <small>{{player.mmr}}</small>
+                                    <button class="delete is-small is-pulled-right" @click="removeDirePlayer(index)"></button>
+                                    </td>
+                                </tr>                            
+                            
                             </tbody>
                             </table>
-                                <div class="notification is-primary">Combined MMR: {{totaldire}}</div>
-                                <div class="notification is-success">Average MMR: {{averagedire}}</div>
 
                     </div>
                     <div class="column is-half">
                         <table class="table is-striped is-fullwidth">
                             <thead><th>Radiant</th></thead>
                             <tbody>
-                                <tr v-for="player in radiant" v-bind:key="player.id64">
-                                    <td>{{player.username}} - {{player.mmr}} <button class="delete is-small" @click="removeRadiantPlayer()"></button></td>
+                                <tr v-for="(player, index) in radiant" v-bind:key="player.id64">
+                                    <td>
+                                    <img :alt="player.username" :src="player.smallAvatarUrl">
+                                    <strong>{{player.username}}</strong> <small>{{player.mmr}}</small>
+                                    <button class="delete is-small is-pulled-right" @click="removeRadiantPlayer(index)"></button>
+                                    </td>
                                 </tr>
                             </tbody>
                             </table>
-                                <div class="notification is-primary">Combined MMR: {{totalradiant}}</div>
-                                <div class="notification is-success">Average MMR: {{averageradiant}}</div>
                     </div>
+
+                    <nav class="level">
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <p class="heading">Total MMR </p>
+                                <p class="title is-5">{{totaldire}}</p>
+                            </div>
+                        </div>
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <p class="heading">Mean MMR </p>
+                                <p class="title">{{averagedire}}</p>
+                            </div>
+                        </div>
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <p class="subtitle is-6">spacer needs to go here lol.</p>
+                            </div>
+                        </div>
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <p class="heading">Mean MMR </p>
+                                <p class="title">{{averageradiant}}</p>
+                            </div>
+                        </div>
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <p class="heading">Total MMR </p>
+                                <p class="title is-5">{{totalradiant}}</p>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <progress class="progress is-info" :value="totaldire" :max="totalradiant+totaldire">Balance of Power</progress>
                     <div class="column is-two-thirds">
+
                     <div class="control">
                         <form  @submit.prevent="onSubmit" method="POST" action="/matches" enctype="multipart/form-data">
                             
@@ -80,6 +121,9 @@
 
 <script>
 export default {
+      props:{
+      'player': Object
+    },
     name: 'match-creator',
     data:() => {
         return {
@@ -122,18 +166,24 @@ export default {
                   this.dire.push(player)
             }
         },
-        removeDirePlayer(player){
+        removeDirePlayer(index){
             //remove dire player
-            this.dire.splice(player, 1)
+            //this.dire.$remove(player)
+
+            //return filteredItems = dire.filter(dire => dire !== player);
+
+        this.dire.splice(index, 1);
+
         },
+        
         addRadiantPlayer(player){
             if(this.radiant.length <=4){
                   this.radiant.push(player)
             }
         },
-        removeRadiantPlayer(player){
+        removeRadiantPlayer(index){
             //remove radiant player
-            this.radiant.splice(player, 1)
+            this.radiant.splice(index, 1)
         },
         onSubmit(){
             axios.post('/matches', this.$data).then(function(){
@@ -165,3 +215,5 @@ export default {
     }
 }
 </script>
+
+
