@@ -14069,7 +14069,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -14196,7 +14195,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -14260,9 +14258,7 @@ var render = function() {
         },
         [_vm._v("Radiant")]
       )
-    ]),
-    _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.player.status))])
+    ])
   ])
 }
 var staticRenderFns = []
@@ -14408,9 +14404,7 @@ var render = function() {
                     [_vm._v("MMR estimate")]
                   ),
                   _vm._v(" "),
-                  _c("th", [_vm._v("Actions")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Status")])
+                  _c("th", [_vm._v("Actions")])
                 ]),
                 _vm._v(" "),
                 _c(

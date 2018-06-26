@@ -27,7 +27,6 @@
                 <th @click="sort('rank')">Rank</th>
                 <th @click="sort('mmr')">MMR estimate</th>
                 <th>Actions</th>
-                <th>Status</th>
             </thead>
             <tbody>
                 <player-list-item v-for="player in orderedPlayers" :player="player" :key="player.id64">
