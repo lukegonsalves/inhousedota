@@ -72,7 +72,12 @@ class User extends Authenticatable
     public function getMmrAttribute(){
         if($this->hasOpenDotaData){ 
             if(!is_null($this->rank)){
-                return 170 * ( ( $this->rankTierNumber * 4) + $this->rankSubTier );
+                if(array_key_exists('estimate', $this->open_dota['mmr_estimate'])){
+                    return (   170 * ( ( (  (int) $this->rankTierNumber - 1) * 4) + ($this->rankSubTier + ((int) $this->rankTierNumber - 2 )) )   ) + floor($this->open_dota['mmr_estimate']['estimate'] * 0.02);
+                }
+                else{
+                    return 170 * ( ( (  (int) $this->rankTierNumber - 1) * 4) + ($this->rankSubTier + ((int) $this->rankTierNumber - 2 )) );
+                }
             }
             else{
                 if(array_key_exists('estimate',$this->open_dota['mmr_estimate'])){
@@ -80,7 +85,7 @@ class User extends Authenticatable
                 }
             }
         }
-        
+
         return 0;
     }
 
@@ -153,6 +158,8 @@ class User extends Authenticatable
             'steam' => $steam_user
         ]);
 
+        //TODO If $this->update returns $this then you can string these all together
+        
         $user->updateOpenDotaPlayerData();
 
         $user->updateOpenDotaHeroesData();

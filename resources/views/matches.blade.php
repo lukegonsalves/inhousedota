@@ -16,6 +16,10 @@
       <figure class="image">
       <img src="https://i.ytimg.com/vi/IVXrhjD9OIQ/maxresdefault.jpg">
       </figure>
+                                  
+      @php
+      $first_match = $matches->first();
+    @endphp
         <div class="column is-one-third">
           <div class="box">
             <div class="content">
@@ -23,7 +27,12 @@
                 @if ($matches->first() == $match)
                 <p class="title has-text-centered">{{$match['match_name']}}</p>
                 <p class="subtitle has-text-centered">{{$match['start_time']}} BST
-                
+                @if($first_match->allPlayers->contains(auth()->user()))
+                  <p class="subtitle is-size-6 has-text-centered">
+                    <span class="icon is-small is-left"><i class="fas fa-key"></i></span>
+                    Lobby Password: <strong>{{$match['lobby_password']}}</strong>
+                {{--  @else  --}}
+                @endif
                 </p>
                 @else
                 @endif
@@ -31,13 +40,14 @@
               <div class="columns is-centered">
                   <div class="column is-5">
                       <table class="table">
-                          <thead><th>Team 1</th></thead>
+                          <thead><th class="has-text-danger">Dire</th></thead>
                           <tbody>
-                              <tr><td>Position 1</td></tr>
-                              <tr><td>Position 2</td></tr>
-                              <tr><td>Position 3</td></tr>
-                              <tr><td>Position 4</td></tr>
-                              <tr><td>Position 5</td></tr>
+
+                            @if(!is_null($first_match))
+                              @foreach($first_match->direTeam as $user)
+                                <tr><td> {{ $user->username }}</td></tr>
+                              @endforeach
+                            @endif
                               {{--Maybe 'cool' graphic or mmr difference here or something, alas david might need to do this cos i have rekindled my hate for JS--}}
                           </tbody>
                           </table>
@@ -49,13 +59,13 @@
                   </div>
                   <div class="column is-5">
                       <table class="table">
-                          <thead><th>Team 2</th></thead>
+                          <thead><th class="has-text-success">Radiant</th></thead>
                           <tbody>
-                              <tr><td>Position 1</td></tr>
-                              <tr><td>Position 2</td></tr>
-                              <tr><td>Position 3</td></tr>
-                              <tr><td>Position 4</td></tr>
-                              <tr><td>Position 5</td></tr>
+                            @if(!is_null($first_match))
+                              @foreach($first_match->radiantTeam as $user)
+                                <tr><td> {{ $user->username }}</td></tr>
+                              @endforeach
+                            @endif
                           </tbody>
                       </table>
                   </div>
@@ -134,19 +144,29 @@
                             <td>17171{{$match['id']}}</td>
                             <td>{{$match['match_name']}}</td>
                             <td>{{$match['start_time']}}</td>
-                            <td>{{$match['creator']}}</td>
+                            <td>{{$user->find($match['creator'])->username}}</td>
                             @admin<td>{{$match['created_at']->format('H:i F d, Y')}}</td>@endadmin
+                            @if($first_match->allPlayers->contains(auth()->user()) || auth()->user()->isAdmin || auth()->user()->id32 == $user->find($match['creator'])->id32 ) 
                             <td>{{$match['lobby_password']}}</td>
-
+                            @else
+                            <td>
+                              <span class="icon is-small">
+                                <i class="fas fa-lock"></i>
+                              </span>
+                              Hidden
+                            </td>
+                            @endif
                             <td>{{--    <a href="{{action('MatchController@edit', $match['id'])}}" class="btn btn-warning">Edit</a>     --}}</td>
                             @admin<td>
                               <form action="{{action('MatchController@destroy', $match['id'])}}" method="post">
                                 @csrf
                                 <input name="_method" type="hidden" value="DELETE">
-                                <span class="tag is-danger">
-                                  Click X to delete match
-                                  <button class="delete" type="submit"></button>
-                                </span>
+                                  <button class="button is-danger is-outlined" type = "submit">
+                                    <span>Delete</span>
+                                    <span class="icon is-small">
+                                      <i class="fa fa-times"></i>
+                                    </span>
+                                  </button>
                               </form>
                             </td>@endadmin
                           </tr>

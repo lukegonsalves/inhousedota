@@ -16,6 +16,10 @@
             </span>
         </p>
 
+        <label class="checkbox">
+            <input type="checkbox" v-model="checkedStatus">
+             Only show available players {{checkedStatus}}
+        </label>
         <table class="table is-striped" id="playerTable">
             <thead>
                 <th></th>
@@ -30,9 +34,9 @@
                 </player-list-item>
             </tbody>
         </table>
-                                </div>
-                    </div>
-                </article></div>
+            </div>
+        </div>
+    </article></div>
     </div>  
 </template>
 
@@ -47,7 +51,8 @@ export default {
       return{
           search_term: "",
           currentSort:'mmr',
-          currentSortDir:'desc'
+          checkedStatus: false,
+          currentSortDir:'desc'          
       }
   },
   components:{
@@ -63,20 +68,32 @@ export default {
         }
   },
   computed:{
-      filteredPlayers: function(){
-          return this.players.filter((player) => {
-              return player.username.toLowerCase().includes(this.search_term.toLowerCase())
-          })
-      },
-      orderedPlayers:function() {
-      return this.filteredPlayers.sort((a,b) => {
-      let modifier = 1;
-      if(this.currentSortDir === 'desc') modifier = -1;
-      if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
-      if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
-      return 0;
-    });
-  }
+            filteredPlayers: function(){
+                return this.players.filter((player) => {
+                    return player.username.toLowerCase().includes(this.search_term.toLowerCase());
+                })
+            },
+            availablePlayers:function(){
+            if(this.checkedStatus === true){
+            return this.filteredPlayers.filter((player) => {
+                return player.status.includes('yes');
+                this.checkedStatus = false;
+            })
+            }
+            else{
+                return this.filteredPlayers;
+            }
+            },
+            orderedPlayers:function() {
+                return this.availablePlayers.sort((a,b) => {
+                    let modifier = 1;
+                    if(this.currentSortDir === 'desc') modifier = -1;
+                    if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+                    if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
+                return 0;
+                });
+            }
+
   }
 }
 </script>

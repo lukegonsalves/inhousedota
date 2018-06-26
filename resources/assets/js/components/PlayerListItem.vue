@@ -4,11 +4,11 @@
             <img :alt="player.username" :src="player.smallAvatarUrl">
         </td>
         <td>
-            <a :href="player.profile_url">{{ player.username }} </a>
+            <div class="is-size-6"><a :href="player.profile_url">{{ player.username }}</a></div>
         </td>
         <td>{{ player.rankTier }}</td>
         <td>{{ player.mmr }}</td>
-        <td><button class="button" @click="addToDire">Dire</button><button class="button" @click="addToRadiant">Radiant</button></td>
+        <td><button class="button is-danger is-outlined" @click="addToDire">Dire</button>&nbsp;<button class="button is-success is-outlined" @click="addToRadiant">Radiant</button></td>
         <td>{{ player.status }}</td>
     </tr>
 </template>

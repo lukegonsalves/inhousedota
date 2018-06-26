@@ -19,6 +19,8 @@ class CreateMatchesTable extends Migration
             $table->string('start_time');
             $table->string('lobby_password');
             $table->string('creator');
+            $table->mediumText('dire')->nullable();
+            $table->mediumText('radiant')->nullable();
             $table->timestamps();
         });
     }

@@ -23,7 +23,7 @@ class HomeController extends Controller
         //dd($user);
         $statusUpdate = User::where('id64', $user->id64)
         ->update([
-            'status' => 'available'
+            'status' => 'yes'
         ]);
         if($statusUpdate){
             return view('home')->withUser($user); 
@@ -36,7 +36,7 @@ class HomeController extends Controller
         //dd($user);
         $statusUpdate = User::where('id64', $user->id64)
         ->update([
-            'status' => 'unavailable'
+            'status' => 'no'
         ]);
         if($statusUpdate){
             return view('home')->withUser($user); 

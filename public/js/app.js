@@ -12042,7 +12042,7 @@ module.exports = Vue;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(59);
+module.exports = __webpack_require__(56);
 
 
 /***/ }),
@@ -12081,7 +12081,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$bus = new __WEBPACK_IMPOR
  */
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('player-page', __webpack_require__(41));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modal', __webpack_require__(56));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modal', __webpack_require__(53));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app'
@@ -13891,7 +13891,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(42)
 /* template */
-var __vue_template__ = __webpack_require__(55)
+var __vue_template__ = __webpack_require__(52)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -14066,6 +14066,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -14074,6 +14078,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             search_term: "",
             currentSort: 'mmr',
+            checkedStatus: false,
             currentSortDir: 'desc'
         };
     },
@@ -14097,17 +14102,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return player.username.toLowerCase().includes(_this.search_term.toLowerCase());
             });
         },
-        orderedPlayers: function orderedPlayers() {
+        availablePlayers: function availablePlayers() {
             var _this2 = this;
 
-            return this.filteredPlayers.sort(function (a, b) {
+            if (this.checkedStatus === true) {
+                return this.filteredPlayers.filter(function (player) {
+                    return player.status.includes('yes');
+                    _this2.checkedStatus = false;
+                });
+            } else {
+                return this.filteredPlayers;
+            }
+        },
+        orderedPlayers: function orderedPlayers() {
+            var _this3 = this;
+
+            return this.availablePlayers.sort(function (a, b) {
                 var modifier = 1;
-                if (_this2.currentSortDir === 'desc') modifier = -1;
-                if (a[_this2.currentSort] < b[_this2.currentSort]) return -1 * modifier;
-                if (a[_this2.currentSort] > b[_this2.currentSort]) return 1 * modifier;
+                if (_this3.currentSortDir === 'desc') modifier = -1;
+                if (a[_this3.currentSort] < b[_this3.currentSort]) return -1 * modifier;
+                if (a[_this3.currentSort] > b[_this3.currentSort]) return 1 * modifier;
                 return 0;
             });
         }
+
     }
 });
 
@@ -14213,8 +14231,10 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("td", [
-      _c("a", { attrs: { href: _vm.player.profile_url } }, [
-        _vm._v(_vm._s(_vm.player.username) + " ")
+      _c("div", { staticClass: "is-size-6" }, [
+        _c("a", { attrs: { href: _vm.player.profile_url } }, [
+          _vm._v(_vm._s(_vm.player.username))
+        ])
       ])
     ]),
     _vm._v(" "),
@@ -14223,12 +14243,23 @@ var render = function() {
     _c("td", [_vm._v(_vm._s(_vm.player.mmr))]),
     _vm._v(" "),
     _c("td", [
-      _c("button", { staticClass: "button", on: { click: _vm.addToDire } }, [
-        _vm._v("Dire")
-      ]),
-      _c("button", { staticClass: "button", on: { click: _vm.addToRadiant } }, [
-        _vm._v("Radiant")
-      ])
+      _c(
+        "button",
+        {
+          staticClass: "button is-danger is-outlined",
+          on: { click: _vm.addToDire }
+        },
+        [_vm._v("Dire")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "button is-success is-outlined",
+          on: { click: _vm.addToRadiant }
+        },
+        [_vm._v("Radiant")]
+      )
     ]),
     _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.player.status))])
@@ -14287,6 +14318,51 @@ var render = function() {
               }),
               _vm._v(" "),
               _vm._m(0)
+            ]),
+            _vm._v(" "),
+            _c("label", { staticClass: "checkbox" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.checkedStatus,
+                    expression: "checkedStatus"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.checkedStatus)
+                    ? _vm._i(_vm.checkedStatus, null) > -1
+                    : _vm.checkedStatus
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.checkedStatus,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.checkedStatus = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.checkedStatus = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.checkedStatus = $$c
+                    }
+                  }
+                }
+              }),
+              _vm._v(
+                "\n            Only show available players " +
+                  _vm._s(_vm.checkedStatus) +
+                  "\n       "
+              )
             ]),
             _vm._v(" "),
             _c(
@@ -14385,7 +14461,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(50)
 /* template */
-var __vue_template__ = __webpack_require__(54)
+var __vue_template__ = __webpack_require__(51)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -14429,6 +14505,16 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -14632,10 +14718,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -14661,25 +14744,27 @@ var render = function() {
                 _vm._l(_vm.dire, function(player, index) {
                   return _c("tr", { key: player.id64 }, [
                     _c("td", [
-                      _c("img", {
-                        attrs: {
-                          alt: player.username,
-                          src: player.smallAvatarUrl
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("strong", [_vm._v(_vm._s(player.username))]),
-                      _vm._v(" "),
-                      _c("small", [_vm._v(_vm._s(player.mmr))]),
-                      _vm._v(" "),
-                      _c("button", {
-                        staticClass: "delete is-small is-pulled-right",
-                        on: {
-                          click: function($event) {
-                            _vm.removeDirePlayer(index)
+                      _c("div", { staticClass: "is-size-6" }, [
+                        _c("img", {
+                          attrs: {
+                            alt: player.username,
+                            src: player.smallAvatarUrl
                           }
-                        }
-                      })
+                        }),
+                        _vm._v(" "),
+                        _c("strong", [_vm._v(_vm._s(player.username))]),
+                        _vm._v(" "),
+                        _c("small", [_vm._v(_vm._s(player.mmr))]),
+                        _vm._v(" "),
+                        _c("button", {
+                          staticClass: "delete is-small is-pulled-right",
+                          on: {
+                            click: function($event) {
+                              _vm.removeDirePlayer(index)
+                            }
+                          }
+                        })
+                      ])
                     ])
                   ])
                 })
@@ -14696,25 +14781,27 @@ var render = function() {
                 _vm._l(_vm.radiant, function(player, index) {
                   return _c("tr", { key: player.id64 }, [
                     _c("td", [
-                      _c("img", {
-                        attrs: {
-                          alt: player.username,
-                          src: player.smallAvatarUrl
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("strong", [_vm._v(_vm._s(player.username))]),
-                      _vm._v(" "),
-                      _c("small", [_vm._v(_vm._s(player.mmr))]),
-                      _vm._v(" "),
-                      _c("button", {
-                        staticClass: "delete is-small is-pulled-right",
-                        on: {
-                          click: function($event) {
-                            _vm.removeRadiantPlayer(index)
+                      _c("div", { staticClass: "is-size-6" }, [
+                        _c("img", {
+                          attrs: {
+                            alt: player.username,
+                            src: player.smallAvatarUrl
                           }
-                        }
-                      })
+                        }),
+                        _vm._v(" "),
+                        _c("strong", [_vm._v(_vm._s(player.username))]),
+                        _vm._v(" "),
+                        _c("small", [_vm._v(_vm._s(player.mmr))]),
+                        _vm._v(" "),
+                        _c("button", {
+                          staticClass: "delete is-small is-pulled-right",
+                          on: {
+                            click: function($event) {
+                              _vm.removeRadiantPlayer(index)
+                            }
+                          }
+                        })
+                      ])
                     ])
                   ])
                 })
@@ -14733,6 +14820,8 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
             _c("div", { staticClass: "level-item has-text-centered" }, [
               _c("div", [
                 _c("p", { staticClass: "heading" }, [_vm._v("Mean MMR ")]),
@@ -14743,7 +14832,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(2),
+            _vm._m(3),
             _vm._v(" "),
             _c("div", { staticClass: "level-item has-text-centered" }, [
               _c("div", [
@@ -14754,6 +14843,8 @@ var render = function() {
                 ])
               ])
             ]),
+            _vm._v(" "),
+            _vm._m(4),
             _vm._v(" "),
             _c("div", { staticClass: "level-item has-text-centered" }, [
               _c("div", [
@@ -14826,7 +14917,7 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _vm._m(3)
+                      _vm._m(5)
                     ])
                   ]),
                   _vm._v(" "),
@@ -14918,7 +15009,7 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _vm._m(4)
+                      _vm._m(6)
                     ])
                   ]),
                   _vm._v(" "),
@@ -14950,24 +15041,40 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [_c("th", [_vm._v("Dire")])])
+    return _c("thead", [
+      _c("th", { staticClass: "has-text-danger" }, [_vm._v("Dire")])
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [_c("th", [_vm._v("Radiant")])])
+    return _c("thead", [
+      _c("th", { staticClass: "has-text-success" }, [_vm._v("Radiant")])
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "level-item has-text-centered" }, [
-      _c("div", [
-        _c("p", { staticClass: "subtitle is-6" }, [
-          _vm._v("spacer needs to go here lol.")
-        ])
-      ])
+      _c("div", [_c("p", { staticClass: "subtitle is-6" }, [_vm._v("   ")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "level-item has-text-centered" }, [
+      _c("div", [_c("p", { staticClass: "subtitle is-6" }, [_vm._v("     ")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "level-item has-text-centered" }, [
+      _c("div", [_c("p", { staticClass: "subtitle is-6" }, [_vm._v("   ")])])
     ])
   },
   function() {
@@ -14997,7 +15104,7 @@ if (false) {
 }
 
 /***/ }),
-/* 55 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -15058,15 +15165,15 @@ if (false) {
 }
 
 /***/ }),
-/* 56 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(57)
+var __vue_script__ = __webpack_require__(54)
 /* template */
-var __vue_template__ = __webpack_require__(58)
+var __vue_template__ = __webpack_require__(55)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -15105,7 +15212,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 57 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15144,7 +15251,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 58 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -15182,7 +15289,7 @@ if (false) {
 }
 
 /***/ }),
-/* 59 */
+/* 56 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

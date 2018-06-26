@@ -7,15 +7,15 @@
                 <div class = "columns is-centered is-multiline">
                     <div class="column is-half">
                         <table class="table is-striped is-fullwidth">
-                            <thead><th>Dire</th></thead>
+                            <thead><th class="has-text-danger">Dire</th></thead>
                             <tbody>
 
                                 <tr v-for="(player, index) in dire" v-bind:key="player.id64">
-                                    <td>
+                                    <td><div class="is-size-6">
                                     <img :alt="player.username" :src="player.smallAvatarUrl">
                                     <strong>{{player.username}}</strong> <small>{{player.mmr}}</small>
                                     <button class="delete is-small is-pulled-right" @click="removeDirePlayer(index)"></button>
-                                    </td>
+                                    </div></td>
                                 </tr>                            
                             
                             </tbody>
@@ -24,14 +24,14 @@
                     </div>
                     <div class="column is-half">
                         <table class="table is-striped is-fullwidth">
-                            <thead><th>Radiant</th></thead>
+                            <thead><th class="has-text-success">Radiant</th></thead>
                             <tbody>
                                 <tr v-for="(player, index) in radiant" v-bind:key="player.id64">
-                                    <td>
+                                    <td><div class="is-size-6">
                                     <img :alt="player.username" :src="player.smallAvatarUrl">
                                     <strong>{{player.username}}</strong> <small>{{player.mmr}}</small>
                                     <button class="delete is-small is-pulled-right" @click="removeRadiantPlayer(index)"></button>
-                                    </td>
+                                    </div></td>
                                 </tr>
                             </tbody>
                             </table>
@@ -46,19 +46,29 @@
                         </div>
                         <div class="level-item has-text-centered">
                             <div>
+                                <p class="subtitle is-6">&nbsp;&nbsp;&nbsp;</p>
+                            </div>
+                        </div>
+                        <div class="level-item has-text-centered">
+                            <div>
                                 <p class="heading">Mean MMR </p>
                                 <p class="title">{{averagedire}}</p>
                             </div>
                         </div>
                         <div class="level-item has-text-centered">
                             <div>
-                                <p class="subtitle is-6">spacer needs to go here lol.</p>
+                                <p class="subtitle is-6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                             </div>
                         </div>
                         <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading">Mean MMR </p>
                                 <p class="title">{{averageradiant}}</p>
+                            </div>
+                        </div>
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <p class="subtitle is-6">&nbsp;&nbsp;&nbsp;</p>
                             </div>
                         </div>
                         <div class="level-item has-text-centered">
@@ -187,7 +197,7 @@ export default {
         },
         onSubmit(){
             axios.post('/matches', this.$data).then(function(){
-                window.location = '/matches';
+            window.location = '/matches';
             });
         }
     },

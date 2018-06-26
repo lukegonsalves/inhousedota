@@ -24,6 +24,9 @@ class MatchController extends Controller
         return view('players');
     }
 
+    public function test(Request $request){
+
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -32,6 +35,7 @@ class MatchController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $request->validate([
             'name' => 'required',
         ]);    
@@ -42,13 +46,19 @@ class MatchController extends Controller
         $hour = $request->get('hours');
         $minutes = $request->get('minutes');
         $time = $hour.':'.$minutes;
-        $user = Auth::user('username');
+        $user = Auth::user();
+        $dire = collect($request->get('dire'))->pluck('id64');
+        $radiant = collect($request->get('radiant'))->pluck('id64');
+
         $match = Match::create([
             'match_name' => $request->get('name'),
             'lobby_password' => "{$randomName}{$randomVerb}{$randomAdjective}",
             'start_time' => $time,
-            'creator' => $user->username
-        ]);
+            'creator' => $user->id64,
+
+            'dire'=> json_encode($dire->toArray()), 
+            'radiant'=> json_encode($radiant->toArray())
+        ]); 
         
         return redirect('matches')->with('success', 'Information has been added');
     }
@@ -56,7 +66,9 @@ class MatchController extends Controller
     public function index()
     {
         $matches=Match::all();
-        return view('matches',compact('matches'));
+        //return view('matches',compact('matches'));
+        return view('matches')->withMatches(Match::all());
+
     }
 
     /**
