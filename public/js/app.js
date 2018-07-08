@@ -14156,6 +14156,7 @@ var Component = normalizeComponent(
 )
 Component.options.__file = "resources\\assets\\js\\components\\PlayerListItem.vue"
 
+
 /* hot reload */
 if (false) {(function () {
   var hotAPI = require("vue-hot-reload-api")
@@ -14181,6 +14182,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -14230,9 +14234,18 @@ var render = function() {
     _vm._v(" "),
     _c("td", [
       _c("div", { staticClass: "is-size-6" }, [
-        _c("a", { attrs: { href: _vm.player.profile_url } }, [
-          _vm._v(_vm._s(_vm.player.username))
-        ])
+        _c(
+          "a",
+          {
+            staticClass: "has-text-grey-dark",
+            attrs: { href: _vm.player.profile_url }
+          },
+          [_vm._v(_vm._s(_vm.player.username) + " ")]
+        ),
+        _vm._v(" "),
+        _vm.player.is_admin
+          ? _c("i", { staticClass: "fas fa-shield-alt" })
+          : _vm._e()
       ])
     ]),
     _vm._v(" "),
@@ -14630,6 +14643,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -14702,11 +14737,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         averageradiant: function averageradiant() {
             console.log(this.totalradiant);
-            return this.totalradiant / 5;
+            return parseInt(this.totalradiant / 5);
         },
         averagedire: function averagedire() {
             console.log(this.totaldire);
-            return this.totaldire / 5;
+            return parseInt(this.totaldire / 5);
+        },
+        percentageradiant: function percentageradiant() {
+            console.log(this.totalradiant);
+            return parseInt(this.totalradiant / (this.totaldire + this.totalradiant) * 100);
+        },
+        percentagedire: function percentagedire() {
+            console.log(this.totaldire);
+            return parseInt(this.totaldire / (this.totaldire + this.totalradiant) * 100);
         }
     }
 });
@@ -14806,10 +14849,10 @@ var render = function() {
           _c("nav", { staticClass: "level" }, [
             _c("div", { staticClass: "level-item has-text-centered" }, [
               _c("div", [
-                _c("p", { staticClass: "heading" }, [_vm._v("Total MMR ")]),
+                _c("p", { staticClass: "heading" }, [_vm._v("Balance")]),
                 _vm._v(" "),
-                _c("p", { staticClass: "title is-5" }, [
-                  _vm._v(_vm._s(_vm.totaldire))
+                _c("p", { staticClass: "title is-7" }, [
+                  _vm._v(_vm._s(_vm.percentagedire) + " %")
                 ])
               ])
             ]),
@@ -14818,10 +14861,10 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "level-item has-text-centered" }, [
               _c("div", [
-                _c("p", { staticClass: "heading" }, [_vm._v("Mean MMR ")]),
+                _c("p", { staticClass: "heading" }, [_vm._v("Total MMR ")]),
                 _vm._v(" "),
-                _c("p", { staticClass: "title" }, [
-                  _vm._v(_vm._s(_vm.averagedire))
+                _c("p", { staticClass: "title is-5" }, [
+                  _vm._v(_vm._s(_vm.totaldire))
                 ])
               ])
             ]),
@@ -14833,7 +14876,7 @@ var render = function() {
                 _c("p", { staticClass: "heading" }, [_vm._v("Mean MMR ")]),
                 _vm._v(" "),
                 _c("p", { staticClass: "title" }, [
-                  _vm._v(_vm._s(_vm.averageradiant))
+                  _vm._v(_vm._s(_vm.averagedire))
                 ])
               ])
             ]),
@@ -14842,10 +14885,34 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "level-item has-text-centered" }, [
               _c("div", [
+                _c("p", { staticClass: "heading" }, [_vm._v("Mean MMR ")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "title" }, [
+                  _vm._v(_vm._s(_vm.averageradiant))
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(5),
+            _vm._v(" "),
+            _c("div", { staticClass: "level-item has-text-centered" }, [
+              _c("div", [
                 _c("p", { staticClass: "heading" }, [_vm._v("Total MMR ")]),
                 _vm._v(" "),
                 _c("p", { staticClass: "title is-5" }, [
                   _vm._v(_vm._s(_vm.totalradiant))
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(6),
+            _vm._v(" "),
+            _c("div", { staticClass: "level-item has-text-centered" }, [
+              _c("div", [
+                _c("p", { staticClass: "heading" }, [_vm._v("Balance")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "title is-7" }, [
+                  _vm._v(_vm._s(_vm.percentageradiant) + " %")
                 ])
               ])
             ])
@@ -14911,7 +14978,7 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _vm._m(5)
+                      _vm._m(7)
                     ])
                   ]),
                   _vm._v(" "),
@@ -15003,7 +15070,7 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _vm._m(6)
+                      _vm._m(8)
                     ])
                   ]),
                   _vm._v(" "),
@@ -15060,6 +15127,14 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "level-item has-text-centered" }, [
+      _c("div", [_c("p", { staticClass: "subtitle is-6" }, [_vm._v("   ")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "level-item has-text-centered" }, [
       _c("div", [_c("p", { staticClass: "subtitle is-6" }, [_vm._v("     ")])])
     ])
   },
@@ -15069,6 +15144,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "level-item has-text-centered" }, [
       _c("div", [_c("p", { staticClass: "subtitle is-6" }, [_vm._v("   ")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "level-item has-text-centered" }, [
+      _c("div", [_c("p", { staticClass: "title is-5" }, [_vm._v("   ")])])
     ])
   },
   function() {

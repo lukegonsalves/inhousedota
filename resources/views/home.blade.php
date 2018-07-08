@@ -14,7 +14,7 @@
     <div class="columns is-centered">
         <div class="column is-half">
             <div class="box">
-                <h1 class="title">Events</h1>
+                <h1 class="title">Upcoming Events</h1>
                 <h4 class ="title is-4 has-text-centered">Monday Inhouse</h4>
                 <h6 class ="subtitle is-5 has-text-centered">Your current status: <strong> {{  $user->status   }} </strong></h6>
                 <h6 class ="subtitle is-6 has-text-centered">Please set your availability.<br>Are you in for today?</h6>

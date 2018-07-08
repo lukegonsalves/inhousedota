@@ -4,7 +4,10 @@
             <img :alt="player.username" :src="player.smallAvatarUrl">
         </td>
         <td>
-            <div class="is-size-6"><a :href="player.profile_url">{{ player.username }}</a></div>
+            <div class="is-size-6"><a class = "has-text-grey-dark" :href="player.profile_url">{{ player.username }}&nbsp;</a>
+            <i class="fas fa-shield-alt" v-if="player.is_admin"></i>
+            
+            </div>
         </td>
         <td>{{ player.rankTier }}</td>
         <td>{{ player.mmr }}</td>
@@ -31,3 +34,4 @@ export default {
   }
 }
 </script>
+{{--<i :class="player.persona_state"></i>--}}

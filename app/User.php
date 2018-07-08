@@ -32,7 +32,8 @@ class User extends Authenticatable
         'smallAvatarUrl',
         'mmr',
         'profile_url',
-        'is_admin'
+        'is_admin',
+        'persona_state'
     ];
 
     public function scopeRanked($query){
@@ -63,6 +64,10 @@ class User extends Authenticatable
         return $this->steam['avatarfull'];
     }
 
+    public function getPersonaStateAttribute(){
+        return onlineStatus($this->steam['personastate']);
+    }
+
     public function getHeroesPlayedAttribute(){
         return collect($this->heroes)->reject(function($hero){
             return $hero['games'] < 1;
@@ -73,7 +78,13 @@ class User extends Authenticatable
         if($this->hasOpenDotaData){ 
             if(!is_null($this->rank)){
                 if(array_key_exists('estimate', $this->open_dota['mmr_estimate'])){
-                    return (   170 * ( ( (  (int) $this->rankTierNumber - 1) * 4) + ($this->rankSubTier + ((int) $this->rankTierNumber - 2 )) )   ) + floor($this->open_dota['mmr_estimate']['estimate'] * 0.02);
+                    $tempmmr = (   170 * ( ( (  (int) $this->rankTierNumber - 1) * 4) + ($this->rankSubTier + ((int) $this->rankTierNumber - 2 )) )   );
+                    if($tempmmr < $this->open_dota['mmr_estimate']){
+                        return $tempmmr + floor($this->open_dota['mmr_estimate']['estimate'] * 0.02);
+                    }
+                    else{
+                        return $tempmmr - floor($this->open_dota['mmr_estimate']['estimate'] * 0.02);
+                    }
                 }
                 else{
                     return 170 * ( ( (  (int) $this->rankTierNumber - 1) * 4) + ($this->rankSubTier + ((int) $this->rankTierNumber - 2 )) );

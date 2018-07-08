@@ -167,6 +167,12 @@
                                       <i class="fa fa-times"></i>
                                     </span>
                                   </button>
+                                  <button class="button is-info is-outlined" title="Disabled button" disabled>
+                                    <span>Complete</span>
+                                    <span class="icon is-small">
+                                      <i class="fas fa-check"></i>
+                                    </span>
+                                  </button>
                               </form>
                             </td>@endadmin
                           </tr>

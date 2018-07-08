@@ -40,6 +40,17 @@
                     <nav class="level">
                         <div class="level-item has-text-centered">
                             <div>
+                                <p class="heading">Balance</p>
+                                <p class="title is-7">{{percentagedire}} %</p>
+                            </div>
+                        </div>
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <p class="subtitle is-6">&nbsp;&nbsp;&nbsp;</p>
+                            </div>
+                        </div>
+                        <div class="level-item has-text-centered">
+                            <div>
                                 <p class="heading">Total MMR </p>
                                 <p class="title is-5">{{totaldire}}</p>
                             </div>
@@ -75,6 +86,17 @@
                             <div>
                                 <p class="heading">Total MMR </p>
                                 <p class="title is-5">{{totalradiant}}</p>
+                            </div>
+                        </div>
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <p class="title is-5">&nbsp;&nbsp;&nbsp;</p>
+                            </div>
+                        </div>
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <p class="heading">Balance</p>
+                                <p class="title is-7">{{percentageradiant}} %</p>
                             </div>
                         </div>
                     </nav>
@@ -216,12 +238,21 @@ export default {
         },
         averageradiant: function(){
             console.log(this.totalradiant);
-            return this.totalradiant/5;
+            return parseInt(this.totalradiant/5);
         },
         averagedire: function(){
             console.log(this.totaldire);
-            return this.totaldire/5;
-        }
+            return parseInt(this.totaldire/5);
+        },
+        percentageradiant: function(){
+            console.log(this.totalradiant);
+            return parseInt(this.totalradiant/(this.totaldire + this.totalradiant) * 100);
+            
+        },
+        percentagedire: function(){
+            console.log(this.totaldire);
+            return parseInt(this.totaldire/(this.totaldire + this.totalradiant) * 100);
+        },
     }
 }
 </script>

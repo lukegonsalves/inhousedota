@@ -48,6 +48,9 @@
                     <a class="navbar-item" href="{{ route('profile.self') }}">
                         Profile
                     </a>
+                    <a class="navbar-item" href="{{ route('blog') }}">
+                        Updates
+                    </a>
                     <p class="navbar-item subtitle is-7">
                         @if (Auth::check())
                         tard count: {{Auth::user()->count()}}

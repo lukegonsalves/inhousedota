@@ -67,3 +67,25 @@ use Illuminate\Support\Facades\Cache;
         }
         //$betterMMR = $rank_tier + ($rank_subrank*130);
     }
+
+    function onlineStatus($personaState){
+        switch($personaState){
+            case "0":
+                return "fas fa-circle has-text-danger"; //unranked
+            case "1":
+                return "fas fa-circle has-text-success"; //herald
+            case "2":
+                return "fas fa-circle has-text-warning"; //guardian
+            case "3":
+                return "fas fa-circle has-text-warning"; //crusader
+            case "4":
+                return "Snooze"; //archon
+            case "5":
+                return "Looking to trade"; //legend
+            case "6":
+                return "Looking to play"; //ancient
+        }
+        //$betterMMR = $rank_tier + ($rank_subrank*130);
+    }
+
+

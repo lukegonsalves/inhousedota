@@ -24,6 +24,9 @@ Route::get('/players', 'PlayersController@index')->name('players');
 Route::get('/privacy', 'PrivacyController@privacy')->name('privacy');
 
 Route::get('/teams', 'TeamsController@index')->name('teams');
+
+Route::get('/blog', 'BlogController@index')->name('blog');
+
 Route::get('/profile', 'ProfileController@show')->name('profile.self');
 Route::get('/profile/{user}', 'ProfileController@show')->name('profile.user');
 
