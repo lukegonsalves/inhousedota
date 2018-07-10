@@ -14,8 +14,14 @@ class UpdateMatchTeams extends Migration
     public function up()
     {
         Schema::table('matches', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('match_name');
+            $table->string('start_time');
+            $table->string('lobby_password');
+            $table->string('creator');
             $table->mediumText('dire')->nullable();
             $table->mediumText('radiant')->nullable();
+            $table->timestamps();
         });
     }
 
