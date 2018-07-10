@@ -28,7 +28,7 @@
                 </p>
                 Cheers,
                 <h6 class = "title is-6">Luke
-                <br><a class="button is-rounded"><i class="fab fa-discord"></i>&nbsp;darkluke21</a></h6>                
+                <br><a class="button is-rounded" disabled><i class="fab fa-discord"></i>&nbsp;darkluke21</a></h6>                
             <div>
         </div>
     <div>
