@@ -49,7 +49,7 @@
                         Profile
                     </a>
                     <a class="navbar-item" href="{{ route('blog') }}">
-                        Updates
+                        Donate
                     </a>
                     <p class="navbar-item subtitle is-7">
                         @if (Auth::check())

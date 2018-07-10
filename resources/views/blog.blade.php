@@ -3,9 +3,9 @@
 @section('content')
 <section class="section">
     <div class="container">
-        <h1 class="title">Updates</h1>
+        <h1 class="title">Donate</h1>
         <h2 class="subtitle">
-            Any important thoughts
+            Ways to support
         </h2>
     </div>
 </section>
