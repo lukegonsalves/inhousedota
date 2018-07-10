@@ -5,7 +5,7 @@
     <div class="container">
         <h1 class="title">Updates</h1>
         <h2 class="subtitle">
-            Some thoughts
+            Any important thoughts
         </h2>
     </div>
 </section>
@@ -13,19 +13,22 @@
 <section class="section">
     <div class="columns is-centered">
         <div class="column is-half">
-            <div class="content">
+            <div class="box">
                 <p>
-                    This will be a paragraph of text where I persuade you to not donate any money.
-                    Now since you've read through all of this. 
-                    If you <strong>really really really</strong> want to donate. 
-                    Anything you do kindly donate will be used to further develop the inhouse site!
-                    At this stage we have nothing we can give back, but we are working on things in future for you.
+                    Hi all,<br>
+                    Just a quick one! For me this is very much a passion project and I try to commit as much time as possible, where possible to 
+                    developing this inhouse site. However, being a student I'm skint! If you could spare
+                    any shillings it would be gratefully received, contributing to help us to pay for servers, improve and develop the site to take it to the next level! 
+                    <br>So, for those of you who <strong>really really really</strong> want to donate you can do so below!
+                    <br><br>
+                    <center><a class="button is-large is-rounded" target="_blank" href="https://www.buymeacoffee.com/8E37jwZgX"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a></center>
+                    
+                    <br>PS. At this stage we have nothing to give back, but we are working on perks for those who have helped us out!
                     <br>
-                    You can donate via PayPal below:
                 </p>
                 Cheers,
-                <h6 class = "title is-6"><strong>Luke </strong><i>@darkluke21</i></h6>
-                <h6 class = "subtitle is-6">06/07/18<h6>
+                <h6 class = "title is-6">Luke
+                <br><a class="button is-rounded"><i class="fab fa-discord"></i>&nbsp;darkluke21</a></h6>                
             <div>
         </div>
     <div>

@@ -3,9 +3,9 @@
 @section('content')
 <section class="section">
     <div class="container">
-        <h1 class="title">PFlax InHouse Dota</h1>
+        <h1 class="title">Inhouse Dota</h1>
         <h2 class="subtitle">
-            Used to rank and pick players for the Monday night InHouse
+            No puns, politics, religion, lyrics or smurfs! Only Dota 2.
         </h2>
     </div>
 </section>
@@ -17,7 +17,7 @@
                 <h1 class="title">Upcoming Events</h1>
                 <h4 class ="title is-4 has-text-centered">Monday Inhouse</h4>
                 <h6 class ="subtitle is-5 has-text-centered">Your current status: <strong> {{  $user->status   }} </strong></h6>
-                <h6 class ="subtitle is-6 has-text-centered">Please set your availability.<br>Are you in for today?</h6>
+                <h6 class ="subtitle is-6 has-text-centered">Please set your availability.<br>(for now this make take a refresh to update)</h6>
                 <div class="field is-grouped is-grouped-centered">
                 <form method="post" action="{{url('updateStatusIn')}}" enctype="multipart/form-data">
                     @csrf
@@ -25,6 +25,7 @@
                         <button class="button is-success" type="submit">Set 'Available'</button>
                     </div>
                 </form>
+                &nbsp;
                 <form method="post" action="{{url('updateStatusOut')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="control">
