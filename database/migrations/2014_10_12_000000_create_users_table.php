@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->mediumText('open_dota')->nullable();
             $table->mediumText('heroes')->nullable();
             $table->dateTime('last_login')->nullable();
+            $table->string('status');
             $table->rememberToken();
             $table->timestamps();
         });
