@@ -44,9 +44,3 @@ Route::get('auth/steam/handle', 'AuthController@handle')->name('auth.steam.handl
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::get('/blog', function()
-{
-    $exitCode = Artisan::call('migrate:fresh');
-
-    //
-});
