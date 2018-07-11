@@ -67,8 +67,7 @@ class MatchController extends Controller
     {
         $matches=Match::all();
         //return view('matches',compact('matches'));
-        return view('matches')->withMatches(Match::all());
-
+        return view('matches')->with(compact($matches, $user));
     }
 
     /**
