@@ -43,7 +43,7 @@
                       <table class="table">
                           <thead><th class="has-text-danger">Dire</th></thead>
                           <tbody>
-                            dd($user);
+                            
 
                             @if(!is_null($first_match))
                               @foreach($first_match->direTeam as $user)
@@ -140,6 +140,7 @@
                           
                           @foreach($matches as $match)
                           @php
+                            dd($user);
                             $date=date('d-m-Y', $match['date']);
                             @endphp
                           <tr>
