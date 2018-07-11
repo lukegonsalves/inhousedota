@@ -14,7 +14,7 @@ class AddStatusField extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('status');
+            $table->string('status')->nullable();
         });
     }
 
