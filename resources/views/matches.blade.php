@@ -17,7 +17,9 @@
       <img src="https://i.ytimg.com/vi/IVXrhjD9OIQ/maxresdefault.jpg">
       </figure>
                                   
-      @php
+      @php                    
+      dd($match->direTeam);
+
       $first_match = $matches->first();
     @endphp
         <div class="column is-one-third">
@@ -45,7 +47,6 @@
 
                             @if(!is_null($first_match))
                               @foreach($first_match->direTeam as $user)
-                                dd(auth()->user());
                                 <tr><td> {{ $user->username }}</td></tr>
                               @endforeach
                             @endif
