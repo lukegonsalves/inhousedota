@@ -17,10 +17,6 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->bigInteger('id64');	
             $table->string('username');
-            //$table->string('status')->default('no');
-            // $table->json('steam')->nullable();   
-            // $table->json('open_dota')->nullable();
-            // $table->json('heroes')->nullable();
             $table->mediumText('steam')->nullable();
             $table->mediumText('open_dota')->nullable();
             $table->mediumText('heroes')->nullable();
