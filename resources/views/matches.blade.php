@@ -140,8 +140,7 @@
                           
                           @foreach($matches as $match)
                           @php
-                            dd($match->direIds);
-                            dd(json_decode($match->dire));
+                            dd((string ) json_decode($match->dire));
                             $date=date('d-m-Y', $match['date']);
                             @endphp
                           <tr>
