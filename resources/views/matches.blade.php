@@ -18,7 +18,6 @@
       </figure>
                                   
       @php                    
-      dd($match->direTeam);
 
       $first_match = $matches->first();
     @endphp
@@ -44,6 +43,7 @@
                       <table class="table">
                           <thead><th class="has-text-danger">Dire</th></thead>
                           <tbody>
+                            dd($user);
 
                             @if(!is_null($first_match))
                               @foreach($first_match->direTeam as $user)
