@@ -47,7 +47,7 @@
 
                             @if(!is_null($first_match))
                               @foreach($first_match->direTeam as $user)
-                                <tr><td> {{ $user->username }}</td></tr>
+                                <tr><td>{{-- {{ $user->username }} --}}</td></tr>
                               @endforeach
                             @endif
                               {{--Maybe 'cool' graphic or mmr difference here or something, alas david might need to do this cos i have rekindled my hate for JS--}}
@@ -65,7 +65,7 @@
                           <tbody>
                             @if(!is_null($first_match))
                               @foreach($first_match->radiantTeam as $user)
-                                <tr><td> {{ $user->username }}</td></tr>
+                                <tr><td>{{-- {{ $user->username }} --}}</td></tr>
                               @endforeach
                             @endif
                           </tbody>
