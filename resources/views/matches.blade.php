@@ -140,7 +140,7 @@
                           
                           @foreach($matches as $match)
                           @php
-                            dd($user);
+                            dd($match);
                             $date=date('d-m-Y', $match['date']);
                             @endphp
                           <tr>
