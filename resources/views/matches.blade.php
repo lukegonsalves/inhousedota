@@ -144,7 +144,7 @@
                             <td>17171{{$match['id']}}</td>
                             <td>{{$match['match_name']}}</td>
                             <td>{{$match['start_time']}}</td>
-                            <td>{{$user->find($match['creator'])->username}}</td>
+                            <td>Hidden{{--{{$user->find($match['creator'])->username}}--}}</td>
                             @admin<td>{{$match['created_at']->format('H:i F d, Y')}}</td>@endadmin
                             @if($first_match->allPlayers->contains(auth()->user()) || auth()->user()->isAdmin || auth()->user()->id32 == $user->find($match['creator'])->id32 ) 
                             <td>{{$match['lobby_password']}}</td>
