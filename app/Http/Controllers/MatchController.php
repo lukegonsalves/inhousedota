@@ -73,8 +73,8 @@ class MatchController extends Controller
         //return view('matches',compact('matches'));
         //return view('matches', ['match' => $matches, 'user' => $user]);
         //return view('matches')->compact($matches, $user);
-        $data = array('matches' => Match::all(), 'users' => User::all());
-        return view('matches')->with($data);  
+       // $data = array('matches' => Match::all(), 'users' => User::all());
+        return view('matches');//->with($data);  
     }
 
     /**
