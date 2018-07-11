@@ -18,7 +18,7 @@
       </figure>
                                   
       @php
-      dd($user);
+      dd($matches);
       $first_match = $matches->first();
     @endphp
         <div class="column is-one-third">
