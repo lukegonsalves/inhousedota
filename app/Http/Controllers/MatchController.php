@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Match;
+use App\User;
 use Auth;
 
 class MatchController extends Controller
@@ -66,9 +68,13 @@ class MatchController extends Controller
     public function index()
     {
         $matches=Match::all();
-        //return view('matches',compact('matches'));
-        return view('matches')->withMatches(Match::all());
+        $user = User::all();
 
+        //return view('matches',compact('matches'));
+        //return view('matches', ['match' => $matches, 'user' => $user]);
+        //return view('matches')->compact($matches, $user);
+        $data = array('matches' => Match::all(), 'users' => User::all());
+        return view('matches')->with($data);  
     }
 
     /**
