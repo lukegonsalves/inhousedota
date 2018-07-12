@@ -19,7 +19,7 @@
                                   
       @php                    
 
-      //$first_match = $matches->first();
+      $first_match = $matches->first();
     @endphp
         <div class="column is-one-third">
           <div class="box">
