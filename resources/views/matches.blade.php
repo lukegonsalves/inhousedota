@@ -43,11 +43,13 @@
                       <table class="table">
                           <thead><th class="has-text-danger">Dire</th></thead>
                           <tbody>
-                            
+                            @php
+                            //dd($matctch);  
+                            @endphp
 
                             @if(!is_null($first_match))
-                              @foreach($first_match->direTeam as $user)
-                                <tr><td>{{-- {{ $user->username }} --}}</td></tr>
+                              @foreach($first_match->direTeam as $first_match->direTeam)
+                          <tr><td> {{-- {{ User::find($first_match->direTeam) }} --}} </td></tr>
                               @endforeach
                             @endif
                               {{--Maybe 'cool' graphic or mmr difference here or something, alas david might need to do this cos i have rekindled my hate for JS--}}

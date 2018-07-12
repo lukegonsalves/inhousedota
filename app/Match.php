@@ -19,10 +19,12 @@ class Match extends Model
         'direIds',
         'radiantIds',
         'direTeam',
+        'direTeamNames',
         'radiantTeam'
     ];
 
     public function getDireIdsAttribute(){
+        //dd(json_decode($this->dire));
         return json_decode($this->dire);
     }
 
@@ -30,9 +32,17 @@ class Match extends Model
         return json_decode($this->radiant);
     }
 
-    public function getDireTeamAttribute(){
+    public function getDireTeamNamesAttribute(){
         return collect($this->direIds)->map(function($id){
             return User::find(strval($id));
+        });
+    }
+
+    public function getDireTeamAttribute(){
+        //dd(collect(json_decode($this->dire)));
+        return collect(json_decode($this->dire))->map(function($id){
+            dd(User::find(strval($id))->username);
+            return User::find(strval($id))->username;
         });
     }
 
