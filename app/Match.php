@@ -6,7 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
-class Match extends Authenticable
+class Match extends Authenticatable
 {
 
     protected $guarded = [];
