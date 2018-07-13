@@ -125,6 +125,7 @@ class User extends Authenticatable
     }
 
     //is this ever used?
+    //is this ever used?
     public function getRankNameAttribute(){
         if($this->hasOpenDotaData){
             return rankName( (string) (int) $this->rankTierNumber);

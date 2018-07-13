@@ -40,10 +40,8 @@ class Match extends Authenticatable
     }
 
     public function getDireTeamAttribute(){
-        //dd(collect(json_decode($this->dire)));
         return collect(json_decode($this->dire))->map(function($id){
-            dd(User::find(strval($id))->username);
-            return User::find(strval($id))->username;
+            return User::find(strval($id));
         });
     }
 
