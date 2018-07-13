@@ -31,7 +31,6 @@ class Match extends Model
     }
 
     public function getDireTeamAttribute(){
-
         return collect($this->direIds)->map(function($id){
             return User::find($id);
         });

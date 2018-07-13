@@ -17,9 +17,8 @@
                 </div>
             @endif
 
-            
             {{-- {{ dd( $players ) }} --}}
-            <player-page :players="{{ json_encode($players, JSON_NUMERIC_CHECK) }}" :user="{{json_encode(Auth::user())}}">
+            <player-page :players="{{ json_encode($players) }}" :user="{{json_encode(Auth::user())}}">
 
             </player-page>
 
