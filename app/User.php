@@ -18,6 +18,7 @@ class User extends Authenticatable
     protected $guarded = [];
 
     protected $casts = [
+        'id64' => 'string',
         'steam' => 'array',
         'open_dota' => 'array',
         'heroes' => 'array',
