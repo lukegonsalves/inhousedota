@@ -18,7 +18,7 @@
 
         <label class="checkbox">
             <input type="checkbox" v-model="checkedStatus">
-             Only show available players {{checkedStatus}}
+             Only show available players
         </label>
         <table class="table is-striped" id="playerTable">
             <thead>

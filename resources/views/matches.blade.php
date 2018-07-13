@@ -18,9 +18,8 @@
       </figure>
                                   
       @php                    
-
-      $first_match = $matches->first();
-    @endphp
+        $first_match = $matches->first();
+      @endphp
         <div class="column is-one-third">
           <div class="box">
             <div class="content">
@@ -43,10 +42,6 @@
                       <table class="table">
                           <thead><th class="has-text-danger">Dire</th></thead>
                           <tbody>
-                            {{-- @php --}}
-                            //dd($matctch);  
-                            {{-- @endphp --}}
-
                             @if(!is_null($first_match))
                               @foreach($first_match->direTeam as $user)
                                 <tr><td> {{ $user->username }} </td></tr>

@@ -1,12 +1,11 @@
 <?php
 
 namespace App;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Model;
 
-class Match extends Authenticatable
+class Match extends Model
 {
 
     protected $guarded = [];
@@ -20,12 +19,10 @@ class Match extends Authenticatable
         'direIds',
         'radiantIds',
         'direTeam',
-        'direTeamNames',
         'radiantTeam'
     ];
 
     public function getDireIdsAttribute(){
-        //dd(json_decode($this->dire));
         return json_decode($this->dire);
     }
 
@@ -33,15 +30,10 @@ class Match extends Authenticatable
         return json_decode($this->radiant);
     }
 
-    public function getDireTeamNamesAttribute(){
-        return collect($this->direIds)->map(function($id){
-            return User::find(strval($id));
-        });
-    }
-
     public function getDireTeamAttribute(){
-        return collect(json_decode($this->dire))->map(function($id){
-            return User::find(strval($id));
+
+        return collect($this->direIds)->map(function($id){
+            return User::find($id);
         });
     }
 

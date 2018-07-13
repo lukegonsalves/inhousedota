@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('id64');	
+            $table->string('id64');	
             $table->string('username');
             $table->string('status')->default('no')->nullable();
             $table->mediumText('steam')->nullable();
