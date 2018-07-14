@@ -41,7 +41,7 @@
                         <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading">Balance</p>
-                                <p class="title is-7">{{percentagedire}} %</p>
+                                <p class="title">{{percentagedire}} %</p>
                             </div>
                         </div>
                         <div class="level-item has-text-centered">
@@ -52,12 +52,12 @@
                         <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading">Total MMR </p>
-                                <p class="title is-5">{{totaldire}}</p>
+                                <p class="title">{{totaldire}}</p>
                             </div>
                         </div>
                         <div class="level-item has-text-centered">
                             <div>
-                                <p class="subtitle is-6">&nbsp;&nbsp;&nbsp;</p>
+                                <p class="subtitle is-5">&nbsp;&nbsp;&nbsp;</p>
                             </div>
                         </div>
                         <div class="level-item has-text-centered">
@@ -85,7 +85,7 @@
                         <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading">Total MMR </p>
-                                <p class="title is-5">{{totalradiant}}</p>
+                                <p class="title">{{totalradiant}}</p>
                             </div>
                         </div>
                         <div class="level-item has-text-centered">
@@ -96,7 +96,7 @@
                         <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading">Balance</p>
-                                <p class="title is-7">{{percentageradiant}} %</p>
+                                <p class="title">{{percentageradiant}} %</p>
                             </div>
                         </div>
                     </nav>
