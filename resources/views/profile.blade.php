@@ -36,9 +36,9 @@
                             <p class="title is-5">
                                 {{--  <strong>{{ $user->username}}</strong><br>  --}}
                                 <a href="https://www.dotabuff.com/players/{{ $user->id32 }}">
-                                <small>
+                                {{--<small>
                                     <code>SteamID64: {{ $user->id64}}</code><br><code>DotaID32: {{ $user->id32 }}</code>
-                                </small>
+                                </small>--}}
                             </a>
                             </p>
                             <table class="table is-bordered is-narrow">
