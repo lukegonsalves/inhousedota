@@ -15,9 +15,15 @@
         <div class="column is-half">
             <div class="box">
                 <h1 class="title">Upcoming Events</h1>
+                    <div class="box column is-half">
                 <h4 class ="title is-4 has-text-centered">Monday Inhouse</h4>
-                <h6 class ="subtitle is-5 has-text-centered">Your current status: <strong> {{  $user->status   }} </strong></h6>
-                <h6 class ="subtitle is-6 has-text-centered">Please set your availability.<br>(for now this make take a refresh to update)</h6>
+                <h6 class ="subtitle is-7 has-text-centered">Please set your availability (for now this make take a refresh to update)</h6>
+                <h6 class ="subtitle is-6 has-text-centered">
+                        <span class="icon is-small">
+                            <i class="fa fa-gift"></i>
+                        </span>
+                        Prize pool: Your pride</h6>
+                <h6 class ="subtitle is-6 has-text-centered">Your current status: <strong> {{  $user->status   }} </strong></h6>
                 <div class="field is-grouped is-grouped-centered">
                 <form method="post" action="{{url('updateStatusIn')}}" enctype="multipart/form-data">
                     @csrf
@@ -42,7 +48,8 @@
                         </button>
                     </div>
                 </form>
-                </div>              
+                </div> 
+            </div>             
             </div>
             @admin
             <div class="box">
