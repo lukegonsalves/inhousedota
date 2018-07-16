@@ -22,33 +22,47 @@
                 <form method="post" action="{{url('updateStatusIn')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="control">
-                        <button class="button is-success" type="submit">Set 'Available'</button>
+                        <button class="button is-success" type="submit">
+                        <span class="icon is-small">
+                            <i class="fas fa-check"></i>
+                        </span>
+                            &nbsp; Yes I'm in
+                        </button>
                     </div>
                 </form>
                 &nbsp;
                 <form method="post" action="{{url('updateStatusOut')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="control">
-                        <button class="button is-danger" type="submit">Set 'Unavailable'</button>
+                        <button class="button is-danger" type="submit">
+                        <span class="icon is-small">
+                            <i class="fas fa-times"></i>
+                        </span>
+                            &nbsp; Not around :(
+                        </button>
                     </div>
                 </form>
+                </div>              
+            </div>
+            @admin
+            <div class="box">
+                    <p class="title is-5">Admin tools</p>
+                    <p class = "subtitle is-7">Be warned everyones availability will reset if you press this!</p><lr>
+                    <div class="field is-grouped is-grouped">
+                        <P>
+                    <form method="post" action="{{url('resetStatus')}}" enctype="multipart/form-data">
+                        @csrf
+                            <button class="button is-warning" type="submit">
+                                <span class="icon is-small">
+                                    <i class="fa fa-refresh"></i>
+                                </span>
+                            <span>Reset All Players Availability</span>
+                            </button>
+                    </form>
+                </p>
                 </div>
-                @admin
-                <div class="field is-grouped is-grouped-centered">
-                Be warned everyones availability will reset if you press this!
-                <form method="post" action="{{url('resetStatus')}}" enctype="multipart/form-data">
-                    @csrf
-                        <button class="button is-warning" type="submit">
-                            <span class="icon is-small">
-                                <i class="fa fa-refresh"></i>
-                            </span>
-                        <span>Reset All Players Availability</span>
-                        </button>
-                </form>
-                </div>
-                @endadmin   
-                
-            </div>        
+            </div>  
+            @endadmin       
         </div>
     <div>
 </section> 
