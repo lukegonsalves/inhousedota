@@ -7,10 +7,10 @@ return [
         127291941, //Pancake
         64162079, //Munt
         23283978, //Goosey
-        126130349, //Honeybadgur
-        137707280, //eri
-        66985261, //yoy
-        126544008, //ragnar
+        //126130349, //Honeybadgur
+        //137707280, //eri
+        //66985261, //yoy
+        //126544008, //ragnar
         95617179, //bleapo
         //156985082, //wrestler
     ],
