@@ -91,6 +91,7 @@
           <div class="box">
             <div class="content">
               <h3 class="title">Upcoming Matches</h3>
+              <p class="subtitle is-6">If you're selected to play the password will be visible @admin or if you're an admin, which means you can see this! @endadmin</p>
                 <table class="table table-striped">
                         <thead>
                           <tr>
