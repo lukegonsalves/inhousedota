@@ -27,7 +27,7 @@
                 @if ($matches->first() == $match)
                 <p class="title has-text-centered">{{$match['match_name']}}</p>
                 <p class="subtitle has-text-centered">{{$match['start_time']}} BST
-                @if($first_match->allPlayers->contains(auth()->user()) || auth()->user()->isAdmin || auth()->user()->id32 == $user->find($match['creator'])->id32 )
+                @if($first_match->allPlayers->contains(auth()->user()) || auth()->user()->isAdmin)
                   <p class="subtitle is-size-6 has-text-centered">
                     <span class="icon is-small is-left"><i class="fas fa-key"></i></span>
                     Lobby Password: <strong>{{$match['lobby_password']}}</strong>
@@ -71,7 +71,7 @@
                   
               </div>
               <div class="has-text-centered">
-                <a href="https://www.twitch.tv/pyrionflax" target="_blank"><span class="tag is-primary has-text-weight-semibold"><i class="fab fa-twitch"></i>&nbspWatch live on twitch.tv&nbsp<i class="fas fa-external-link-alt"></i></span></a>
+                <a href="https://www.twitch.tv/pyrionflax" target="_blank"><span class="tag is-primary has-text-weight-semibold"><i class="fab fa-twitch"></i>&nbsp;Watch live on twitch.tv&nbsp;<i class="fas fa-external-link-alt"></i></span></a>
               </div>
 
             </div>
@@ -147,7 +147,7 @@
                             <td>{{$match['start_time']}}</td>
                             <td>{{$user->find($match['creator'])->username}}</td>
                             @admin<td>{{$match['created_at']->format('H:i F d, Y')}}</td>@endadmin
-                            @if($first_match->allPlayers->contains(auth()->user()) || auth()->user()->isAdmin || auth()->user()->id32 == $user->find($match['creator'])->id32 ) 
+                            @if($first_match->allPlayers->contains(auth()->user()) || auth()->user()->isAdmin) {{--|| auth()->user()->id32 == $user->find($match['creator'])->id32 ) --}}
                             <td>{{$match['lobby_password']}}</td>
                             @else
                             <td>
