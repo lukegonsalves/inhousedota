@@ -14764,7 +14764,7 @@ var render = function() {
         _c("h3", { staticClass: "title" }, [_vm._v("Match Creator")]),
         _vm._v(" "),
         _c("h6", { staticClass: "subtitle" }, [
-          _vm._v("Drag and drop players into each team")
+          _vm._v("Use the action button to add players to each team")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "columns is-centered is-multiline" }, [

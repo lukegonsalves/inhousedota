@@ -19,6 +19,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 Route::get('/players', 'PlayersController@index')->name('players');
 
 Route::get('/privacy', 'PrivacyController@privacy')->name('privacy');
@@ -37,6 +39,8 @@ Route::get('/matches','MatchController@index')->name('matches');
 Route::post('matches','MatchController@store');
 Route::post('updateStatusIn','HomeController@updateIn');
 Route::post('updateStatusOut','HomeController@updateOut');
+Route::post('resetStatus','HomeController@resetStatus');
+
 
 
 Route::get('auth/steam', 'AuthController@redirectToSteam')->name('auth.steam');

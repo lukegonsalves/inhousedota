@@ -18,6 +18,7 @@
             @endif
 
             {{-- {{ dd( $players ) }} --}}
+
             <player-page :players="{{ json_encode($players) }}" :user="{{json_encode(Auth::user())}}">
 
             </player-page>

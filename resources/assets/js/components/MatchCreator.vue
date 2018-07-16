@@ -3,7 +3,7 @@
     <div class ="box is-centered">
                 <div class="content">
                 <h3 class="title">Match Creator</h3>
-                <h6 class="subtitle">Drag and drop players into each team</h6>
+                <h6 class="subtitle">Use the action button to add players to each team</h6>
                 <div class = "columns is-centered is-multiline">
                     <div class="column is-half">
                         <table class="table is-striped is-fullwidth">

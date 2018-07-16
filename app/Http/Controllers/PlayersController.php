@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Invisnik\LaravelSteamAuth\SteamAuth;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Auth;
 
 class PlayersController extends Controller
@@ -19,5 +20,10 @@ class PlayersController extends Controller
 
         // return view('players')->withRanks($brackets);
         return view('players')->withPlayers(User::all());
+    }
+    
+    public function resetStatus()
+    {
+
     }
 }

@@ -31,7 +31,19 @@
                     <div class="control">
                         <button class="button is-danger" type="submit">Set 'Unavailable'</button>
                     </div>
-                </form>   
+                </form>
+                @admin
+                &nbsp;
+                <form method="post" action="{{url('resetStatus')}}" enctype="multipart/form-data">
+                    @csrf
+                        <button class="button is-warning" type="submit">
+                            <span class="icon is-small">
+                                <i class="fa fa-refresh"></i>
+                            </span>
+                        <span>Reset All Players Availability</span>
+                        </button>
+                </form>
+                @endadmin   
                 </div>
             </div>        
         </div>

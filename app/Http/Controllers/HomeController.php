@@ -43,6 +43,17 @@ class HomeController extends Controller
         }
     }
 
+    public function resetStatus(Request $request)
+    {
+        $user = $user ?? Auth::user();
+        $statusUpdate = DB::table('users')
+            ->update(['status' => 'no']);
+        if($statusUpdate){
+            return view('home')->withUser($user);
+        }
+
+    }
+
 
     /**
      * Show the application dashboard.
