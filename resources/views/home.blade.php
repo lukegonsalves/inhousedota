@@ -32,8 +32,10 @@
                         <button class="button is-danger" type="submit">Set 'Unavailable'</button>
                     </div>
                 </form>
+                </div>
                 @admin
-                &nbsp;
+                <div class="field is-grouped is-grouped-centered">
+                Be warned everyones availability will reset if you press this!
                 <form method="post" action="{{url('resetStatus')}}" enctype="multipart/form-data">
                     @csrf
                         <button class="button is-warning" type="submit">
@@ -43,8 +45,9 @@
                         <span>Reset All Players Availability</span>
                         </button>
                 </form>
-                @endadmin   
                 </div>
+                @endadmin   
+                
             </div>        
         </div>
     <div>
