@@ -14847,7 +14847,7 @@ var render = function() {
               _c("div", [
                 _c("p", { staticClass: "heading" }, [_vm._v("Balance")]),
                 _vm._v(" "),
-                _c("p", { staticClass: "title" }, [
+                _c("p", { staticClass: "title is-6" }, [
                   _vm._v(_vm._s(_vm.percentagedire) + " %")
                 ])
               ])
@@ -14859,7 +14859,7 @@ var render = function() {
               _c("div", [
                 _c("p", { staticClass: "heading" }, [_vm._v("Total MMR ")]),
                 _vm._v(" "),
-                _c("p", { staticClass: "title" }, [
+                _c("p", { staticClass: "title is-6" }, [
                   _vm._v(_vm._s(_vm.totaldire))
                 ])
               ])
@@ -14871,7 +14871,7 @@ var render = function() {
               _c("div", [
                 _c("p", { staticClass: "heading" }, [_vm._v("Mean MMR ")]),
                 _vm._v(" "),
-                _c("p", { staticClass: "title" }, [
+                _c("p", { staticClass: "title is-6" }, [
                   _vm._v(_vm._s(_vm.averagedire))
                 ])
               ])
@@ -14883,7 +14883,7 @@ var render = function() {
               _c("div", [
                 _c("p", { staticClass: "heading" }, [_vm._v("Mean MMR ")]),
                 _vm._v(" "),
-                _c("p", { staticClass: "title" }, [
+                _c("p", { staticClass: "title is-6" }, [
                   _vm._v(_vm._s(_vm.averageradiant))
                 ])
               ])
@@ -14895,7 +14895,7 @@ var render = function() {
               _c("div", [
                 _c("p", { staticClass: "heading" }, [_vm._v("Total MMR ")]),
                 _vm._v(" "),
-                _c("p", { staticClass: "title" }, [
+                _c("p", { staticClass: "title is-6" }, [
                   _vm._v(_vm._s(_vm.totalradiant))
                 ])
               ])
@@ -14907,7 +14907,7 @@ var render = function() {
               _c("div", [
                 _c("p", { staticClass: "heading" }, [_vm._v("Balance")]),
                 _vm._v(" "),
-                _c("p", { staticClass: "title" }, [
+                _c("p", { staticClass: "title is-6" }, [
                   _vm._v(_vm._s(_vm.percentageradiant) + " %")
                 ])
               ])
@@ -15147,7 +15147,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "level-item has-text-centered" }, [
-      _c("div", [_c("p", { staticClass: "title is-5" }, [_vm._v("   ")])])
+      _c("div", [_c("p", { staticClass: "subtitle is-6" }, [_vm._v("   ")])])
     ])
   },
   function() {

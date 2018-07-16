@@ -41,7 +41,7 @@
                         <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading">Balance</p>
-                                <p class="title">{{percentagedire}} %</p>
+                                <p class="title is-6">{{percentagedire}} %</p>
                             </div>
                         </div>
                         <div class="level-item has-text-centered">
@@ -52,7 +52,7 @@
                         <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading">Total MMR </p>
-                                <p class="title">{{totaldire}}</p>
+                                <p class="title is-6">{{totaldire}}</p>
                             </div>
                         </div>
                         <div class="level-item has-text-centered">
@@ -63,7 +63,7 @@
                         <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading">Mean MMR </p>
-                                <p class="title">{{averagedire}}</p>
+                                <p class="title is-6">{{averagedire}}</p>
                             </div>
                         </div>
                         <div class="level-item has-text-centered">
@@ -74,7 +74,7 @@
                         <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading">Mean MMR </p>
-                                <p class="title">{{averageradiant}}</p>
+                                <p class="title is-6">{{averageradiant}}</p>
                             </div>
                         </div>
                         <div class="level-item has-text-centered">
@@ -85,18 +85,18 @@
                         <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading">Total MMR </p>
-                                <p class="title">{{totalradiant}}</p>
+                                <p class="title is-6">{{totalradiant}}</p>
                             </div>
                         </div>
                         <div class="level-item has-text-centered">
                             <div>
-                                <p class="title is-5">&nbsp;&nbsp;&nbsp;</p>
+                                <p class="subtitle is-6">&nbsp;&nbsp;&nbsp;</p>
                             </div>
                         </div>
                         <div class="level-item has-text-centered">
                             <div>
                                 <p class="heading">Balance</p>
-                                <p class="title">{{percentageradiant}} %</p>
+                                <p class="title is-6">{{percentageradiant}} %</p>
                             </div>
                         </div>
                     </nav>
