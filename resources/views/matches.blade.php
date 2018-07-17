@@ -91,7 +91,10 @@
           <div class="box">
             <div class="content">
               <h3 class="title">Upcoming Matches</h3>
-              <p class="subtitle is-6">If you're selected to play the password will be visible @admin or if you're an admin, which means you can see this! @endadmin</p>
+              <p class="subtitle is-6">If you're selected in a game a
+                  <span class="tag is-success">
+                  <i class="fas fa-check"></i>
+                  </span> will be visible with the password @admin or if you're an admin, which means you can see this! @endadmin</p>
                 <table class="table table-striped">
                         <thead>
                           <tr>
@@ -143,11 +146,17 @@
                             @endphp
                           <tr>
                             <td>17171{{$match['id']}}</td>
-                            <td>{{$match['match_name']}}</td>
+                            <td>{{$match['match_name']}}
+                            @if($match->allPlayers->contains(auth()->user()))  
+                            <span class="tag is-success">
+                            <i class="fas fa-check"></i>
+                            </span>
+                            @endif
+                            </td>
                             <td>{{$match['start_time']}}</td>
                             <td>{{$user->find($match['creator'])->username}}</td>
                             @admin<td>{{$match['created_at']->format('H:i F d, Y')}}</td>@endadmin
-                            @if($first_match->allPlayers->contains(auth()->user()) || auth()->user()->isAdmin) {{--|| auth()->user()->id32 == $user->find($match['creator'])->id32 ) --}}
+                            @if($match->allPlayers->contains(auth()->user()) || auth()->user()->isAdmin) {{--|| auth()->user()->id32 == $user->find($match['creator'])->id32 ) check first if condition needs to be $first_match or $match--}}
                             <td>{{$match['lobby_password']}}</td>
                             @else
                             <td>
