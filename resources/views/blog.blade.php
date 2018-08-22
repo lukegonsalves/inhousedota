@@ -3,8 +3,8 @@
 @section('content')
 <section class="section">
     <div class="container">
-        <h1 class="title">Donate</h1>
-        <h2 class="subtitle">
+        <h1 class="title has-text-white">Donate</h1>
+        <h2 class="subtitle has-text-light">
             Ways to support
         </h2>
     </div>

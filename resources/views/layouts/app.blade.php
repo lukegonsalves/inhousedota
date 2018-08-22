@@ -22,9 +22,10 @@
 
 
 </head>
-<body>
+<body background="https://images5.alphacoders.com/561/561359.png">
+    
     <div id="app">
-        <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
             <div class="navbar-brand" href="{{ url('/') }}">
                 <a class = "navbar-item">
                         <img src="{{ URL::asset('/images/inhouse-logo-white.png') }}">
@@ -51,9 +52,11 @@
                     <a class="navbar-item" href="{{ route('blog') }}">
                         Donate
                     </a>
-                    <p class="navbar-item subtitle is-7">
+                    <p class="navbar-item">
                         @if (Auth::check())
-                        tard count: {{Auth::user()->count()}}
+                        <span class="font-semibold mr-2 text-left flex-auto"></span>
+                                  <span class="font-semibold mr-2 text-left flex-auto">tard count: {{Auth::user()->count()}}</span>
+                                  <span class="flex rounded-full bg-indigo uppercase px-2 py-1 text-xs font-bold mr-3">New</span>
                         @endif
                     </p>
                     
@@ -84,6 +87,7 @@
                 </div>
             </div>
         </nav>
+
         {{--  <nav class="level">
                 <p class="level-item has-text-centered">
                   <a class="link is-info">Home</a>

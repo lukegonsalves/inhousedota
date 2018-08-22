@@ -3,8 +3,8 @@
 @section('content')
 <section class="section">
     <div class="container">
-        <h1 class="title">Matches</h1>
-        <h2 class="subtitle">
+        <h1 class="title has-text-white">Matches</h1>
+        <h2 class="subtitle has-text-light">
         100% Munt-verified SHITSHOWS
         </h2>
     </div>
@@ -13,9 +13,9 @@
 {{--  Featured Match --}}
 <section class = "section">
     <div class="columns is-centered">
-      <figure class="image">
+      <!-- <figure class="image">
       <img src="https://i.ytimg.com/vi/IVXrhjD9OIQ/maxresdefault.jpg">
-      </figure>
+      </figure> -->
                                   
       @php                    
         $first_match = $matches->first();
@@ -78,9 +78,9 @@
           </div>
         </div>
 
-        <figure class="image">
+        <!-- <figure class="image">
           <img src="https://i.ytimg.com/vi/FIhyPMusUWg/maxresdefault.jpg">
-        </figure>
+        </figure> -->
 
     </div>
 </section>

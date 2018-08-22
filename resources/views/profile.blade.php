@@ -3,10 +3,10 @@
 @section('content')
 <section class="section">
     <div class="container">
-        <h1 class="title">{{ $user->username }}</h1>
+        <h1 class="title has-text-white">{{ $user->username }}</h1>
         @if(Auth::user() == $user)
-        <h2 class="subtitle">
-            Are you a <strong>shitter</strong> or a <strong>gooder</strong>? Lets see...
+        <h2 class="subtitle has-text-light">
+            Are you a shitter or a gooder? Lets see...
         </h2>
         @endif
     </div>
@@ -14,9 +14,9 @@
 <section class = "section">
     <div class = "columns is-centered">
 
-            <figure class="image">
+            <!-- <figure class="image">
                     <img src="https://i.ytimg.com/vi/QBt6WJ4Ca_s/maxresdefault.jpg">
-            </figure>
+            </figure> -->
 
         <div class="column is-two-thirds">
             <div class ="box">
@@ -88,9 +88,10 @@
                 </div>
             </div>
         </div>
+        <!--
         <figure class="image">
                 <img src="https://i.ytimg.com/vi/i20V5EUjyKE/maxresdefault.jpg">
-        </figure> 
+        </figure> -->
     </div>
 </section>
 @endsection

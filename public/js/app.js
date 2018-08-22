@@ -15186,8 +15186,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "columns is-centered" }, [
-      _vm._m(0),
-      _vm._v(" "),
       _c(
         "div",
         { staticClass: "column is-half" },
@@ -15200,34 +15198,11 @@ var render = function() {
         { staticClass: "column is-one-third" },
         [_vm.user.is_admin ? _c("match-creator") : _vm._e()],
         1
-      ),
-      _vm._v(" "),
-      _vm._m(1)
+      )
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("figure", { staticClass: "image" }, [
-      _c("img", {
-        attrs: { src: "https://i.ytimg.com/vi/aiLwA7BkftI/maxresdefault.jpg" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("figure", { staticClass: "image" }, [
-      _c("img", {
-        attrs: { src: "https://i.ytimg.com/vi/iW4Q7dfoGUE/maxresdefault.jpg" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

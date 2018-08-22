@@ -22,8 +22,5 @@ class PlayersController extends Controller
         return view('players')->withPlayers(User::all());
     }
     
-    public function resetStatus()
-    {
 
-    }
 }

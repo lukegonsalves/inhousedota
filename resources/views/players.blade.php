@@ -3,9 +3,9 @@
 @section('content')
 <section class="section">
     <div class="container">
-        <h1 class="title">Players</h1>
-        <h2 class="subtitle">
-        All of the <strong>tards</strong>, some<strong> gooder </strong>than others...
+        <h1 class="title has-text-white">Players</h1>
+        <h2 class="subtitle has-text-light">
+        All of the tards, some gooder than others...
         </h2>
     </div>
 </section>
