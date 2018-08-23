@@ -14293,7 +14293,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "box" }, [
+    _c("div", { staticClass: "box bg-indigo-darker" }, [
       _c("article", { staticClass: "media" }, [
         _c("div", { staticClass: "media-content" }, [
           _c("div", { staticClass: "content" }, [

@@ -3,7 +3,7 @@
 
 
     <div>
- <div class ="box">
+ <div class ="box bg-indigo-darker">
                 <article class = "media">
           <div class="media-content">
                         <div class="content"> 

@@ -22,7 +22,8 @@
 
 
 </head>
-<body background="https://images5.alphacoders.com/561/561359.png">
+<body background="{{ asset('images/background-wk-blur.png') }}
+">
     
     <div id="app">
         <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
