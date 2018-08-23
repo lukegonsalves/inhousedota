@@ -22,11 +22,10 @@
 
 
 </head>
-<body background="{{ asset('images/background-wk-blur.png') }}
-">
+<body background="{{ asset('images/background-wk-blur.png') }}">
     
     <div id="app">
-        <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+         {{-- <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
             <div class="navbar-brand" href="{{ url('/') }}">
                 <a class = "navbar-item">
                         <img src="{{ URL::asset('/images/inhouse-logo-white.png') }}">
@@ -41,9 +40,6 @@
                     <a class="navbar-item" href="{{ route('players') }}">
                         Players
                     </a>
-                    {{--  <a class="navbar-item" href="{{ route('teams') }}">
-                        Teams
-                    </a>  --}}
                     <a class="navbar-item" href="{{ route('matches') }}">
                         Matches
                     </a>
@@ -75,9 +71,6 @@
                           <a class="navbar-item" href = "{{ route('players') }}">
                             Players
                           </a>
-                          {{--  <a class="navbar-item">
-                            Settings
-                          </a>  --}}
                           <hr class="navbar-divider">
                           <div class="navbar-item">
                             <a href = "{{ route('logout') }}">Logout</a>
@@ -88,7 +81,39 @@
                 </div>
             </div>
         </nav>
+    --}}
 
+        <nav class="relative select-none bg-indigo-darkest lg:flex lg:items-stretch w-full">
+            <div class="flex flex-no-shrink items-stretch h-12 text-sm">
+              <a href="{{ route('home') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center"> 
+                <img src = "{{ URL::asset('/images/inhouse-logo-white.png') }}" class="fill-current h-8 w-19 mr-2" width="163" height="34">
+              </a>
+              <a href="{{ route('home') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-indigo-darker hover:text-white">Home</a>
+              <a href="{{ route('players') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-indigo-darker hover:text-white">Players</a>
+              <a href="{{ route('matches') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-indigo-darker hover:text-white">Matches</a>
+              <a href="{{ route('profile.self') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-indigo-darker hover:text-white">Profile</a>
+              <a href="{{ route('blog') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-indigo-darker hover:text-white">Donate</a>
+              <div class="p-2 bg-indigo-darker items-center text-indigo-lightest leading-none lg:rounded-full flex lg:inline-flex" role="alert">
+                    @if (Auth::check())
+                    <span class="font-semibold mr-2 text-left flex-auto"></span>
+                    <span class="font-semibold mr-2 text-left flex-auto">tard count: {{Auth::user()->count()}}</span>
+                    @endif
+              </div>
+              <button class="block lg:hidden cursor-pointer ml-auto relative w-12 h-12 p-4">
+                <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+                <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
+              </button>
+            </div>
+            <div class="lg:flex lg:items-stretch lg:flex-no-shrink lg:flex-grow">
+              <div class="lg:flex lg:items-stretch lg:justify-end ml-auto">
+                @if (Auth::check())                
+                    <p class="text-sm flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center">
+                    <i>Logged in as,</i>&nbsp;{{Auth::user()->username}}
+                    </p>
+                @endif
+              </div>
+            </div>
+          </nav>
         {{--  <nav class="level">
                 <p class="level-item has-text-centered">
                   <a class="link is-info">Home</a>
@@ -111,23 +136,68 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <footer class="footer is-primary">
+        {{-- <footer class="footer is-primary">
             <div class="container">
                 <div class="content has-text-centered">
                     <p>
                         <p class="level-item has-text-centered">
                             <img src="{{ URL::asset('/images/inhouse-logo-grey.png') }}" style="height: 30px;">
                         </p>
-                        {{--    by <a href="#">darkluke21</a> and <a href="#">davidpiesse</a>.   --}}   Art taken from <a href="https://www.youtube.com/channel/UCaGWSIZnljlgNTSMzYnxTEg" target ="_blank">Pyrionflax</a>
+                     Art taken from <a href="https://www.youtube.com/channel/UCaGWSIZnljlgNTSMzYnxTEg" target ="_blank">Pyrionflax</a>
                     </p>
                     <p class="has-text-grey has-text-bold">
                             <a href="{{    route('privacy')   }}">View our privacy policy</a>
-                           {{--     <modal content="Hello"></modal>     --}}
                     </p>
                 </div>
             </div>
-        </footer>
+        </footer> --}}
     </div>
-
+    <section class="bg-white py-8 w-full">
+        <div class="container mx-auto px-8">
+            <div class="table w-full">
+                <div class="block sm:table-cell">
+                    <p class="uppercase text-grey text-sm sm:mb-6">Links</p>
+                    <ul class="list-reset text-xs mb-6">
+                        <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
+                            <a href="#" class="text-grey hover:text-grey-dark">FAQ</a>
+                        </li>
+                        <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
+                            <a href="#" class="text-grey hover:text-grey-dark">Help</a>
+                        </li>
+                        <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
+                            <a href="#" class="text-grey hover:text-grey-dark">Support</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="block sm:table-cell">
+                    <p class="uppercase text-grey text-sm sm:mb-6">Legal</p>
+                    <ul class="list-reset text-xs mb-6">
+                        <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
+                            <a href="{{    route('privacy')   }}" class="text-grey hover:text-grey-dark">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="block sm:table-cell">
+                    <p class="uppercase text-grey text-sm sm:mb-6">Social</p>
+                    <ul class="list-reset text-xs mb-6">
+                        <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
+                            <a href="#" class="text-grey hover:text-grey-dark">Twitch</a>
+                        </li>
+                        <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
+                            <a href="#" class="text-grey hover:text-grey-dark">Twitter</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="block sm:table-cell">
+                    <p class="uppercase text-grey text-sm sm:mb-6">Inhouse Dota</p>
+                    <ul class="list-reset text-xs mb-6">
+                        <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
+                            <a href="#" class="text-grey hover:text-grey-dark">Donate</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
