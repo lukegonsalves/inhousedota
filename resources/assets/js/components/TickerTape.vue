@@ -30,11 +30,13 @@ export default {
       true,
       false,
       false,
+      false,
+      false,
     ]
     }
   },
   created: function() {
-    setInterval(this.updateTicker, 2000);
+    setInterval(this.updateTicker, 3000);
   },
   methods: {
     updateTicker: function() {

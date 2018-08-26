@@ -15419,11 +15419,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       tickerLocation: 0,
-      news: [true, false, false]
+      news: [true, false, false, false, false]
     };
   },
   created: function created() {
-    setInterval(this.updateTicker, 2000);
+    setInterval(this.updateTicker, 3000);
   },
   methods: {
     updateTicker: function updateTicker() {
