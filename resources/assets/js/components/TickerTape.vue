@@ -8,6 +8,8 @@
           <span class="font-normal mr-2 text-left flex-auto news font-sans" href="#" v-if="news[1]" key="1">100% Munt-verified SHITSHOWS</span>
           <a class="font-normal mr-2 text-left flex-auto news font-sans text-white hover:text-white" href="https://clips.twitch.tv/PlainCrowdedHyenaNononoCat" v-if="news[2]" key="2">That is the WORST CHRONO I've ever seen in my f**** life</a>
           <span class="font-normal mr-2 text-left flex-auto news font-sans" href="#" v-if="news[3]" key="3">You BALT F***</span>
+          <span class="font-normal mr-2 text-left flex-auto news font-sans" href="#" v-if="news[4]" key="4">Warning: Choccy</span>
+
         </transition>
       </div>
 </div>

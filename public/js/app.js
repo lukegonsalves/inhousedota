@@ -15412,6 +15412,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -15513,6 +15515,19 @@ var render = function() {
                     attrs: { href: "#" }
                   },
                   [_vm._v("You BALT F***")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.news[4]
+              ? _c(
+                  "span",
+                  {
+                    key: "4",
+                    staticClass:
+                      "font-normal mr-2 text-left flex-auto news font-sans",
+                    attrs: { href: "#" }
+                  },
+                  [_vm._v("Warning: Choccy")]
                 )
               : _vm._e()
           ]
