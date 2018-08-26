@@ -23,6 +23,8 @@ Vue.prototype.$bus = new Vue({}); // Global event bus
 
 Vue.component('player-page', require('./components/PlayerPage.vue'));
 Vue.component('modal', require('./components/Modal.vue'));
+Vue.component('ticker-tape', require('./components/TickerTape.vue'));
+Vue.component('countdown-timer', require('./components/CountdownTimer.vue'));
 
 
 const app = new Vue({

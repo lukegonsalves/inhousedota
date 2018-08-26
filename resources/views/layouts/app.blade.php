@@ -83,8 +83,8 @@
         </nav>
     --}}
 
-        <nav class="relative select-none bg-indigo-darkest lg:flex lg:items-stretch w-full">
-            <div class="flex flex-no-shrink items-stretch h-12 text-sm">
+        <nav class="relative select-none bg-indigo-darkest lg:flex lg:items-stretch w-full border-b border-teal">
+            <div class="flex flex-no-shrink items-stretch h-12 text-sm uppercase font-medium">
               <a href="{{ route('home') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center"> 
                 <img src = "{{ URL::asset('/images/inhouse-logo-white.png') }}" class="fill-current h-8 w-19 mr-2" width="163" height="34">
               </a>
@@ -93,12 +93,10 @@
               <a href="{{ route('matches') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-indigo-darker hover:text-white">Matches</a>
               <a href="{{ route('profile.self') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-indigo-darker hover:text-white">Profile</a>
               <a href="{{ route('blog') }}" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-indigo-darker hover:text-white">Donate</a>
-              <div class="p-2 bg-indigo-darker items-center text-indigo-lightest leading-none lg:rounded-full flex lg:inline-flex" role="alert">
                     @if (Auth::check())
                     <span class="font-semibold mr-2 text-left flex-auto"></span>
-                    <span class="font-semibold mr-2 text-left flex-auto">tard count: {{Auth::user()->count()}}</span>
+                    <span class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center">tard count: {{Auth::user()->count()}}</span>
                     @endif
-              </div>
               <button class="block lg:hidden cursor-pointer ml-auto relative w-12 h-12 p-4">
                 <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
                 <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
@@ -114,6 +112,7 @@
               </div>
             </div>
           </nav>
+          <ticker-tape></ticker-tape>
         {{--  <nav class="level">
                 <p class="level-item has-text-centered">
                   <a class="link is-info">Home</a>
@@ -152,11 +151,11 @@
             </div>
         </footer> --}}
     </div>
-    <section class="bg-white py-8 w-full">
+    <section class="bg-indigo-darkest py-8 w-full border-t border-teal">
         <div class="container mx-auto px-8">
             <div class="table w-full">
-                <div class="block sm:table-cell">
-                    <p class="uppercase text-grey text-sm sm:mb-6">Links</p>
+                <div class="block sm:table-cell bg-indigo-darkest">
+                    <p class="uppercase text-grey-lighter text-sm sm:mb-6">Links</p>
                     <ul class="list-reset text-xs mb-6">
                         <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
                             <a href="#" class="text-grey hover:text-grey-dark">FAQ</a>
@@ -169,30 +168,30 @@
                         </li>
                     </ul>
                 </div>
-                <div class="block sm:table-cell">
-                    <p class="uppercase text-grey text-sm sm:mb-6">Legal</p>
+                <div class="block sm:table-cell bg-indigo-darkest">
+                    <p class="uppercase text-grey-lighter text-sm sm:mb-6">Legal</p>
                     <ul class="list-reset text-xs mb-6">
                         <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
                             <a href="{{    route('privacy')   }}" class="text-grey hover:text-grey-dark">Privacy</a>
                         </li>
                     </ul>
                 </div>
-                <div class="block sm:table-cell">
-                    <p class="uppercase text-grey text-sm sm:mb-6">Social</p>
+                <div class="block sm:table-cell bg-indigo-darkest">
+                    <p class="uppercase text-grey-lighter text-sm sm:mb-6">Social</p>
                     <ul class="list-reset text-xs mb-6">
                         <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
-                            <a href="#" class="text-grey hover:text-grey-dark">Twitch</a>
+                            <a href="https://www.twitch.tv/darkluke21" class="text-grey hover:text-grey-dark">Twitch</a>
                         </li>
                         <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
-                            <a href="#" class="text-grey hover:text-grey-dark">Twitter</a>
+                            <a href="https://twitter.com/darkluke21" class="text-grey hover:text-grey-dark">Twitter</a>
                         </li>
                     </ul>
                 </div>
-                <div class="block sm:table-cell">
-                    <p class="uppercase text-grey text-sm sm:mb-6">Inhouse Dota</p>
+                <div class="block sm:table-cell bg-indigo-darkest">
+                    <p class="uppercase text-grey-lighter text-sm sm:mb-6">Inhouse Dota</p>
                     <ul class="list-reset text-xs mb-6">
                         <li class="mt-2 inline-block mr-2 sm:block sm:mr-0">
-                            <a href="#" class="text-grey hover:text-grey-dark">Donate</a>
+                            <a href="{{  route('blog')   }}" class="text-grey hover:text-grey-dark">Donate</a>
                         </li>
                     </ul>
                 </div>

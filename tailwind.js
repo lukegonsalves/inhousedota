@@ -194,11 +194,12 @@ module.exports = {
 
   fonts: {
     'sans': [
+      'Roboto',
+      'Source Sans Pro',
       'system-ui',
       'BlinkMacSystemFont',
       '-apple-system',
       'Segoe UI',
-      'Roboto',
       'Oxygen',
       'Ubuntu',
       'Cantarell',

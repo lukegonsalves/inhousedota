@@ -12042,7 +12042,7 @@ module.exports = Vue;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(56);
+module.exports = __webpack_require__(62);
 
 
 /***/ }),
@@ -12082,6 +12082,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$bus = new __WEBPACK_IMPOR
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('player-page', __webpack_require__(41));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modal', __webpack_require__(53));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('ticker-tape', __webpack_require__(56));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('countdown-timer', __webpack_require__(59));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app'
@@ -15338,6 +15340,385 @@ if (false) {
 
 /***/ }),
 /* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(57)
+/* template */
+var __vue_template__ = __webpack_require__(58)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\TickerTape.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5b09a403", Component.options)
+  } else {
+    hotAPI.reload("data-v-5b09a403", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      tickerLocation: 0,
+      news: [true, false, false]
+    };
+  },
+  created: function created() {
+    setInterval(this.updateTicker, 2000);
+  },
+  methods: {
+    updateTicker: function updateTicker() {
+      var removed = this.news.pop();
+      this.news.unshift(removed);
+    }
+  }
+});
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "text-center py-1 lg:px-4" }, [
+    _c(
+      "div",
+      {
+        staticClass:
+          "p-2 items-center text-indigo-lightest leading-none lg:rounded-full flex lg:inline-flex",
+        attrs: { role: "alert" }
+      },
+      [
+        _c("span", { staticClass: "time" }),
+        _vm._v(" "),
+        _c(
+          "transition",
+          { attrs: { name: "fade", tag: "div", mode: "out-in" } },
+          [
+            _vm.news[0]
+              ? _c(
+                  "span",
+                  {
+                    key: "0",
+                    staticClass:
+                      "font-normal mr-2 text-left flex-auto news font-sans",
+                    attrs: { href: "#" }
+                  },
+                  [
+                    _vm._v(
+                      "No puns, politics, religion, lyrics or smurfs! Only Dota 2."
+                    )
+                  ]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.news[1]
+              ? _c(
+                  "span",
+                  {
+                    key: "1",
+                    staticClass:
+                      "font-normal mr-2 text-left flex-auto news font-sans",
+                    attrs: { href: "#" }
+                  },
+                  [_vm._v("100% Munt-verified SHITSHOWS")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.news[2]
+              ? _c(
+                  "a",
+                  {
+                    key: "2",
+                    staticClass:
+                      "font-normal mr-2 text-left flex-auto news font-sans text-white hover:text-white",
+                    attrs: {
+                      href: "https://clips.twitch.tv/PlainCrowdedHyenaNononoCat"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "That is the WORST CHRONO I've ever seen in my f**** life"
+                    )
+                  ]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.news[3]
+              ? _c(
+                  "span",
+                  {
+                    key: "3",
+                    staticClass:
+                      "font-normal mr-2 text-left flex-auto news font-sans",
+                    attrs: { href: "#" }
+                  },
+                  [_vm._v("You BALT F***")]
+                )
+              : _vm._e()
+          ]
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5b09a403", module.exports)
+  }
+}
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(60)
+/* template */
+var __vue_template__ = __webpack_require__(61)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\CountdownTimer.vue"
+
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7b4890cb", Component.options)
+  } else {
+    hotAPI.reload("data-v-7b4890cb", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    var _this = this;
+
+    window.setInterval(function () {
+      _this.now = Math.trunc(new Date().getTime() / 1000);
+    }, 1000);
+  },
+
+  props: {
+    date: {
+      type: String
+    }
+  },
+  data: function data() {
+    return {
+      now: Math.trunc(new Date().getTime() / 1000)
+    };
+  },
+  computed: {
+    dateInMilliseconds: function dateInMilliseconds() {
+      return Math.trunc(Date.parse(this.date) / 1000);
+    },
+    seconds: function seconds() {
+      return (this.dateInMilliseconds - this.now) % 60;
+    },
+    minutes: function minutes() {
+      return Math.trunc((this.dateInMilliseconds - this.now) / 60) % 60;
+    },
+    hours: function hours() {
+      return Math.trunc((this.dateInMilliseconds - this.now) / 60 / 60) % 24;
+    },
+    days: function days() {
+      return Math.trunc((this.dateInMilliseconds - this.now) / 60 / 60 / 24);
+    }
+  }
+});
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass:
+        "countdown flex uppercase align-middle text-center mx-auto text-indigo-darkest font-mono font-semibold"
+    },
+    [
+      _c("div", { staticClass: "block flex flex-col mr-8 ml-8" }, [
+        _c("p", { staticClass: "digit text-5xl font-semibold" }, [
+          _vm._v(_vm._s(_vm._f("two_digits")(_vm.days)))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-xs" }, [_vm._v("Days")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "block flex flex-col mr-8" }, [
+        _c("p", { staticClass: "digit text-5xl font-semibold" }, [
+          _vm._v(_vm._s(_vm._f("two_digits")(_vm.hours)))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-xs" }, [_vm._v("Hours")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "block flex flex-col mr-8" }, [
+        _c("p", { staticClass: "digit text-5xl font-semibold" }, [
+          _vm._v(_vm._s(_vm._f("two_digits")(_vm.minutes)))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-xs" }, [_vm._v("Minutes")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "block flex flex-col mr-8" }, [
+        _c("p", { staticClass: "digit text-5xl font-semibold" }, [
+          _vm._v(_vm._s(_vm._f("two_digits")(_vm.seconds)))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-xs" }, [_vm._v("Seconds")])
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7b4890cb", module.exports)
+  }
+}
+
+/***/ }),
+/* 62 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
