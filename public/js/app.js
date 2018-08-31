@@ -14376,7 +14376,7 @@ var render = function() {
               }),
               _vm._v(
                 "\n            Only show the " +
-                  _vm._s(_vm.availablePlayers.length) +
+                  _vm._s(_vm.orderedPlayers.length) +
                   " available players\n       "
               )
             ]),
