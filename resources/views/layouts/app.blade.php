@@ -108,6 +108,12 @@
                     <p class="text-sm flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center">
                     <i>Logged in as,</i>&nbsp;{{Auth::user()->username}}
                     </p>
+                @else
+                <p class="text-sm flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center">
+                <a href="auth/steam">
+                    <img src="https://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_01.png" width="144" height="28" border="0">
+                </a>
+                </p>
                 @endif
               </div>
             </div>

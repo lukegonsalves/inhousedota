@@ -14070,7 +14070,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -14080,7 +14079,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             search_term: "",
             currentSort: 'mmr',
             checkedStatus: false,
-            currentSortDir: 'desc'
+            currentSortDir: 'desc',
+            availablePlayersCount: ""
         };
     },
     components: {
@@ -14125,6 +14125,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (a[_this3.currentSort] > b[_this3.currentSort]) return 1 * modifier;
                 return 0;
             });
+        },
+        countAvailablePlayers: function countAvailablePlayers() {
+            this.availablePlayersCount = this.availablePlayers.length;
         }
 
     }
@@ -14299,7 +14302,14 @@ var render = function() {
       _c("article", { staticClass: "media" }, [
         _c("div", { staticClass: "media-content" }, [
           _c("div", { staticClass: "content" }, [
-            _c("h3", { staticClass: "title" }, [_vm._v("Player Search")]),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "text-indigo-darkest font-semibold uppercase opacity-75 mb-4"
+              },
+              [_vm._v("Player Search")]
+            ),
             _vm._v(" "),
             _c("p", { staticClass: "control has-icons-left" }, [
               _c("input", {
@@ -14369,7 +14379,11 @@ var render = function() {
                   }
                 }
               }),
-              _vm._v("\n            Only show available players\n       ")
+              _vm._v(
+                "\n            Only show the " +
+                  _vm._s(_vm.availablePlayersCount) +
+                  " available players\n       "
+              )
             ]),
             _vm._v(" "),
             _c(

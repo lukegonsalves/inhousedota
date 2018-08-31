@@ -4,11 +4,10 @@
 
     <div>
  <div class ="box bg-indigo-darker">
-                <article class = "media">
-          <div class="media-content">
-                        <div class="content"> 
-                            <h3 class="title">Player Search</h3>
-      
+        <article class = "media">
+        <div class="media-content">
+            <div class="content"> 
+                <div class="text-indigo-darkest font-semibold uppercase opacity-75 mb-4">Player Search</div>
         <p class="control has-icons-left">
             <input class="input is-small" type="text" placeholder="Search for tards by Username" id="inputSearch" v-model="search_term">
             <span class="icon is-small is-left">
@@ -18,7 +17,7 @@
 
         <label class="checkbox">
             <input type="checkbox" v-model="checkedStatus">
-             Only show available players
+             Only show the {{ availablePlayersCount }} available players
         </label>
         <table class="table is-striped" id="playerTable">
             <thead>
@@ -51,7 +50,8 @@ export default {
           search_term: "",
           currentSort:'mmr',
           checkedStatus: false,
-          currentSortDir:'desc'          
+          currentSortDir:'desc',
+          availablePlayersCount: ""          
       }
   },
   components:{
@@ -91,7 +91,10 @@ export default {
                     if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
                 return 0;
                 });
-            }
+            },
+            countAvailablePlayers: function(){
+                this.availablePlayersCount = this.availablePlayers.length;
+            }    
 
   }
 }

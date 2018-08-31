@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<!--
 <section class="section">
     <div class="container">
         <h1 class="title has-text-white">Players</h1>
@@ -8,7 +9,7 @@
         All of the tards, some gooder than others...
         </h2>
     </div>
-</section>
+</section> -->
 <section class = "section">
 
                 @if (session('status'))
