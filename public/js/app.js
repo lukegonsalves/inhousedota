@@ -14079,8 +14079,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             search_term: "",
             currentSort: 'mmr',
             checkedStatus: false,
-            currentSortDir: 'desc',
-            availablePlayersCount: ""
+            currentSortDir: 'desc'
         };
     },
     components: {
@@ -14125,11 +14124,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (a[_this3.currentSort] > b[_this3.currentSort]) return 1 * modifier;
                 return 0;
             });
-        },
-        countAvailablePlayers: function countAvailablePlayers() {
-            this.availablePlayersCount = this.availablePlayers.length;
         }
-
     }
 });
 
@@ -14381,7 +14376,7 @@ var render = function() {
               }),
               _vm._v(
                 "\n            Only show the " +
-                  _vm._s(_vm.availablePlayersCount) +
+                  _vm._s(_vm.availablePlayers.length) +
                   " available players\n       "
               )
             ]),

@@ -17,7 +17,7 @@
 
         <label class="checkbox">
             <input type="checkbox" v-model="checkedStatus">
-             Only show the {{ availablePlayersCount }} available players
+             Only show the {{availablePlayers.length}} available players
         </label>
         <table class="table is-striped" id="playerTable">
             <thead>
@@ -50,8 +50,7 @@ export default {
           search_term: "",
           currentSort:'mmr',
           checkedStatus: false,
-          currentSortDir:'desc',
-          availablePlayersCount: ""          
+          currentSortDir:'desc'      
       }
   },
   components:{
@@ -91,11 +90,7 @@ export default {
                     if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
                 return 0;
                 });
-            },
-            countAvailablePlayers: function(){
-                this.availablePlayersCount = this.availablePlayers.length;
-            }    
-
+            }
   }
 }
 </script>
