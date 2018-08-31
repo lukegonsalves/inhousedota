@@ -23,6 +23,18 @@
                 </div>
             </div>
         </div>
-        
+<div class="w-full max-w-xs">
+  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+
+    <div class="flex items-center justify-between">
+        <a href="auth/steam">
+            <img src="https://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_02.png" width="109" height="66" border="0">
+        </a>
+    </div>
+  </form>
+  <p class="text-center text-grey text-xs">
+    ©2018 Inhouse Dota. All rights reserved.
+  </p>
+</div>
     </section>
 @endsection

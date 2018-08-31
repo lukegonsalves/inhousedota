@@ -37,10 +37,9 @@ Route::resource('matches','MatchController');
 Route::get('/matches','MatchController@index')->name('matches');
 
 Route::post('matches','MatchController@store');
-Route::post('updateStatusIn','HomeController@updateIn');
-Route::post('updateStatusOut','HomeController@updateOut');
-Route::post('resetStatus','HomeController@resetStatus');
-
+Route::post('updateStatusIn', ['uses' => 'HomeController@updateIn', 'middleware' => 'auth']);
+Route::post('updateStatusOut', ['uses' => 'HomeController@updateOut', 'middleware' => 'auth']);
+Route::post('resetStatus', ['uses' => 'HomeController@resetStatus', 'middleware' => 'auth']);
 
 
 Route::get('auth/steam', 'AuthController@redirectToSteam')->name('auth.steam');
