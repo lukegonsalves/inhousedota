@@ -17,7 +17,7 @@
 
         <label class="checkbox">
             <input type="checkbox" v-model="checkedStatus">
-             Only show the {{orderedPlayers.length}} available players
+             Only show the {{playerACount.length}} available players
         </label>
         <table class="table is-striped" id="playerTable">
             <thead>
@@ -90,7 +90,12 @@ export default {
                     if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
                 return 0;
                 });
-            }
+            },
+            playerACount:function() {
+                return this.players.filter((player) => {
+                    return player.status.includes('yes');
+                    
+            })}
   }
 }
 </script>

@@ -14124,6 +14124,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (a[_this3.currentSort] > b[_this3.currentSort]) return 1 * modifier;
                 return 0;
             });
+        },
+        playerACount: function playerACount() {
+            return this.players.filter(function (player) {
+                return player.status.includes('yes');
+            });
         }
     }
 });
@@ -14376,7 +14381,7 @@ var render = function() {
               }),
               _vm._v(
                 "\n            Only show the " +
-                  _vm._s(_vm.orderedPlayers.length) +
+                  _vm._s(_vm.playerACount.length) +
                   " available players\n       "
               )
             ]),
