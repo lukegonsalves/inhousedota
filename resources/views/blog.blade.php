@@ -9,7 +9,6 @@
         </h2>
     </div>
 </section>
-@auth
 <section class="section">
     <div class="columns is-centered">
         <div class="column is-half">
@@ -33,7 +32,6 @@
         </div>
     <div>
 </section> 
-@endauth
 <section class = "section">
 
     <div class="columns is-centered">
