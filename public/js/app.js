@@ -14382,6 +14382,8 @@ var render = function() {
               _vm._v(
                 "\n            Only show the " +
                   _vm._s(_vm.playerACount.length) +
+                  "/" +
+                  _vm._s(_vm.players.length) +
                   " available players\n       "
               )
             ]),
