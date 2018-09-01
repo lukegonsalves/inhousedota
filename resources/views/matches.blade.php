@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="section">
+<!--  <section class="section">
     <div class="container">
         <h1 class="title has-text-white">Matches</h1>
         <h2 class="subtitle has-text-light">
         100% Munt-verified SHITSHOWS
         </h2>
     </div>
-</section>
+</section> -->
 
 {{--  Featured Match --}}
 <section class = "section">
@@ -21,12 +21,12 @@
         $first_match = $matches->first();
       @endphp
         <div class="column is-one-third">
-          <div class="box">
-            <div class="content">
+          <div class="bg-white shadow rounded w-full z-10 border border-teal">
+            <div class="content mr-4 ml-4">
                 @foreach($matches as $match)
                 @if ($matches->first() == $match)
-                <p class="title has-text-centered">{{$match['match_name']}}</p>
-                <p class="subtitle has-text-centered">{{$match['start_time']}} BST
+                <div class="text-center font-semibold uppercase text-indigo-darkest text-3xl mt-4">{{$match['match_name']}}</div>
+                <p class="text-center font-semibold text-indigo-darker">{{$match['start_time']}} BST
                 @if($first_match->allPlayers->contains(auth()->user()) || auth()->user()->isAdmin)
                   <p class="subtitle is-size-6 has-text-centered">
                     <span class="icon is-small is-left"><i class="fas fa-key"></i></span>
@@ -39,8 +39,8 @@
                 @endforeach
               <div class="columns is-centered">
                   <div class="column is-5">
-                      <table class="table">
-                          <thead><th class="has-text-danger">Dire</th></thead>
+                      <table class="table-auto">
+                          <thead><div class="text-center font-semibold uppercase text-red-dark">Dire</div></thead>
                           <tbody>
                             @if(!is_null($first_match))
                               @foreach($first_match->direTeam as $user)
@@ -57,8 +57,8 @@
 
                   </div>
                   <div class="column is-5">
-                      <table class="table">
-                          <thead><th class="has-text-success">Radiant</th></thead>
+                      <table class="table-auto">
+                          <thead><div class="text-center font-semibold uppercase text-green-dark">Radiant</div></thead>
                           <tbody>
                             @if(!is_null($first_match))
                               @foreach($first_match->radiantTeam as $user)
@@ -70,7 +70,7 @@
                   </div>
                   
               </div>
-              <div class="has-text-centered">
+              <div class="text-center mb-4">
                 <a href="https://www.twitch.tv/pyrionflax" target="_blank"><span class="tag is-primary has-text-weight-semibold"><i class="fab fa-twitch"></i>&nbsp;Watch live on twitch.tv&nbsp;<i class="fas fa-external-link-alt"></i></span></a>
               </div>
 

@@ -25,14 +25,14 @@
                                     <img class="w-10 h-10 rounded-full mr-4" src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d4/d4df9499cc94978d72b052a6ae1f38e08e3b2377_full.jpg" alt="Avatar of Jonathan Reinink">
                                     <div class="text-sm">
                                       <p class="text-black leading-none">darkluke21</p>
-                                      <p class="text-grey-dark">Inhouse Master, God of the game</p>
+                                      <p class="text-grey-dark">Inhouse 'Master'</p>
                                     </div>
                                     @auth
                                     @admin
                                     &nbsp;&nbsp;&nbsp; 
                                     <form method="post" action="{{url('resetStatus')}}" enctype="multipart/form-data">
                                         @csrf
-                                            <button class="bg-orange-dark hover:bg-grey text-white font-semibold py-2 px-4 rounded inline-flex items-center" type="submit">
+                                            <button class="bg-orange-dark hover:bg-grey text-white font-semibold py-2 px-4 rounded inline-flex items-center uppercase" type="submit">
                                                 <span class="icon is-small">
                                                     <i class="fas fa-sync"></i>
                                                 </span>
