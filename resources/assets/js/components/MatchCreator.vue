@@ -2,12 +2,12 @@
 <div>
     <div class ="box is-centered">
                 <div class="content">
-                <h3 class="title">Match Creator</h3>
-                <h6 class="subtitle">Use the action button to add players to each team</h6>
+                <div class="text-indigo-darkest font-semibold uppercase opacity-75 mb-2">Match Creator</div>
+                <div class="text-indigo-darker text-sm mb-4">Use the action button to add players to each team</div>
                 <div class = "columns is-centered is-multiline">
                     <div class="column is-half">
                         <table class="table is-striped is-fullwidth">
-                            <thead><th class="has-text-danger">Dire</th></thead>
+                            <thead><div class="text-center font-semibold uppercase text-red-dark">Dire</div></thead>
                             <tbody>
 
                                 <tr v-for="(player, index) in dire" v-bind:key="player.id64">
@@ -24,7 +24,7 @@
                     </div>
                     <div class="column is-half">
                         <table class="table is-striped is-fullwidth">
-                            <thead><th class="has-text-success">Radiant</th></thead>
+                            <thead><div class="text-center font-semibold uppercase text-green-dark">Radiant</div></thead>
                             <tbody>
                                 <tr v-for="(player, index) in radiant" v-bind:key="player.id64">
                                     <td><div class="is-size-6">

@@ -14390,7 +14390,7 @@ var render = function() {
             _vm._v(" "),
             _c(
               "table",
-              { staticClass: "table is-striped", attrs: { id: "playerTable" } },
+              { staticClass: "table-auto", attrs: { id: "playerTable" } },
               [
                 _c("thead", [
                   _c("th"),
@@ -14779,9 +14779,16 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "box is-centered" }, [
       _c("div", { staticClass: "content" }, [
-        _c("h3", { staticClass: "title" }, [_vm._v("Match Creator")]),
+        _c(
+          "div",
+          {
+            staticClass:
+              "text-indigo-darkest font-semibold uppercase opacity-75 mb-2"
+          },
+          [_vm._v("Match Creator")]
+        ),
         _vm._v(" "),
-        _c("h6", { staticClass: "subtitle" }, [
+        _c("div", { staticClass: "text-indigo-darker text-sm mb-4" }, [
           _vm._v("Use the action button to add players to each team")
         ]),
         _vm._v(" "),
@@ -15117,7 +15124,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("thead", [
-      _c("th", { staticClass: "has-text-danger" }, [_vm._v("Dire")])
+      _c(
+        "div",
+        { staticClass: "text-center font-semibold uppercase text-red-dark" },
+        [_vm._v("Dire")]
+      )
     ])
   },
   function() {
@@ -15125,7 +15136,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("thead", [
-      _c("th", { staticClass: "has-text-success" }, [_vm._v("Radiant")])
+      _c(
+        "div",
+        { staticClass: "text-center font-semibold uppercase text-green-dark" },
+        [_vm._v("Radiant")]
+      )
     ])
   },
   function() {

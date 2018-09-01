@@ -19,7 +19,7 @@
             <input type="checkbox" v-model="checkedStatus">
              Only show the {{playerACount.length}}/{{ players.length }} available players
         </label>
-        <table class="table is-striped" id="playerTable">
+        <table class="table-auto" id="playerTable">
             <thead>
                 <th></th>
                 <th @click="sort('username')">Username</th>
