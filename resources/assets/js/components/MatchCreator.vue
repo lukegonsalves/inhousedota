@@ -6,7 +6,7 @@
                 <div class="text-indigo-darker text-sm mb-4">Use the action button to add players to each team</div>
                 <div class = "columns is-centered is-multiline">
                     <div class="column is-half">
-                        <table class="table is-striped is-fullwidth">
+                        <table class="table-auto">
                             <thead><div class="text-center font-semibold uppercase text-red-dark">Dire</div></thead>
                             <tbody>
 
@@ -23,7 +23,7 @@
 
                     </div>
                     <div class="column is-half">
-                        <table class="table is-striped is-fullwidth">
+                        <table class="table-auto">
                             <thead><div class="text-center font-semibold uppercase text-green-dark">Radiant</div></thead>
                             <tbody>
                                 <tr v-for="(player, index) in radiant" v-bind:key="player.id64">

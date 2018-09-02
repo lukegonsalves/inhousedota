@@ -14231,13 +14231,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("tr", [
-    _c("td", [
+    _c("td", { staticClass: "align-middle" }, [
       _c("img", {
         attrs: { alt: _vm.player.username, src: _vm.player.smallAvatarUrl }
       })
     ]),
     _vm._v(" "),
-    _c("td", [
+    _c("td", { staticClass: "align-middle" }, [
       _c("div", { staticClass: "is-size-6" }, [
         _c(
           "a",
@@ -14254,11 +14254,13 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.player.rankTier))]),
+    _c("td", { staticClass: "align-middle" }, [
+      _vm._v(_vm._s(_vm.player.rankTier))
+    ]),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.player.mmr))]),
+    _c("td", { staticClass: "align-middle" }, [_vm._v(_vm._s(_vm.player.mmr))]),
     _vm._v(" "),
-    _c("td", [
+    _c("td", { staticClass: "align-middle" }, [
       _c(
         "button",
         {
@@ -14794,7 +14796,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "columns is-centered is-multiline" }, [
           _c("div", { staticClass: "column is-half" }, [
-            _c("table", { staticClass: "table is-striped is-fullwidth" }, [
+            _c("table", { staticClass: "table-auto" }, [
               _vm._m(0),
               _vm._v(" "),
               _c(
@@ -14831,7 +14833,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "column is-half" }, [
-            _c("table", { staticClass: "table is-striped is-fullwidth" }, [
+            _c("table", { staticClass: "table-auto" }, [
               _vm._m(1),
               _vm._v(" "),
               _c(

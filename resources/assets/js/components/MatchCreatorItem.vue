@@ -1,6 +1,6 @@
 <template>
-    <tr>
-        <td>{{player.username}} - {{player.mmr}} <button class="delete is-small"></button></td>
+    <tr class = "align-middle">
+        <td class = "align-middle">{{player.username}} - {{player.mmr}} <button class="delete is-small"></button></td>
     </tr>
 </template>
 
