@@ -14,7 +14,7 @@
                             <!-- <img src="https://i.gyazo.com/711e6129eba83dae69c3f3d83d62a2f0.png" alt="" class="w-48">   -->
                             <div class="text-center text-indigo-darkest uppercase">Next Game starts in:</div>
                             <div class="mx-auto items-center flex text-center">
-                                <countdown-timer date="2018-09-17 20:00:00"></countdown-timer></div>
+                                <countdown-timer date="2018-09-24 20:00:00"></countdown-timer></div>
                             <div class="mb-8 mx-auto w-2/3">
                                 <div class="flex items-center mb-4">
                                     <span class="text-indigo-darker">
