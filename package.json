@@ -19,7 +19,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "buefy": "^0.6.6",
+        "buefy": "^0.7.2",
         "fitty": "^2.2.5",
         "font-awesome": "^4.7.0",
         "mysql": "^2.15.0",
